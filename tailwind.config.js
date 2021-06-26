@@ -4,8 +4,8 @@ module.exports = {
   darkMode: false,
   theme: {
     fontFamily: {
-      'sans': ['Raglan Sans', 'Arial', 'sans-serif'],
-      'mono': ['Space Mono', 'Arial', 'sans-serif'],
+      'sans': ['Suisse Int', 'Arial', 'sans-serif'],
+      'mono': ['Matter SQ Mono', 'Monaco', 'Lucida Console', 'monospace'],
     },
     screens: {
       sm: "640px",
@@ -18,12 +18,10 @@ module.exports = {
     extend: {
       colors: {
         'black': '#000',
+        'off-black': '#1F1F1F',
         'white': '#FFF',
-        color: {
-          light: '#ffb288',
-          default: '#d18d67',
-          dark: '#ce8860',
-        },
+        'teal': '#2AF4E8',
+        'red': '#F02A2A'
       }
     },
   },

@@ -1,5 +1,5 @@
 body {
-  @apply font-sans antialiased text-black bg-white;
+  @apply font-sans antialiased text-off-black bg-white;
 }
 
 /* Content Stylings */
@@ -21,7 +21,7 @@ body {
 
 /* Heading Defaults */
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, h6 {
-  @apply p-0 mb-6;
+  @apply p-0 mb-6 font-semibold uppercase;
 }
 
 /* Content Headings */
@@ -33,4 +33,22 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, h6 {
 .content > h2,
 .content > .h2 {
   @apply text-3xl;
+}
+
+.text-upright {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  @apply rotate-180;
+}
+
+.text-outline {
+  @apply text-black;
+}
+
+@variants {
+  .text-outline--active {
+    @apply text-transparent;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #1F1F1F;
+  }
 }

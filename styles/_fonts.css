@@ -1,8 +1,30 @@
-/* @font-face {
-  font-family: 'Raglan Sans';
-  src: url('../public/fonts/RaglanSans-Regular.woff2') format('woff2'),
-      url('../public/fonts/RaglanSans-Regular.woff') format('woff');
-  font-weight: 400;
+@font-face {
+  font-family: 'Suisse Int';
+  src: local('Suisse Int\'l Trial Semi Bold'), local('SuisseIntlTrial-SemiBold'),
+      url('@/public/fonts/SuisseIntlTrial-SemiBold.woff2') format('woff2'),
+      url('@/public/fonts/SuisseIntlTrial-SemiBold.woff') format('woff');
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
-} */
+}
+
+@font-face {
+  font-family: 'Suisse Int';
+  src: local('Suisse Int'), local('SuisseIntlTrial-Book'),
+      url('@/public/fonts/SuisseIntlTrial-Book.woff2') format('woff2'),
+      url('@/public/fonts/SuisseIntlTrial-Book.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Matter SQ Mono';
+  src: local('Matter SQ Mono Regular'), local('MatterSQMonoTRIAL-Regular'),
+      url('@/public/fonts/MatterSQMonoTRIAL-Regular.woff2') format('woff2'),
+      url('@/public/fonts/MatterSQMonoTRIAL-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
