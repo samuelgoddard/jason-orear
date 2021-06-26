@@ -22,7 +22,7 @@ export default function Works() {
         >
           <m.div variants={fade} className="p-[20px] pt-28 md:pt-40">
 
-            <Link href="/"><a className="fixed top-0 left-0 ml-[45%] mt-8 uppercase text-[18px] md:text-[22px] mr-4 z-40">Gallery View</a></Link>
+            <Link href="/"><a className="fixed top-0 left-0 right-0 text-center mt-8 uppercase text-[18px] md:text-[22px] w-40 mx-auto z-40">Gallery View</a></Link>
 
             <div className="border-b border-black pb-6 mb-8">
               <span className="md:text-[20px] leading-none tracking-wider">*JO’R — PRJ_02</span>
