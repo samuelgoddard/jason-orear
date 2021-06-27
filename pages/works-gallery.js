@@ -23,6 +23,7 @@ export default function WorksGallery() {
           animate="enter"
           exit="exit"
           className=""
+          data-scroll-section
         >
           <m.div variants={fade} className="p-[20px] pt-28 md:pt-32 pb-6 md:pb-8 xl:pb-12">
             <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute top-0 left-0 right-0 mt-8 mx-auto z-40 w-50 text-center">

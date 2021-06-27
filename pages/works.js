@@ -52,7 +52,7 @@ export default function Works() {
                     </div>
                   </div>
 
-                  <div className="flex space-x-8 overflow-x-scroll">
+                  <div className="flex space-x-8 overflow-x-scroll will-change" data-scroll-direction="horizontal" data-scroll data-scroll-speed="1">
                     <div className="w-full md:w-80 h-64 bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500">
                       <Image
                         src={worksImage}

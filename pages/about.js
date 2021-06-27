@@ -12,11 +12,12 @@ export default function About() {
       </Head>
 
       <LazyMotion features={domAnimation}>
-        <m.div
+        <m.section
           initial="initial"
           animate="enter"
           exit="exit"
           className="mb-12 md:mb-16 xl:mb-24"
+          data-scroll-section
         >
           <m.div variants={fade}>
             <h1 className="font-bold text-2xl md:text-3xl xl:text-4xl mb-4">About Page</h1>
@@ -28,7 +29,7 @@ export default function About() {
             
             <FancyLink destination="/" a11yText="Navigate to the home page" label="Home Page" />
           </m.div>
-        </m.div>
+        </m.section>
       </LazyMotion>
     </Layout>
   )
