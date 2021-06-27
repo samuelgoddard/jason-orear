@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@fullpage/react-fullpage": "^0.1.19",
     "classnames": "^2.3.1",
     "framer-motion": "^4.1.17",
     "locomotive-scroll": "^4.1.1",

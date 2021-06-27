@@ -22,7 +22,7 @@ export default function Home() {
           <m.div variants={fade} className="min-h-screen flex flex-col p-[20px]">
 
             <div className="text-white my-auto">
-              <div className="w-full h-[50vh] bg-red-500 relative">
+              <div className="w-full h-[50vh] relative">
                 <Image
                   src={homeImage}
                   alt="Placeholder"
