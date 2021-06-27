@@ -4,7 +4,12 @@ import Layout from '@/components/layout'
 import { fade } from "@/helpers/transitions"
 import { LazyMotion, domAnimation, m } from "framer-motion"
 import Image from 'next/image'
-import worksImage from '@/public/images/works.webp'
+import image1 from '@/public/images/work-index-1.webp'
+import image2 from '@/public/images/work-index-2.webp'
+import image3 from '@/public/images/work-index-3.webp'
+import image4 from '@/public/images/work-index-4.webp'
+import image5 from '@/public/images/work-index-5.webp'
+import image6 from '@/public/images/work-index-6.webp'
 
 export default function Works() {
   return (
@@ -52,46 +57,55 @@ export default function Works() {
                     </div>
                   </div>
 
-                  <div className="flex space-x-8 overflow-x-scroll will-change" data-scroll-direction="horizontal" data-scroll data-scroll-speed="1">
-                    <div className="w-full md:w-80 h-64 bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500">
+                  <div className="flex space-x-[2.5vw] md:space-x-[2vw] xl:space-x-[1.5vw] overflow-x-scroll will-change" data-scroll-direction="horizontal" data-scroll data-scroll-speed="1">
+                    <div className="w-[12vw] h-[16vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change">
                       <Image
-                        src={worksImage}
+                        src={image1}
                         alt="Placeholder"
                         layout="fill"
                         className="w-full h-full object-cover object-center will-change"
                         placeholder="blur"
                       />
                     </div>
-                    <div className="w-full md:w-48 h-64 bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500">
+                    <div className="w-[25vw] h-[16vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change">
                       <Image
-                        src={worksImage}
+                        src={image2}
                         alt="Placeholder"
                         layout="fill"
                         className="w-full h-full object-cover object-center will-change"
                         placeholder="blur"
                       />
                     </div>
-                    <div className="w-full md:w-48 h-64 bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500">
+                    <div className="w-[12vw] h-[16vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change">
                       <Image
-                        src={worksImage}
+                        src={image6}
                         alt="Placeholder"
                         layout="fill"
                         className="w-full h-full object-cover object-center will-change"
                         placeholder="blur"
                       />
                     </div>
-                    <div className="w-full md:w-80 h-64 bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500">
+                    <div className="w-[12vw] h-[16vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change">
                       <Image
-                        src={worksImage}
+                        src={image3}
                         alt="Placeholder"
                         layout="fill"
                         className="w-full h-full object-cover object-center will-change"
                         placeholder="blur"
                       />
                     </div>
-                    <div className="w-full md:w-48 h-64 bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500">
+                    <div className="w-[25vw] h-[16vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change">
                       <Image
-                        src={worksImage}
+                        src={image4}
+                        alt="Placeholder"
+                        layout="fill"
+                        className="w-full h-full object-cover object-center will-change"
+                        placeholder="blur"
+                      />
+                    </div>
+                    <div className="w-[12vw] h-[16vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change">
+                      <Image
+                        src={image5}
                         alt="Placeholder"
                         layout="fill"
                         className="w-full h-full object-cover object-center will-change"
