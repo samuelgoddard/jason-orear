@@ -72,7 +72,7 @@ export default function Home() {
                         src={aboutImage}
                         alt="Placeholder"
                         layout="fill"
-                        className="w-full h-full object-cover object-center bg-red mix-blend-multiply"
+                        className="w-full h-full object-cover object-center bg-red mix-blend-multiply will-change"
                         placeholder="blur"
                       />
                     </div>

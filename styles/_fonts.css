@@ -10,9 +10,9 @@
 
 @font-face {
   font-family: 'Suisse Int';
-  src: local('Suisse Int'), local('SuisseIntlTrial-Book'),
-      url('@/public/fonts/SuisseIntlTrial-Book.woff2') format('woff2'),
-      url('@/public/fonts/SuisseIntlTrial-Book.woff') format('woff');
+  src: local('Suisse Int'), local('SuisseInt-Book'),
+      url('@/public/fonts/SuisseIntl-Book.woff2') format('woff2'),
+      url('@/public/fonts/SuisseIntl-Book.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
