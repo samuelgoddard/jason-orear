@@ -34,7 +34,7 @@ export default function Works() {
 
             {Array.from(Array(10), (e, i) => {
               return (
-                <div className="border-b border-black pb-6 mb-8" key={i}>
+                <div className="border-b border-black pb-6 mb-8 overflow-hidden" key={i}>
                   <span className="md:text-[20px] leading-none tracking-wider">*JO’R — PRJ_02</span>
                   <h2 className="text-[18vw] md:text-[13vw] ml-[-0.5vw] 2xl:ml-[-0.75vw] leading-none uppercase font-semibold tracking-tighter">Mira</h2>
                   
