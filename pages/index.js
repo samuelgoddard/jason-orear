@@ -3,7 +3,7 @@ import Layout from '@/components/layout'
 import { fade } from "@/helpers/transitions"
 import { LazyMotion, domAnimation, m } from "framer-motion"
 import Image from 'next/image'
-import homeImage from '@/public/images/home.jpg'
+import homeImage from '@/public/images/007.jpg'
 
 export default function Home() {
   return (
