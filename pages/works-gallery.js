@@ -15,7 +15,7 @@ import work5 from '@/public/images/work-5.jpg'
 
 export default function WorksGallery() {
   const containerRef = useRef(null)
-  
+
   return (
     <Layout>
       <Head>
@@ -53,7 +53,7 @@ export default function WorksGallery() {
 
                 {Array.from(Array(3), (e, i) => {
                   return (
-                    <div className="grid grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-[2.5vw] px-[3vw] mb-[2.5vw]" key={i}>
+                    <div className="grid grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-[2.5vw] mb-[2.5vw]" key={i}>
                       <Link href="/work">
                         <a className="grayscale opacity-80 hover:opacity-100 transition-opacity ease-in-out duration-500 row-span-2 relative">
                           <span className="absolute top-0 left-0 m-2 md:m-3 xl:m-4 z-10 text-white text-sm font-mono bg-black bg-opacity-20 w-8 h-8 flex items-center justify-center">1</span>

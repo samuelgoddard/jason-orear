@@ -36,12 +36,12 @@ export default function WorkSlug() {
               navigation={false}
               controlArrows={false}
               pluginWrapper={pluginWrapper}
-              licenseKey={process.env.FULLPAGE_LICENSE}
+              licenseKey={'3E8E8C87-B0B24A84-8C40386A-A5CE366D'}
               // onLeave={this.onLeave.bind(this)}
               scrollingSpeed = {800}
               loopHorizontal={false}
               scrollHorizontally={true}
-              scrollHorizontallyKey = {process.env.FULLPAGE_HORIZONTAL_LICENSE}
+              scrollHorizontallyKey={'dmVyY2VsLmFwcF9icnZjMk55YjJ4c1NHOXlhWHB2Ym5SaGJHeDUwcHo='}
               render={({ state, fullpageApi }) => {
                 return (
                   <ReactFullpage.Wrapper>
