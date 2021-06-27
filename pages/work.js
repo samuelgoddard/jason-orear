@@ -13,7 +13,7 @@ import work4 from '@/public/images/work-4.webp'
 import ReactFullpage from '@fullpage/react-fullpage';
 
 const pluginWrapper = () => {
-  require('@/public/scripts/fullpage.scrollHorizontally.min.js');
+  require('../static/fullpage.scrollHorizontally.min.js');
 };
 export default function WorkSlug() {
   return (
