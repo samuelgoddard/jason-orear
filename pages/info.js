@@ -11,6 +11,17 @@ import aboutImage from '@/public/images/about.webp'
 export default function Info() {
   const containerRef = useRef(null)
   
+  let bodyColors = [
+    "bg-red",
+    "bg-purple",
+    "bg-green",
+    "bg-teal",
+    "bg-blue",
+    "bg-yellow"
+  ];
+
+  let bodyColor = bodyColors[Math.floor(Math.random()*bodyColors.length)];
+  
   return (
     <Layout>
       <Head>
@@ -35,7 +46,7 @@ export default function Info() {
               exit="exit"
               className=""
             >
-              <m.div variants={fade} className="bg-red text-black min-h-screen flex flex-col p-[20px] pt-28 md:pt-32 justify-end">
+              <m.div variants={fade} className={`text-black min-h-screen flex flex-col p-[20px] pt-28 md:pt-32 justify-end ${bodyColor}`}>
                 <div className="flex flex-wrap h-full lg:-mx-5">
                   <div className="w-full lg:w-2/3 lg:px-5 relative mb-12 lg:mb-0">
                     <div className="flex flex-wrap">
@@ -82,13 +93,13 @@ export default function Info() {
                         </div>
                       </div>
 
-                      <div className="w-full h-[65vh] md:h-[50vh] bg-red-500 mt-auto order-1 md:order-2 relative bg-red">
+                      <div className={`w-full h-[65vh] md:h-[50vh] bg-red-500 mt-auto order-1 md:order-2 relative ${bodyColor}`}>
                         <div className="">
                           <Image
                             src={aboutImage}
                             alt="Placeholder"
                             layout="fill"
-                            className="w-full h-full object-cover object-center bg-red mix-blend-multiply will-change"
+                            className={`w-full h-full object-cover object-center mix-blend-multiply will-change ${bodyColor}`}
                             placeholder="blur"
                           />
                         </div>
