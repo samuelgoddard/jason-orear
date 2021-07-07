@@ -41,16 +41,24 @@ export default function WorksGallery() {
               className=""
               data-scroll-section
             >
-              <m.div variants={fade} className="p-[20px] pt-28 md:pt-32 pb-6 md:pb-8 xl:pb-12">
-                <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute top-0 left-0 right-0 mt-8 mx-auto z-40 w-48 text-center">
-                  <Link href="/works">
-                    <a className="text-center uppercase text-[15px] md:text-[22px] w-auto relative inline-block group">
-                      Index View
-                      <span className="block transition-all ease-in-out duration-500 w-full scale-x-0 group-hover:scale-x-100 h-[2px] bg-black"></span>
-                    </a>
-                  </Link>
-                </div>
 
+              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute top-0 left-0 right-0 mt-5 mx-auto z-40 w-[130px] md:w-[190px] text-center flex">
+              <Link href="/works">
+                  <a className="text-center uppercase text-[15px] md:text-[22px] w-auto relative inline-block group opacity-25 transition ease-in-out duration-500">
+                    Index
+                  </a>
+                </Link>
+
+                <span className="text-center uppercase text-[15px] md:text-[22px] w-auto relative inline-block group mx-1 transition ease-in-out duration-500 opacity-25">/</span>
+
+                <Link href="/works-gallery">
+                  <a className="text-center uppercase text-[15px] md:text-[22px] w-auto relative inline-block group transition ease-in-out duration-500">
+                    Gallery
+                  </a>
+                </Link>
+              </div>
+              
+              <m.div variants={fade} className="p-[20px] pt-28 md:pt-32 pb-6 md:pb-8 xl:pb-12">
                 {Array.from(Array(3), (e, i) => {
                   return (
                     <div className="grid grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-[2.5vw] mb-[2.5vw]" key={i}>

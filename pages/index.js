@@ -22,7 +22,7 @@ export default function Home() {
   if (currentProject == 2) {
     imageUrl = homeImage2
     coords = `22°35'12.5"N 102°81'98.3"`
-    number = `8`
+    number = `08`
     name = `Mira`
   } else if (currentProject == 3) {
     imageUrl = homeImage3

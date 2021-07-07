@@ -42,21 +42,27 @@ export default function Works() {
               className=""
               data-scroll-section
             >
+              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute top-0 left-0 right-0 mt-5 mx-auto z-40 w-[130px] md:w-[190px] flex">
+                <Link href="/works">
+                  <a className="text-center uppercase text-[15px] md:text-[22px] w-auto relative inline-block group transition ease-in-out duration-500">
+                    Index
+                  </a>
+                </Link>
+
+                <span className="text-center uppercase text-[15px] md:text-[22px] w-auto relative inline-block group mx-1 transition ease-in-out duration-500 opacity-25">/</span>
+
+                <Link href="/works-gallery">
+                  <a className="text-center uppercase text-[15px] md:text-[22px] w-auto relative inline-block group opacity-25 transition ease-in-out duration-500">
+                    Gallery
+                  </a>
+                </Link>
+              </div>
+
               <m.div variants={fade} className="p-[20px] pt-28 md:pt-40">
-
-                <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute top-0 left-0 right-0 mt-8 mx-auto z-40 w-48 text-center">
-                  <Link href="/works-gallery">
-                    <a className="text-center uppercase text-[15px] md:text-[22px] w-auto relative inline-block group">
-                      Gallery View
-                      <span className="block transition-all ease-in-out duration-500 w-full scale-x-0 group-hover:scale-x-100 h-[2px] bg-black"></span>
-                    </a>
-                  </Link>
-                </div>
-
                 {Array.from(Array(10), (e, i) => {
                   return (
                     <div className="border-b border-black pb-6 mb-8 overflow-hidden" key={i}>
-                      <span className="md:text-[20px] leading-none tracking-wider">*JO’R — PRJ_02</span>
+                      <span className="md:text-[20px] leading-none tracking-wider">{ i < 9 && (0)}{ i + 1 }</span>
 
                       <Link href="/work">
                         <a className="block">
