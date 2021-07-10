@@ -6,6 +6,8 @@
       "@/helpers/*": ["helpers/*"],
       "@/styles/*": ["styles/*"],
       "@/public/*": ["public/*"],
+      "@/services/*": ["services/*"],
+      "@/static/*": ["static/*"],
     }
   }
 }

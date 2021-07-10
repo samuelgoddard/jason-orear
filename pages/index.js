@@ -5,13 +5,30 @@ import { fade } from "@/helpers/transitions"
 import { LazyMotion, domAnimation, m } from "framer-motion"
 import Link from 'next/link'
 import Image from 'next/image'
+import SanityPageService from '@/services/sanityPageService'
 import homeImage from '@/public/images/007.jpg'
 import homeImage2 from '@/public/images/home2.jpg'
 import homeImage3 from '@/public/images/home3.jpg'
 import homeImage4 from '@/public/images/home4.jpg'
 import homeImage5 from '@/public/images/home5.jpg'
 
-export default function Home() {
+const query = `{
+  "home": *[_type == "home"][0]{
+    title,
+    seo {
+      ...,
+      shareGraphic {
+        asset->
+      }
+    },
+  },
+}`
+
+const pageService = new SanityPageService(query)
+
+export default function Home(initialData) {
+  const { data: { home }  } = pageService.getPreviewHook(initialData)()
+
   const [currentProject, setCurrentProject] = useState(1);
 
   let imageUrl = homeImage
@@ -45,7 +62,7 @@ export default function Home() {
   return (
     <Layout>
       <Head>
-        <title>Nextjs boilerplate - Home</title>
+        <title>Jason O'Rear - {home.title}</title>
       </Head>
       
       <LazyMotion features={domAnimation}>
@@ -100,4 +117,11 @@ export default function Home() {
       </LazyMotion>
     </Layout>
   )
+}
+
+export async function getStaticProps(context) {
+  const props = await pageService.fetchQuery(context)
+  return { 
+    props: props
+  };
 }
