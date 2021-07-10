@@ -14,7 +14,7 @@ import ReactFullpage from '@fullpage/react-fullpage';
 import SanityPageService from '@/services/sanityPageService'
 
 const pluginWrapper = () => {
-  require('@/static/fullpage.scrollHorizontally.min.js');
+  require('../../static/fullpage.scrollHorizontally.min.js');
 };
 
 const query = `*[_type == "work" && slug.current == $slug][0]{
