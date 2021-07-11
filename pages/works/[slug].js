@@ -12,6 +12,7 @@ import work3 from '@/public/images/work-3.webp'
 import work4 from '@/public/images/work-4.webp'
 import ReactFullpage from '@fullpage/react-fullpage';
 import SanityPageService from '@/services/sanityPageService'
+import { NextSeo } from 'next-seo'
 
 const pluginWrapper = () => {
   require('../../static/fullpage.scrollHorizontally.min.js');
@@ -52,9 +53,7 @@ export default function WorksSlug(initialData) {
   const { data: { title, seo, slug, indexNumber, client, location, gps, year, imageSlides }  } = pageService.getPreviewHook(initialData)()
   return (
     <Layout>
-      <Head>
-        <title>Nextjs boilerplate - Work</title>
-      </Head>
+      <NextSeo title={title} />
       
       <LazyMotion features={domAnimation}>
         <m.section
@@ -68,6 +67,7 @@ export default function WorksSlug(initialData) {
           <m.div variants={fade} className="min-h-screen flex flex-col p-[20px]">
             <ReactFullpage
               navigation={false}
+              anchors={['slider']}
               controlArrows={false}
               pluginWrapper={pluginWrapper}
               licenseKey={'3E8E8C87-B0B24A84-8C40386A-A5CE366D'}
@@ -80,9 +80,6 @@ export default function WorksSlug(initialData) {
                 return (
                   <ReactFullpage.Wrapper>
                     <div className="section">
-
-
-
                     {imageSlides.map((f, i) => {
                       
                       let layoutOuterWrapper = 'w-10/12 h-[55vh] md:h-[72vh] relative mx-auto will-change mt-[-6vh]';
@@ -101,7 +98,7 @@ export default function WorksSlug(initialData) {
                       }
                       
                       return (
-                        <div className="slide will-change flex items-center" id={i} key={i}>
+                        <div className="slide will-change flex items-center TEST" id={i} data-anchor={`slide${i}`} key={i}>
                           <div className={layoutOuterWrapper}>
                             { f.images.map((g, i) => {
                               return (
@@ -111,6 +108,8 @@ export default function WorksSlug(initialData) {
                                     alt="Placeholder"
                                     layout="fill"
                                     className="w-full h-full object-cover object-center will-change"
+                                    placeholder="blur"
+                                    blurDataURL={g.asset.metadata.lqip}
                                   />
                                 </div>
                               )

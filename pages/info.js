@@ -1,14 +1,34 @@
 import { useRef } from 'react'
-import Head from 'next/head'
 import Layout from '@/components/layout'
 import { fade } from "@/helpers/transitions"
 import { LazyMotion, domAnimation, m } from "framer-motion"
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
-
+import { NextSeo } from 'next-seo'
 import Image from 'next/image'
-import aboutImage from '@/public/images/about.webp'
+import SanityPageService from '@/services/sanityPageService'
+import BlockContent from '@sanity/block-content-to-react'
 
-export default function Info() {
+const query = `*[_type == "info"][0]{
+  seo {
+    ...,
+    shareGraphic {
+      asset->
+    }
+  },
+  title,
+  biographyText,
+  clients,
+  biographyImage {
+    asset -> {
+      ...
+    }
+  }
+}`
+
+const pageService = new SanityPageService(query)
+
+export default function Info(initialData) {
+  const { data: { title, seo, biographyText, clients, biographyImage }  } = pageService.getPreviewHook(initialData)()
   const containerRef = useRef(null)
   
   let bodyColors = [
@@ -24,9 +44,7 @@ export default function Info() {
   
   return (
     <Layout>
-      <Head>
-        <title>Nextjs boilerplate - Home</title>
-      </Head>
+      <NextSeo title="Info" />
       
       <LocomotiveScrollProvider
         options={
@@ -53,8 +71,12 @@ export default function Info() {
                       <div className="order-2 md:order-1">
                         <span className="font-mono uppercase tracking-wider text-[11px] md:text-[13px] block mb-[3vh]">(Clients)</span>
 
-                        <div className="flex flex-wrap -mx-3 lg:-mx-8 mb-[3vh]">
-                          <ul className="w-auto px-3 lg:px-8 font-mono uppercase tracking-wider text-[11px] md:text-[13px]">
+                        <div className="text-cols mb-[3vh] font-mono uppercase tracking-wider text-[11px] md:text-[13px]">
+
+                          <BlockContent serializers={{ container: ({ children }) => children }} blocks={clients} />
+
+
+                          {/* <ul className="w-auto px-3 lg:px-8 font-mono uppercase tracking-wider text-[11px] md:text-[13px]">
                             <li>Adamson Associate</li>
                             <li>Architect Magazine</li>
                             <li>Architectural Record</li>
@@ -89,18 +111,19 @@ export default function Info() {
                             <li>Symantec</li>
                             <li>Turner</li>
                             <li>VISA</li>
-                          </ul>
+                          </ul> */}
                         </div>
                       </div>
 
                       <div className={`w-full h-[65vh] md:h-[50vh] bg-red-500 mt-auto order-1 md:order-2 relative ${bodyColor}`}>
                         <div className="">
                           <Image
-                            src={aboutImage}
-                            alt="Placeholder"
+                            src={biographyImage.asset.url}
+                            alt="Jason O'Rear Biography Image"
                             layout="fill"
                             className={`w-full h-full object-cover object-center mix-blend-multiply will-change ${bodyColor}`}
                             placeholder="blur"
+                            blurDataURL={biographyImage.asset.metadata.lqip}
                           />
                         </div>
 
@@ -111,13 +134,7 @@ export default function Info() {
 
                   <div className="w-full lg:w-1/3 lg:px-5 text-[16px] lg:text-[18px] xl:text-[20px] leading-tight flex items-center mb-12 lg:mb-0">
                     <div className="w-full content max-w-md mx-auto">
-                      <p>Jason O’Rear is a professional photographer whose work celebrates the creativity and ingenuity of contemporary architectural design.</p>
-                      
-                      <p>With a background in architecture, Jason empathizes with the design process and understands the layers of work and innovative thinking required to make a project unique.</p>
-
-                      <p>Known for his keen eye and rigor, Jason spends time with clients from the outset, absorbing their vision and using it to fuel his creativity behind the lens. Every shot is meticulously curated to tell a story of the relationship between building, nature, and human experience.</p>
-                      
-                      <p>Jason has been commissioned by many of the world’s highly recognized architects and his work is regularly featured in publications such as Architectural Record, Metropolis, and Interior Design, as well as independent art shows and galleries.</p>
+                      <BlockContent serializers={{ container: ({ children }) => children }} blocks={biographyText} />
                     </div>
                   </div>
                 </div>
@@ -128,4 +145,11 @@ export default function Info() {
       </LocomotiveScrollProvider>
     </Layout>
   )
+}
+
+export async function getStaticProps(context) {
+  const props = await pageService.fetchQuery(context)
+  return { 
+    props: props
+  };
 }

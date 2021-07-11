@@ -1,11 +1,18 @@
-import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '@/components/layout'
 import { fade } from "@/helpers/transitions"
 import { LazyMotion, domAnimation, m } from "framer-motion"
+import { NextSeo } from 'next-seo'
+import SanityPageService from '@/services/sanityPageService'
 
-export default function Wayfinder() {
+const query = `*[_type == "contact"][0]{
+  email
+}`
 
+const pageService = new SanityPageService(query)
+
+export default function Wayfinder(initialData) {
+  const { data: { email }  } = pageService.getPreviewHook(initialData)()
   let bodyColors = [
     {
       background: "bg-red",
@@ -37,9 +44,7 @@ export default function Wayfinder() {
 
   return (
     <Layout>
-      <Head>
-        <title>Nextjs boilerplate - Wayfinder</title>
-      </Head>
+      <NextSeo title="Wayfinder" />
       
       <LazyMotion features={domAnimation}>
         <m.section
@@ -73,14 +78,12 @@ export default function Wayfinder() {
                   </Link>
                 </li>
                 <li className="w-1/3 flex justify-center">
-                  <Link href="/">
-                    <a className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-none transition-all ease-in-out duration-500 group hover:text-black">
-                      <div>
-                        Email
-                        <span className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-2.5%] opacity-0 group-hover:opacity-100 mt-0 group-hover:mt-[2.5%] transition-all ease-in-out duration-500 text-black">reach out to jason</span>
-                      </div>
-                    </a>
-                  </Link>
+                  <a href={`mailto:${email}`} className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-none transition-all ease-in-out duration-500 group hover:text-black">
+                    <div>
+                      Email
+                      <span className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-2.5%] opacity-0 group-hover:opacity-100 mt-0 group-hover:mt-[2.5%] transition-all ease-in-out duration-500 text-black">reach out to jason</span>
+                    </div>
+                  </a>
                 </li>
               </ul>
             </nav>
@@ -89,4 +92,11 @@ export default function Wayfinder() {
       </LazyMotion>
     </Layout>
   )
+}
+
+export async function getStaticProps(context) {
+  const props = await pageService.fetchQuery(context)
+  return { 
+    props: props
+  };
 }

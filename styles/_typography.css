@@ -82,3 +82,14 @@ html.has-scroll-dragging {
   vertical-align: top;
   white-space: nowrap;
   height: 100%; }
+
+.text-cols {
+  columns: 2 auto;
+  column-gap: 25px;
+}
+
+@screen md {
+  .text-cols {
+    column-gap: 50px;
+  }
+}

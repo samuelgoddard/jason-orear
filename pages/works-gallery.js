@@ -5,6 +5,7 @@ import Layout from '@/components/layout'
 import { fade } from "@/helpers/transitions"
 import { LazyMotion, domAnimation, m } from "framer-motion"
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
+import { NextSeo } from 'next-seo'
 
 import Image from 'next/image'
 import work1 from '@/public/images/work-1.jpg'
@@ -18,9 +19,7 @@ export default function WorksGallery() {
 
   return (
     <Layout>
-      <Head>
-        <title>Nextjs boilerplate - Works</title>
-      </Head>
+      <NextSeo title="Works Gallery" />
       
       <LocomotiveScrollProvider
         options={
@@ -42,7 +41,7 @@ export default function WorksGallery() {
               data-scroll-section
             >
 
-              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute top-0 left-0 right-0 mt-5 mx-auto z-40 w-[130px] md:w-[190px] text-center flex">
+              <m.div varints={fade} data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute top-0 left-0 right-0 mt-5 mx-auto z-40 w-[130px] md:w-[190px] text-center flex">
               <Link href="/works">
                   <a className="text-center uppercase text-[15px] md:text-[22px] w-auto relative inline-block group opacity-25 transition ease-in-out duration-500">
                     Index
@@ -56,7 +55,7 @@ export default function WorksGallery() {
                     Gallery
                   </a>
                 </Link>
-              </div>
+              </m.div>
               
               <m.div variants={fade} className="p-[20px] pt-28 md:pt-32 pb-6 md:pb-8 xl:pb-12">
                 {Array.from(Array(3), (e, i) => {

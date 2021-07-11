@@ -6,11 +6,6 @@ import { LazyMotion, domAnimation, m } from "framer-motion"
 import Link from 'next/link'
 import Image from 'next/image'
 import SanityPageService from '@/services/sanityPageService'
-import homeImage from '@/public/images/007.jpg'
-import homeImage2 from '@/public/images/home2.jpg'
-import homeImage3 from '@/public/images/home3.jpg'
-import homeImage4 from '@/public/images/home4.jpg'
-import homeImage5 from '@/public/images/home5.jpg'
 
 const query = `{
   "home": *[_type == "home"][0]{
@@ -21,6 +16,25 @@ const query = `{
         asset->
       }
     },
+    featuredWork[]->{
+      slug {
+        current
+      },
+      title,
+      gps,
+      indexNumber,
+      homeCarouselImage {
+        asset ->
+      },
+      imageSlides[]{
+        layout,
+        images[] {
+          asset-> {
+            ...
+          }
+        }
+      }
+    }
   },
 }`
 
@@ -31,40 +45,41 @@ export default function Home(initialData) {
 
   const [currentProject, setCurrentProject] = useState(1);
 
-  let imageUrl = homeImage
-  let coords = `37°46'09.3"N 122°23'20.5"`
-  let number = `16`
-  let name = `Jason O'Rear`
+  let imageUrl = home.featuredWork[0].homeCarouselImage.asset.url
+  let imageLqipUrl = home.featuredWork[0].homeCarouselImage.asset.metadata.lqip
+  let coords = home.featuredWork[0].gps
+  let number = home.featuredWork[0].indexNumber
+  let name = home.featuredWork[0].title
 
   if (currentProject == 2) {
-    imageUrl = homeImage2
-    coords = `22°35'12.5"N 102°81'98.3"`
-    number = `08`
-    name = `Mira`
+    imageUrl = home.featuredWork[1].homeCarouselImage.asset.url
+    imageLqipUrl = home.featuredWork[1].homeCarouselImage.asset.metadata.lqip
+    coords = home.featuredWork[1].gps
+    number = home.featuredWork[1].indexNumber
+    name = home.featuredWork[1].title
   } else if (currentProject == 3) {
-    imageUrl = homeImage3
-    coords = `88°12'36.2"N 821°90'23.6"`
-    number = `14`
-    name = `Nvidia`
+    imageUrl = home.featuredWork[2].homeCarouselImage.asset.url
+    imageLqipUrl = home.featuredWork[2].homeCarouselImage.asset.metadata.lqip
+    coords = home.featuredWork[2].gps
+    number = home.featuredWork[2].indexNumber
+    name = home.featuredWork[2].title
   } else if (currentProject == 4) {
-    imageUrl = homeImage4
-    coords = `66°23'81.8"N 10°92'66.1"`
-    number = `10`
-    name = `Google`
+    imageUrl = home.featuredWork[3].homeCarouselImage.asset.url
+    imageLqipUrl = home.featuredWork[3].homeCarouselImage.asset.metadata.lqip
+    coords = home.featuredWork[3].gps
+    number = home.featuredWork[3].indexNumber
+    name = home.featuredWork[3].title
   } else if (currentProject == 5) {
-    imageUrl = homeImage5
-    coords = `48°23'17.1"N 12°72'87.0"`
-    number = `12`
-    name = `Another Project`
+    imageUrl = home.featuredWork[4].homeCarouselImage.asset.url
+    imageLqipUrl = home.featuredWork[4].homeCarouselImage.asset.metadata.lqip
+    coords = home.featuredWork[4].gps
+    number = home.featuredWork[4].indexNumber
+    name = home.featuredWork[4].title
   }
 
 
   return (
-    <Layout>
-      <Head>
-        <title>Jason O'Rear - {home.title}</title>
-      </Head>
-      
+    <Layout>      
       <LazyMotion features={domAnimation}>
         <m.section
           initial="initial"
@@ -74,23 +89,31 @@ export default function Home(initialData) {
         >
           <m.div variants={fade} className="min-h-screen flex flex-col p-[20px]">
 
+          {/* {home.featuredWork.map((e, i) => {
+            e.imageSlides.map(e, i) => {
+              return (
+
+              )
+            })
+            })} */}
+
             <div className="text-white my-auto">
-              <div className="w-full h-[50vh] relative">
+              <div className="w-full h-[60vh] md:h-[60vh] xl:h-[65vh] relative mt-[-2vw]">
                 <div className="absolute inset-0 flex flex-wrap z-[6]">
                   
-                  <Link href="/work">
+                  <Link href={`/works/${home.featuredWork[0].slug.current}`}>
                     <a className="w-1/5" onMouseEnter={() => setCurrentProject(1)} onMouseLeave={() => setCurrentProject(1)}></a>
                   </Link>
-                  <Link href="/work">
+                  <Link href={`/works/${home.featuredWork[1].slug.current}`}>
                     <a className="w-1/5" onMouseEnter={() => setCurrentProject(2)} onMouseLeave={() => setCurrentProject(1)}></a>
                   </Link>
-                  <Link href="/work">
+                  <Link href={`/works/${home.featuredWork[2].slug.current}`}>
                     <a className="w-1/5" onMouseEnter={() => setCurrentProject(3)} onMouseLeave={() => setCurrentProject(1)}></a>
                   </Link>
-                  <Link href="/work">
+                  <Link href={`/works/${home.featuredWork[3].slug.current}`}>
                     <a className="w-1/5" onMouseEnter={() => setCurrentProject(4)} onMouseLeave={() => setCurrentProject(1)}></a>
                   </Link>
-                  <Link href="/work">
+                  <Link href={`/works/${home.featuredWork[4].slug.current}`}>
                     <a className="w-1/5" onMouseEnter={() => setCurrentProject(5)} onMouseLeave={() => setCurrentProject(1)}></a>
                   </Link>
                 </div>
@@ -101,6 +124,7 @@ export default function Home(initialData) {
                   layout="fill"
                   className="w-full h-full object-cover object-center [z-2]"
                   placeholder="blur"
+                  blurDataURL={imageLqipUrl}
                 />
               </div>
             </div>
