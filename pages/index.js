@@ -128,7 +128,7 @@ export default function Home(initialData) {
                   src={home.featuredWork[0].homeCarouselImage.asset.url}
                   alt="Placeholder"
                   layout="fill"
-                  className={`w-full h-full object-cover object-center [z-2] home-image md:opacity-0 ${currentProject === 1 ? 'md:opacity-100 md:scale-[1.005]' : 'md:opacity-0 md:scale-[1.0275]'}`}
+                  className={`w-full h-full object-cover object-center [z-2] home-image ${currentProject === 1 ? 'opacity-100 scale-[1.005]' : 'md:opacity-0 md:scale-[1.0275]'}`}
                   placeholder="blur"
                   blurDataURL={home.featuredWork[0].homeCarouselImage.asset.metadata.lqip}
                 />
@@ -138,7 +138,7 @@ export default function Home(initialData) {
                     src={home.featuredWork[1].homeCarouselImage.asset.url}
                     alt="Placeholder"
                     layout="fill"
-                    className={`w-full h-full object-cover object-center [z-1] opacity-0 home-image ${currentProject === 2 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
+                    className={`w-full h-full object-cover object-center [z-1] home-image ${currentProject === 2 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
                     placeholder="blur"
                     blurDataURL={home.featuredWork[1].homeCarouselImage.asset.metadata.lqip}
                   />
@@ -149,7 +149,7 @@ export default function Home(initialData) {
                     src={home.featuredWork[2].homeCarouselImage.asset.url}
                     alt="Placeholder"
                     layout="fill"
-                    className={`w-full h-full object-cover object-center [z-2] opacity-0 home-image ${currentProject === 3 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
+                    className={`w-full h-full object-cover object-center [z-2] home-image ${currentProject === 3 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
                     placeholder="blur"
                     blurDataURL={home.featuredWork[2].homeCarouselImage.asset.metadata.lqip}
                   />
@@ -160,7 +160,7 @@ export default function Home(initialData) {
                     src={home.featuredWork[3].homeCarouselImage.asset.url}
                     alt="Placeholder"
                     layout="fill"
-                    className={`w-full h-full object-cover object-center [z-3] opacity-0 home-image ${currentProject === 4 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
+                    className={`w-full h-full object-cover object-center [z-3] home-image ${currentProject === 4 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
                     placeholder="blur"
                     blurDataURL={home.featuredWork[3].homeCarouselImage.asset.metadata.lqip}
                   />
@@ -171,7 +171,7 @@ export default function Home(initialData) {
                     src={home.featuredWork[4].homeCarouselImage.asset.url}
                     alt="Placeholder"
                     layout="fill"
-                    className={`w-full h-full object-cover object-center [z-4] opacity-0 home-image ${currentProject === 5 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
+                    className={`w-full h-full object-cover object-center [z-4] home-image ${currentProject === 5 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
                     placeholder="blur"
                     blurDataURL={home.featuredWork[4].homeCarouselImage.asset.metadata.lqip}
                   />
