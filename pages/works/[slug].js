@@ -221,35 +221,44 @@ export default function WorksSlug(initialData) {
                 );
               }}
             />
+          
+          <m.div
+            initial="initial"
+            animate="enter"
+            exit="exit"
+            variants={{
+              enter: { transition: { delayChildren: 0.25 } }
+            }}
+          >
+              <div data-scroll data-scroll-sticky data-scroll-target="#inner-container" className="fixed md:absolute bottom-0 left-0 z-40 w-auto text-center">
+                <span className="block overflow-hidden m-[18px]">
+                  <m.span variants={reveal} className="block">
+                    <Link href="/works">
+                      <a className="text-center uppercase text-[15px] md:text-[19px] xl:text-[22px] w-auto relative inline-block group">
+                        <span className="hidden md:inline-block">Back To</span><span className="inline-block md:hidden">all</span> Works
+                        <span className="block transition-all ease-in-out duration-500 w-full scale-x-0 group-hover:scale-x-100 h-[2px] bg-black"></span>
+                      </a>
+                    </Link>
+                  </m.span>
+                </span>
+              </div>
 
-            <div data-scroll data-scroll-sticky data-scroll-target="#inner-container" className="fixed md:absolute bottom-0 left-0 z-40 w-auto text-center">
-              <span className="block overflow-hidden m-[18px]">
-                <m.span variants={reveal} className="block">
-                  <Link href="/works">
-                    <a className="text-center uppercase text-[15px] md:text-[19px] xl:text-[22px] w-auto relative inline-block group">
-                      <span className="hidden md:inline-block">Back To</span><span className="inline-block md:hidden">all</span> Works
-                      <span className="block transition-all ease-in-out duration-500 w-full scale-x-0 group-hover:scale-x-100 h-[2px] bg-black"></span>
-                    </a>
-                  </Link>
-                </m.span>
-              </span>
-            </div>
+              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute bottom-0 left-0 right-0 z-30 mb-[18px] w-auto text-center mx-auto">
+                <span className="block overflow-hidden">
+                  <m.h1 variants={reveal} className="text-center uppercase text-[35px] md:text-[45px] xl:text-[60px] leading-none w-auto relative inline-block group m-0 p-0">
+                    {title}
+                  </m.h1>
+                </span>
+              </div>
 
-            <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute bottom-0 left-0 right-0 z-30 mb-[18px] w-auto text-center mx-auto">
-              <span className="block overflow-hidden">
-                <m.h1 variants={reveal} className="text-center uppercase text-[35px] md:text-[45px] xl:text-[60px] leading-none w-auto relative inline-block group m-0 p-0">
-                  {title}
-                </m.h1>
-              </span>
-            </div>
-
-            <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute bottom-0 right-0 z-40 m-[18px] w-auto text-center">
-              <span className="block overflow-hidden">
-                <m.span variants={reveal} className="text-center uppercase text-[15px] md:text-[19px] xl:text-[22px] w-auto relative inline-block group">
-                  1/7
-                </m.span>
-              </span>
-            </div>
+              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute bottom-0 right-0 z-40 m-[18px] w-auto text-center">
+                <span className="block overflow-hidden">
+                  <m.span variants={reveal} className="text-center uppercase text-[15px] md:text-[19px] xl:text-[22px] w-auto relative inline-block group">
+                    1/7
+                  </m.span>
+                </span>
+              </div>
+            </m.div>
           </div>
         </m.section>
       </LazyMotion>
