@@ -14,33 +14,33 @@ const pageService = new SanityPageService(query)
 export default function Wayfinder(initialData) {
   const { data: { email }  } = pageService.getPreviewHook(initialData)()
   let bodyColors = [
+    // {
+    //   background: "bg-red",
+    //   text: "hover:text-burnt-red"
+    // },
+    // {
+    //   background: "bg-purple",
+    //   text: "hover:text-burnt-purple"
+    // },
+    // {
+    //   background: "bg-green",
+    //   text: "hover:text-burnt-green"
+    // },
+    // {
+    //   background: "bg-teal",
+    //   text: "hover:text-burnt-teal"
+    // },
+    // {
+    //   background: "bg-blue",
+    //   text: "hover:text-burnt-blue"
+    // },
     {
-      background: "bg-red",
-      text: "hover:text-burnt-red"
-    },
-    {
-      background: "bg-purple",
-      text: "hover:text-burnt-purple"
-    },
-    {
-      background: "bg-green",
-      text: "hover:text-burnt-green"
-    },
-    {
-      background: "bg-teal",
-      text: "hover:text-burnt-teal"
-    },
-    {
-      background: "bg-blue",
-      text: "hover:text-burnt-blue"
-    },
-    {
-      background: "bg-yellow",
-      text: "hover:text-burnt-yellow"
+      background: "bg-pink",
+      text: "hover:text-burnt-pink"
     }
   ];
 
-  let bodyColor = bodyColors[Math.floor(Math.random()*bodyColors.length)];
+  let bodyColor = bodyColors[0];
 
   return (
     <Layout>
@@ -62,7 +62,7 @@ export default function Wayfinder(initialData) {
                     <a className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-none transition-all ease-in-out duration-500 group hover:text-black">
                       <div>
                         Info
-                        <span className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-2.5%] opacity-0 group-hover:opacity-100 mt-0 group-hover:mt-[2.5%] transition-all ease-in-out duration-500 text-black">The biography of Jason O’Rear</span>
+                        <span className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-2.5%] opacity-0 group-hover:opacity-100 mt-0 group-hover:mt-[2.5%] transition-all ease-in-out duration-500 text-black">Biography</span>
                       </div>
                     </a>
                   </Link>
@@ -72,7 +72,7 @@ export default function Wayfinder(initialData) {
                     <a className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-none transition-all ease-in-out duration-500 group hover:text-black mb-1 md:mb-2">
                       <div>
                         Works
-                        <span className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-2.5%] opacity-0 group-hover:opacity-100 mt-0 group-hover:mt-[2.5%] transition-all ease-in-out duration-500 text-black">explore jason's selected projects</span>
+                        <span className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-2.5%] opacity-0 group-hover:opacity-100 mt-0 group-hover:mt-[2.5%] transition-all ease-in-out duration-500 text-black">Selected Projects</span>
                       </div>
                     </a>
                   </Link>
@@ -81,7 +81,7 @@ export default function Wayfinder(initialData) {
                   <a href={`mailto:${email}`} className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-none transition-all ease-in-out duration-500 group hover:text-black">
                     <div>
                       Email
-                      <span className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-2.5%] opacity-0 group-hover:opacity-100 mt-0 group-hover:mt-[2.5%] transition-all ease-in-out duration-500 text-black">reach out to jason</span>
+                      <span className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-2.5%] opacity-0 group-hover:opacity-100 mt-0 group-hover:mt-[2.5%] transition-all ease-in-out duration-500 text-black">Reach Out</span>
                     </div>
                   </a>
                 </li>

@@ -7,9 +7,11 @@ import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import SanityPageService from '@/services/sanityPageService'
 import Image from 'next/image'
 import { NextSeo } from 'next-seo'
+import ImageWrapper from '@/components/image-wrapper'
+import Photo from '@/components/photo'
 
 const query = `{
-  "works": *[_type == "work"] {
+  "works": *[_type == "work"] | order(indexNumber)  {
     title,
     indexNumber,
     client,
@@ -86,7 +88,7 @@ export default function WorksIndex(initialData) {
                 {works.map((e, i) => {
                   return (
                     <div className="border-b border-black pb-6 mb-8 overflow-hidden" key={i}>
-                      <span className="md:text-[20px] leading-none tracking-wider">{ i < 9 && (0)}{ i + 1 }</span>
+                      <span className="md:text-[20px] leading-none tracking-wider">{e.indexNumber}</span>
                       <Link href={`/works/${e.slug.current}`}>
                         <a className="block">
                           <h2 className="text-[18vw] md:text-[13vw] ml-[-0.5vw] 2xl:ml-[-0.75vw] leading-none uppercase font-semibold tracking-tighter">{e.title}</h2>
@@ -124,18 +126,30 @@ export default function WorksIndex(initialData) {
                         {e.imageSlides.map((f, index) => {
                           return (
                             f.images.map((g, i) => {
+                              let width = g.asset.metadata.dimensions.width / 2
+                              let optimisedWidth = Math.round(width);
+                              let height = g.asset.metadata.dimensions.height / 2
+                              let optimisedHeight = Math.round(height);
                               return (
                                 <Link href={`/works/${e.slug.current}#slider/slide${index}`} key={i}>
                                   <a className={`${f.layout == 'full-landscape' ? 'w-[25vw]' : 'w-[12vw]' } h-[16vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change`}>
-                                    <Image
-                                      key={i}
-                                      src={g.asset.url}
-                                      alt="Placeholder"
+                                    <Photo
+                                      photo={g}
+                                      width={optimisedWidth}
+                                      height={optimisedHeight}
                                       layout="fill"
                                       className="w-full h-full object-cover object-center will-change"
-                                      placeholder="blur"
-                                      blurDataURL={g.asset.metadata.lqip}
                                     />
+                                    
+                                    {/* <ImageWrapper
+                                      key={i}
+                                      image={g.asset}
+                                      className="w-full h-full object-cover object-center will-change"
+                                      baseWidth={optimisedWidth}
+                                      baseHeight={optimisedHeight}
+                                      fill
+                                      lqip={g.asset.metadata.lqip}
+                                    /> */}
                                   </a>
                                 </Link>
                               )

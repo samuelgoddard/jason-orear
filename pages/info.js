@@ -31,16 +31,16 @@ export default function Info(initialData) {
   const { data: { title, seo, biographyText, clients, biographyImage }  } = pageService.getPreviewHook(initialData)()
   const containerRef = useRef(null)
   
-  let bodyColors = [
-    "bg-red",
-    "bg-purple",
-    "bg-green",
-    "bg-teal",
-    "bg-blue",
-    "bg-yellow"
-  ];
+  // let bodyColors = [
+  //   "bg-red",
+  //   "bg-purple",
+  //   "bg-green",
+  //   "bg-teal",
+  //   "bg-blue",
+  //   "bg-yellow"
+  // ];
 
-  let bodyColor = bodyColors[Math.floor(Math.random()*bodyColors.length)];
+  // let bodyColor = bodyColors[Math.floor(Math.random()*bodyColors.length)];
   
   return (
     <Layout>
@@ -64,7 +64,7 @@ export default function Info(initialData) {
               exit="exit"
               className=""
             >
-              <m.div variants={fade} className={`text-black min-h-screen flex flex-col p-[20px] pt-28 md:pt-32 justify-end ${bodyColor}`}>
+              <m.div variants={fade} className={`text-black min-h-screen flex flex-col p-[20px] pt-28 md:pt-32 justify-end bg-pink selection:bg-black selection:text-pink`}>
                 <div className="flex flex-wrap h-full lg:-mx-5">
                   <div className="w-full lg:w-2/3 lg:px-5 relative mb-12 lg:mb-0">
                     <div className="flex flex-wrap">
@@ -115,13 +115,13 @@ export default function Info(initialData) {
                         </div>
                       </div>
 
-                      <div className={`w-full h-[65vh] md:h-[50vh] bg-red-500 mt-auto order-1 md:order-2 relative ${bodyColor}`}>
+                      <div className={`w-full h-[65vh] md:h-[50vh] bg-red-500 mt-auto order-1 md:order-2 relative bg-pink`}>
                         <div className="">
                           <Image
                             src={biographyImage.asset.url}
                             alt="Jason O'Rear Biography Image"
                             layout="fill"
-                            className={`w-full h-full object-cover object-center mix-blend-multiply will-change ${bodyColor}`}
+                            className={`w-full h-full object-cover object-center mix-blend-multiply will-change bg-pink`}
                             placeholder="blur"
                             blurDataURL={biographyImage.asset.metadata.lqip}
                           />

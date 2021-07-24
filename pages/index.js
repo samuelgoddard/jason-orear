@@ -133,7 +133,7 @@ export default function Home(initialData) {
 
               <span className="w-full md:w-auto text-[18px] md:text-[22px] tracking-tight ml-auto leading-none uppercase md:fixed md:ml-[45vw] xl:ml-[60vw]">{name}</span>
 
-              <span className="text-[60px] md:text-[180px] xl:text-[230px] leading-none mb-[9px] md:mb-[-20px] mr-[20px] ml-auto font-semibold tracking-tight fixed bottom-0 right-0">{number}</span>
+              <span className="text-[60px] md:text-[180px] xl:text-[230px] leading-none mb-[9px] md:mb-[-7px] xl:mb-[-12px] mr-[20px] ml-auto font-semibold tracking-tight fixed bottom-0 right-0 flex items-end"><span className="block text-[18px] md:text-[22px] tracking-tight leading-none mb-[33px] md:mb-[27px] xl:mb-[33px] uppercase">p /</span><span className="block">{number}</span></span>
             </div>
           </m.div>
         </m.section>

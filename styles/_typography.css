@@ -19,6 +19,14 @@ body {
   }
 }
 
+.logo {
+  @apply hover:text-pink focus:text-pink;
+}
+
+.bg-pink.logo {
+  @apply hover:text-black focus:text-black !important;
+}
+
 /* Heading Defaults */
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, h6 {
   @apply p-0 mb-6 font-semibold uppercase;
@@ -91,5 +99,46 @@ html.has-scroll-dragging {
 @screen md {
   .text-cols {
     column-gap: 50px;
+  }
+}
+
+.ar {
+  @apply relative overflow-hidden;
+  
+  &.has-fill {
+    @apply absolute inset-0;
+  }
+
+  img {
+    @apply block absolute top-1/2 left-1/2 z-10 opacity-0;
+    width: calc(100% + 1px); /* helps with half pixel renderings */
+    height: calc(100% + 1px); /* helps with half pixel renderings */
+    transform: translate3d(-50%,-50%,0);
+    transition: opacity .4s linear;
+
+    &.is-loaded {
+      @apply opacity-100;
+    }
+  }
+
+  &--placeholder {
+    @apply absolute inset-0;
+    filter: grayscale(1);
+    transform: scale(1.15);
+    transition: opacity 0s .4s linear;
+
+    &.is-loaded {
+      @apply opacity-0;
+    }
+
+    &::after {
+      @apply absolute inset-0 z-10;
+      backdrop-filter: blur(1rem) contrast(1.5);
+      content: "";
+    }
+    
+    img {
+      @apply opacity-100;
+    }
   }
 }

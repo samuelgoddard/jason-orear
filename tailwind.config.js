@@ -31,7 +31,9 @@ module.exports = {
         'blue': '#64A2FF',
         'burnt-blue': '#4489F0',
         'teal': '#09E4D7',
-        'burnt-teal': '#1FC1B8'
+        'burnt-teal': '#1FC1B8',
+        'pink': '#FC048E',
+        'burnt-pink': '#D20075'
       }
     },
   },
