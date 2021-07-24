@@ -4,6 +4,8 @@ import { fade } from "@/helpers/transitions"
 import { LazyMotion, domAnimation, m } from "framer-motion"
 import { NextSeo } from 'next-seo'
 import SanityPageService from '@/services/sanityPageService'
+import { useContext, useEffect } from 'react'
+import { Context } from '../context/state'
 
 const query = `*[_type == "contact"][0]{
   email
@@ -13,6 +15,13 @@ const pageService = new SanityPageService(query)
 
 export default function Wayfinder(initialData) {
   const { data: { email }  } = pageService.getPreviewHook(initialData)()
+
+  const [introContext, setIntroContext] = useContext(Context);
+
+  useEffect(() => {
+    setIntroContext(true)
+  },[]);
+
   let bodyColors = [
     // {
     //   background: "bg-red",

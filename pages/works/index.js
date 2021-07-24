@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Layout from '@/components/layout'
 import { fade } from "@/helpers/transitions"
@@ -9,6 +9,7 @@ import Image from 'next/image'
 import { NextSeo } from 'next-seo'
 import ImageWrapper from '@/components/image-wrapper'
 import Photo from '@/components/photo'
+import { Context } from '../../context/state'
 
 const query = `{
   "works": *[_type == "work"] | order(indexNumber)  {
@@ -42,8 +43,12 @@ const pageService = new SanityPageService(query)
 
 export default function WorksIndex(initialData) {
   const { data: { works }  } = pageService.getPreviewHook(initialData)()
-
   const containerRef = useRef(null)
+  const [introContext, setIntroContext] = useContext(Context);
+
+  useEffect(() => {
+    setIntroContext(true)
+  },[]);
 
   return (
     <Layout>
@@ -53,7 +58,7 @@ export default function WorksIndex(initialData) {
         options={
           {
             smooth: true,
-            lerp: 0.035
+            lerp: 0.04
           }
         }
         watch={[]}
@@ -84,12 +89,12 @@ export default function WorksIndex(initialData) {
                 </Link>
               </m.div>
 
-              <m.div variants={fade} className="p-[20px] pt-28 md:pt-40">
+              <m.div variants={fade} className="p-[20px] pt-28 md:pt-40" data-scroll>
                 {works.map((e, i) => {
                   return (
                     <div className="border-b border-black pb-6 mb-8 overflow-hidden" key={i}>
-                      <span className="md:text-[20px] leading-none tracking-wider">{e.indexNumber}</span>
-                      <Link href={`/works/${e.slug.current}`}>
+                      <span className="md:text-[20px] leading-none tracking-tighter font-semibold">{e.indexNumber}</span>
+                      <Link href={`/works/${e.slug.current}`} className="">
                         <a className="block">
                           <h2 className="text-[18vw] md:text-[13vw] ml-[-0.5vw] 2xl:ml-[-0.75vw] leading-none uppercase font-semibold tracking-tighter">{e.title}</h2>
                         </a>
@@ -122,7 +127,7 @@ export default function WorksIndex(initialData) {
                         )}
                       </div>
 
-                      <div className="flex space-x-[2.5vw] md:space-x-[2vw] xl:space-x-[1.5vw] overflow-x-scroll will-change" data-scroll-direction="horizontal" data-scroll data-scroll-speed="1">
+                      <div className="flex space-x-[2.5vw] md:space-x-[2vw] xl:space-x-[1.5vw] overflow-x-scroll" data-scroll-direction="horizontal" data-scroll data-scroll-speed="1">
                         {e.imageSlides.map((f, index) => {
                           return (
                             f.images.map((g, i) => {
@@ -132,7 +137,7 @@ export default function WorksIndex(initialData) {
                               let optimisedHeight = Math.round(height);
                               return (
                                 <Link href={`/works/${e.slug.current}#slider/slide${index}`} key={i}>
-                                  <a className={`${f.layout == 'full-landscape' ? 'w-[25vw]' : 'w-[12vw]' } h-[16vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change`}>
+                                  <a className={`${f.layout == 'full-landscape' ? 'w-[22vw]' : 'w-[16vw]' } h-[13vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change`}>
                                     <Photo
                                       photo={g}
                                       width={optimisedWidth}
@@ -140,16 +145,6 @@ export default function WorksIndex(initialData) {
                                       layout="fill"
                                       className="w-full h-full object-cover object-center will-change"
                                     />
-                                    
-                                    {/* <ImageWrapper
-                                      key={i}
-                                      image={g.asset}
-                                      className="w-full h-full object-cover object-center will-change"
-                                      baseWidth={optimisedWidth}
-                                      baseHeight={optimisedHeight}
-                                      fill
-                                      lqip={g.asset.metadata.lqip}
-                                    /> */}
                                   </a>
                                 </Link>
                               )

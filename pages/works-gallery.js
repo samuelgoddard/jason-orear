@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '@/components/layout'
@@ -6,6 +6,7 @@ import { fade } from "@/helpers/transitions"
 import { LazyMotion, domAnimation, m } from "framer-motion"
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { NextSeo } from 'next-seo'
+import { Context } from '../context/state'
 
 import Image from 'next/image'
 import work1 from '@/public/images/work-1.jpg'
@@ -16,6 +17,12 @@ import work5 from '@/public/images/work-5.jpg'
 
 export default function WorksGallery() {
   const containerRef = useRef(null)
+
+  const [introContext, setIntroContext] = useContext(Context);
+
+  useEffect(() => {
+    setIntroContext(true)
+  },[]);
 
   return (
     <Layout>

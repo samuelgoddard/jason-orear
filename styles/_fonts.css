@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'Suisse Int';
-  src: local('Suisse Int\'l Trial Semi Bold'), local('SuisseIntlTrial-SemiBold'),
-      url('@/public/fonts/SuisseIntlTrial-SemiBold.woff2') format('woff2'),
-      url('@/public/fonts/SuisseIntlTrial-SemiBold.woff') format('woff');
+  src: local('Suisse Int'), local('SuisseInt-SemiBold'),
+      url('@/public/fonts/SuisseIntl-SemiBold.woff2') format('woff2'),
+      url('@/public/fonts/SuisseIntl-SemiBold.woff') format('woff');
   font-weight: 600;
   font-style: normal;
   font-display: swap;

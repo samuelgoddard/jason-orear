@@ -11,7 +11,7 @@ const Photo = ({
   srcSizes = [400, 600, 800, 1000, 1200],
   sizes = '(min-width: 940px) 50vw, 100vw',
   layout = 'intrinsic',
-  quality = 60,
+  quality = 0,
   hasPlaceholder = true,
   forceLoad,
   onLoad,
@@ -64,7 +64,7 @@ const Photo = ({
     <figure className={className ? className : null}>
       <div
         className={cx('ar', {
-          'has-fill': layout === 'fill' || layout === 'contain',
+          'has-fill will-change': layout === 'fill' || layout === 'contain',
         })}
         style={aspectCustom}
       >
@@ -96,11 +96,11 @@ const Photo = ({
 const getSize = (layout) => {
   switch (layout) {
     case 'intrinsic':
-      return 'object-cover'
+      return 'object-cover will-change'
     case 'fill':
-      return 'object-cover'
+      return 'object-cover will-change'
     case 'contain':
-      return 'object-contain'
+      return 'object-contain will-change'
   }
 }
 

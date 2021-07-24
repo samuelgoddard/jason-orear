@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import Head from 'next/head'
 import Link from 'next/link'
@@ -13,6 +13,7 @@ import work4 from '@/public/images/work-4.webp'
 import ReactFullpage from '@fullpage/react-fullpage';
 import SanityPageService from '@/services/sanityPageService'
 import { NextSeo } from 'next-seo'
+import { Context } from '../../context/state'
 
 const pluginWrapper = () => {
   require('../../static/fullpage.scrollHorizontally.min.js');
@@ -51,6 +52,12 @@ const pageService = new SanityPageService(query)
 
 export default function WorksSlug(initialData) {
   const { data: { title, seo, slug, indexNumber, client, location, gps, year, imageSlides }  } = pageService.getPreviewHook(initialData)()
+  const [introContext, setIntroContext] = useContext(Context);
+
+  useEffect(() => {
+    setIntroContext(true)
+  },[]);
+
   return (
     <Layout>
       <NextSeo title={title} />

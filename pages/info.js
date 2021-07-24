@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import Layout from '@/components/layout'
 import { fade } from "@/helpers/transitions"
 import { LazyMotion, domAnimation, m } from "framer-motion"
@@ -7,6 +7,7 @@ import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 import SanityPageService from '@/services/sanityPageService'
 import BlockContent from '@sanity/block-content-to-react'
+import { Context } from '../context/state'
 
 const query = `*[_type == "info"][0]{
   seo {
@@ -30,6 +31,11 @@ const pageService = new SanityPageService(query)
 export default function Info(initialData) {
   const { data: { title, seo, biographyText, clients, biographyImage }  } = pageService.getPreviewHook(initialData)()
   const containerRef = useRef(null)
+  const [introContext, setIntroContext] = useContext(Context);
+
+  useEffect(() => {
+    setIntroContext(true)
+  },[]);
   
   // let bodyColors = [
   //   "bg-red",
