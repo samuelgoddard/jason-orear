@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Layout from '@/components/layout'
-import { fade } from "@/helpers/transitions"
+import { fade, revealIn, revealHori, growHeight } from "@/helpers/transitions"
 import { LazyMotion, domAnimation, m } from "framer-motion"
 import { NextSeo } from 'next-seo'
 import SanityPageService from '@/services/sanityPageService'
@@ -62,41 +62,71 @@ export default function Wayfinder(initialData) {
           exit="exit"
           className=""
         >
-          <m.div variants={fade} className={`min-h-screen flex flex-col p-[25px] md:p-[50px] pt-32 ${bodyColor.background}`}>
+          <div className={`min-h-screen flex flex-col p-[25px] md:p-[50px] pt-32`}>
+            {/* <m.div variants={fade} className={`absolute inset-0 z-0 ${bodyColor.background}`}></m.div> */}
 
-            <nav className="mt-auto">
-              <ul className={`flex flex-wrap max-w-screen-2xl mx-auto text-black ${bodyColor.text}`}>
-                <li className="w-1/3 border-r border-black flex justify-center">
+            <m.nav
+              initial="initial"
+              animate="enter"
+              exit="exit"
+              className=""
+              variants={{
+                enter: { transition: { staggerChildren: 0.015 } }
+              }}
+             className="mt-auto"
+            >
+              <ul className={`flex flex-wrap max-w-screen-2xl mx-auto text-black relative z-10 ${bodyColor.text}`}>
+                <li className="w-1/3 flex justify-center relative overflow-hidden">
                   <Link href="/info">
-                    <a className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-none transition-all ease-in-out duration-500 group hover:text-black">
+                    <a className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] transition-all ease-in-out duration-500 group hover:text-black">
                       <div>
-                        Info
-                        <span className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-2.5%] opacity-0 group-hover:opacity-100 mt-0 group-hover:mt-[2.5%] transition-all ease-in-out duration-500 text-black">Biography</span>
+                        <div className="overflow-hidden">
+                          <m.div variants={revealHori}>
+                            Info
+                          </m.div>
+                        </div>
+                        <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0 text-black">
+                          <span className="opacity-0 group-hover:opacity-100 transition-all ease-in-out duration-500 group-hover:mt-[2.5%]">Biography</span>
+                        </m.span>
                       </div>
                     </a>
                   </Link>
+                  <m.div variants={revealIn} className="border-r border-black w-[1px] h-full origin-bottom"></m.div>
                 </li>
-                <li className="w-1/3 border-r border-black flex justify-center">
+                <li className="w-1/3 flex justify-center relative overflow-hidden">
                   <Link href="/works">
-                    <a className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-none transition-all ease-in-out duration-500 group hover:text-black mb-1 md:mb-2">
+                    <a className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] transition-all ease-in-out duration-500 group hover:text-black mb-1 md:mb-2">
                       <div>
-                        Works
-                        <span className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-2.5%] opacity-0 group-hover:opacity-100 mt-0 group-hover:mt-[2.5%] transition-all ease-in-out duration-500 text-black">Selected Projects</span>
+                        <div className="overflow-hidden">
+                          <m.div variants={revealHori}>
+                            Works
+                          </m.div>
+                        </div>
+                        <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0 text-black">
+                          <span className="opacity-0 group-hover:opacity-100 transition-all ease-in-out duration-500 group-hover:mt-[2.5%]">Selected projects</span>
+                        </m.span>
                       </div>
                     </a>
                   </Link>
+                  <m.div variants={revealIn} className="border-r border-black w-[1px] h-full"></m.div>
                 </li>
                 <li className="w-1/3 flex justify-center">
-                  <a href={`mailto:${email}`} className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-none transition-all ease-in-out duration-500 group hover:text-black">
+                  <a href={`mailto:${email}`} className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] transition-all ease-in-out duration-500 group hover:text-black">
                     <div>
-                      Email
-                      <span className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-2.5%] opacity-0 group-hover:opacity-100 mt-0 group-hover:mt-[2.5%] transition-all ease-in-out duration-500 text-black">Reach Out</span>
+                      <div className="overflow-hidden">
+                        <m.div variants={revealHori}>
+                          Email
+                        </m.div>
+                      </div>
+                      <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0 text-black">
+                        <span className="opacity-0 group-hover:opacity-100 transition-all ease-in-out duration-500 group-hover:mt-[2.5%]">Reach Out</span>
+                      </m.span>
                     </div>
                   </a>
                 </li>
               </ul>
-            </nav>
-          </m.div>
+            </m.nav>
+          </div>
         </m.section>
       </LazyMotion>
     </Layout>

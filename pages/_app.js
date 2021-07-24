@@ -140,7 +140,7 @@ export default function App({ Component, pageProps }) {
       div></> }
       <DefaultSeo {...SEO} />
 
-      <div className="scroll-conainer">
+      <div className={`scroll-conainer transition-colors ease-in-out duration-500 delay-[400ms] ${router.asPath === '/info' || router.asPath === '/wayfinder' ? 'bg-pink' : '' }`}>
         <Context.Provider value={[introContext, setIntroContext]}>
 
           <Header route={router.asPath} />

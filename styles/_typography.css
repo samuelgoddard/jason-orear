@@ -11,6 +11,14 @@ body {
   }
 }
 
+.content p {
+  @apply mb-5;
+
+  &:last-of-type {
+    @apply mb-0;
+  }
+}
+
 .font-semibold {
   font-variant-numeric: tabular-nums lining-nums;
 }
@@ -20,6 +28,14 @@ body {
 }
 
 .content > p a {
+  @apply underline;
+
+  &:hover, &:focus {
+    @apply underline;
+  }
+}
+
+.content p a {
   @apply underline;
 
   &:hover, &:focus {
