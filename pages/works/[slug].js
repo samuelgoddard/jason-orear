@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '@/components/layout'
-import { fade } from "@/helpers/transitions"
+import { fade, reveal, slightScale } from "@/helpers/transitions"
 import { LazyMotion, domAnimation, m } from "framer-motion"
 import Image from 'next/image'
 import workImage from '@/public/images/work-slug.webp'
@@ -71,7 +71,7 @@ export default function WorksSlug(initialData) {
           id="inner-container"
           data-scroll-section
         >
-          <m.div variants={fade} className="min-h-screen flex flex-col p-[20px]">
+          <div className="min-h-screen flex flex-col p-[20px]">
             <ReactFullpage
               navigation={false}
               anchors={['slider']}
@@ -86,7 +86,7 @@ export default function WorksSlug(initialData) {
               render={({ state, fullpageApi }) => {
                 return (
                   <ReactFullpage.Wrapper>
-                    <div className="section">
+                    <m.div variants={fade} className="section">
                     {imageSlides.map((f, i) => {
                       
                       let layoutOuterWrapper = 'w-10/12 h-[55vh] md:h-[72vh] relative mx-auto will-change mt-[-6vh]';
@@ -94,13 +94,13 @@ export default function WorksSlug(initialData) {
                       let layoutWrapper = 'flex items-center h-full';
                       
                       if (f.layout == 'full-portrait') {
-                        layoutWrapper = 'w-7/12 md:w-6/12 xl:w-5/12 h-[55vh] md:h-[72vh] relative mx-auto will-change mt-[-6vh]';
+                        layoutWrapper = 'overflow-hidden w-7/12 md:w-6/12 xl:w-5/12 h-[55vh] md:h-[72vh] relative mx-auto will-change mt-[-6vh]';
                         layoutOuterWrapper = 'my-auto flex items-center max-w-screen-2xl mx-auto';
                       } else if (f.layout == 'full-landscape') {
-                        layoutWrapper = 'w-10/12 h-[55vh] md:h-[72vh] relative mx-auto will-change mt-[-6vh]';
+                        layoutWrapper = 'overflow-hidden w-9/12 h-[55vh] md:h-[52vh] relative mx-auto will-change mt-[-6vh]';
                         layoutOuterWrapper = 'flex items-center h-full';
                       } else if (f.layout == 'two-portrait') {
-                        layoutWrapper = 'w-1/2 h-[55vh] md:h-[72vh] relative mx-auto will-change mt-[-6vh]';
+                        layoutWrapper = 'overflow-hidden w-1/2 h-[55vh] md:h-[72vh] relative mx-auto will-change mt-[-6vh]';
                         layoutOuterWrapper = 'my-auto flex w-8/12 mx-auto space-x-[5vw] max-w-screen-xl';
                       }
                       
@@ -110,14 +110,16 @@ export default function WorksSlug(initialData) {
                             { f.images.map((g, i) => {
                               return (
                                 <div className={layoutWrapper} key={i}>
-                                  <Image
-                                    src={g.asset.url}
-                                    alt="Placeholder"
-                                    layout="fill"
-                                    className="w-full h-full object-cover object-center will-change"
-                                    placeholder="blur"
-                                    blurDataURL={g.asset.metadata.lqip}
-                                  />
+                                  <m.div variants={slightScale} className="absolute inset-0">
+                                    <Image
+                                      src={g.asset.url}
+                                      alt="Placeholder"
+                                      layout="fill"
+                                      className="w-full h-full object-cover object-center will-change"
+                                      placeholder="blur"
+                                      blurDataURL={g.asset.metadata.lqip}
+                                    />
+                                  </m.div>
                                 </div>
                               )
                             })}
@@ -214,33 +216,41 @@ export default function WorksSlug(initialData) {
                           />
                         </div>
                       </div>
-                    </div>
+                    </m.div>
                   </ReactFullpage.Wrapper>
                 );
               }}
             />
 
-            <div data-scroll data-scroll-sticky data-scroll-target="#inner-container" className="fixed md:absolute bottom-0 left-0 z-40 m-[18px] w-auto text-center">
-              <Link href="/works">
-                <a className="text-center uppercase text-[15px] md:text-[19px] xl:text-[22px] w-auto relative inline-block group">
-                  <span className="hidden md:inline-block">Back To</span><span className="inline-block md:hidden">all</span> Works
-                  <span className="block transition-all ease-in-out duration-500 w-full scale-x-0 group-hover:scale-x-100 h-[2px] bg-black"></span>
-                </a>
-              </Link>
+            <div data-scroll data-scroll-sticky data-scroll-target="#inner-container" className="fixed md:absolute bottom-0 left-0 z-40 w-auto text-center">
+              <span className="block overflow-hidden m-[18px]">
+                <m.span variants={reveal} className="block">
+                  <Link href="/works">
+                    <a className="text-center uppercase text-[15px] md:text-[19px] xl:text-[22px] w-auto relative inline-block group">
+                      <span className="hidden md:inline-block">Back To</span><span className="inline-block md:hidden">all</span> Works
+                      <span className="block transition-all ease-in-out duration-500 w-full scale-x-0 group-hover:scale-x-100 h-[2px] bg-black"></span>
+                    </a>
+                  </Link>
+                </m.span>
+              </span>
             </div>
 
-            <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute bottom-0 left-0 right-0 z-30 mb-[-7px] w-auto text-center mx-auto">
-              <h1 className="text-center uppercase text-[35px] md:text-[45px] xl:text-[60px] leading-none w-auto relative inline-block group">
-                {title}
-              </h1>
+            <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute bottom-0 left-0 right-0 z-30 mb-[18px] w-auto text-center mx-auto">
+              <span className="block overflow-hidden">
+                <m.h1 variants={reveal} className="text-center uppercase text-[35px] md:text-[45px] xl:text-[60px] leading-none w-auto relative inline-block group m-0 p-0">
+                  {title}
+                </m.h1>
+              </span>
             </div>
 
             <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute bottom-0 right-0 z-40 m-[18px] w-auto text-center">
-              <span className="text-center uppercase text-[15px] md:text-[19px] xl:text-[22px] w-auto relative inline-block group">
-                1/7
+              <span className="block overflow-hidden">
+                <m.span variants={reveal} className="text-center uppercase text-[15px] md:text-[19px] xl:text-[22px] w-auto relative inline-block group">
+                  1/7
+                </m.span>
               </span>
             </div>
-          </m.div>
+          </div>
         </m.section>
       </LazyMotion>
     </Layout>
