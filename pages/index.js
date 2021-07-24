@@ -70,14 +70,14 @@ export default function Home(initialData) {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIntroContext(true)
-    }, 6000);
+    }, 5000);
   },[]);
 
   const reveal = {
     initial: { y: '100%' },
     enter: { 
       y: 0,
-      transition: { delay: introContext ? 0 : 5.25, duration: 1, ease: [0.83, 0, 0.17, 1] }
+      transition: { delay: introContext ? 0 : 4.2, duration: 1, ease: [0.83, 0, 0.17, 1] }
     },
     exit: {
       y: '100%',

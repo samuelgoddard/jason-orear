@@ -139,10 +139,12 @@ export default function App({ Component, pageProps }) {
       { pageProps.preview && <><div className={'fixed bottom-0 w-full p-2 bg-red opacity-75 text-white justify-center flex z-50 uppercase font-medium'}>! Preview Mode Enabled - <a className={'px-1 underline'} href={`/api/exit-preview?currentRoute=${router.route}`}>Click Here To Exit</a> !</
       div></> }
       <DefaultSeo {...SEO} />
-      <Header route={router.asPath}/>
 
       <div className="scroll-conainer">
         <Context.Provider value={[introContext, setIntroContext]}>
+
+          <Header route={router.asPath} />
+          
           <AnimatePresence exitBeforeEnter>
             {/* INTRO START */}
             <LazyMotion features={domAnimation}>
@@ -151,7 +153,7 @@ export default function App({ Component, pageProps }) {
                   initial="hidden"
                   animate="visible"
                   variants={introEnd}
-                  transition={{ delay: 5, duration: 1, ease: [0.83, 0, 0.17, 1] }}
+                  transition={{ delay: 4.2, duration: 1, ease: [0.83, 0, 0.17, 1] }}
                   className="bg-white fixed inset-0 z-[100] pointer-events-none min-h-screen flex flex-col p-[20px]"
                 >
                   <div className={`fixed top-0 left-0 right-0 w-full z-30 flex flex-wrap justify-center mt-5 `}>
@@ -188,14 +190,14 @@ export default function App({ Component, pageProps }) {
                         initial="hidden"
                         animate="visible"
                         variants={imageRevealLeft}
-                        transition={{ delay: 2.5, duration: 2, ease: [0.83, 0, 0.17, 1] }}
+                        transition={{ delay: 2.5, duration: 2.5, ease: [0.83, 0, 0.17, 1] }}
                         className="w-[35%] h-full bg-white absolute top-0 bottom-0 left-0 z-10"
                       ></m.div>
                       <m.div
                         initial="hidden"
                         animate="visible"
                         variants={imageRevealRight}
-                        transition={{ delay: 2.5, duration: 2, ease: [0.83, 0, 0.17, 1] }}
+                        transition={{ delay: 2.5, duration: 2.5, ease: [0.83, 0, 0.17, 1] }}
                         className="w-[35%] h-full bg-white absolute top-0 bottom-0 right-0 z-10"
                       ></m.div>
 
