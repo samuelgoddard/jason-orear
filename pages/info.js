@@ -187,13 +187,9 @@ export default function Info(initialData) {
                   </div>
 
                   <div className="w-full lg:w-1/3 lg:px-5 text-[16px] lg:text-[18px] xl:text-[20px] leading-tight flex items-center mb-12 lg:mb-0">
-                    <div className="w-full content max-w-md mx-auto">
-                      {biographyText.map((e, i) => {
-                        return (
-                          <SplitText copy={e.children[0].text} role="paragraph" key={i} />
-                        )
-                      })}
-                    </div>
+                    <m.div variants={fade} className="w-full content max-w-md mx-auto">
+                      <BlockContent serializers={{ container: ({ children }) => children }} blocks={biographyText} />
+                    </m.div>
                   </div>
                 </div>
               </div>
