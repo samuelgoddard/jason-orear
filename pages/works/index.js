@@ -107,7 +107,7 @@ export default function WorksIndex(initialData) {
                 {works.map((e, i) => {
                   return (
                     <div className="overflow-hidden" key={i}>
-                      <span className="block md:text-[20px] mb-3 leading-none tracking-tighter font-semibold">
+                      <span className="block text-[12px] md:text-[20px] mb-2 md:mb-3 leading-none tracking-tighter md:font-semibold variant-numeric">
                         <span className="block overflow-hidden">
                           <m.span variants={reveal} className="block">
                             {e.indexNumber}
@@ -124,18 +124,18 @@ export default function WorksIndex(initialData) {
                         </a>
                       </Link>
                       
-                      <div className="flex flex-wrap md:space-x-8 font-mono text-[13px] uppercase mt-5 mb-6">
+                      <div className="flex flex-wrap md:space-x-8 font-mono text-[11px] md:text-[13px] uppercase mt-5 mb-6 leading-[1.2]">
                         {e.client && (
                           <div className="w-full md:w-auto">
-                            <span className="block mb-px md:mb-0">
-                              <span className="block overflow-hidden">
+                            <span className="hidden md:block mb-px md:mb-0">
+                              <span className="inline-block md:block overflow-hidden">
                                 <m.span variants={reveal} className="block">
                                   (Client)
                                 </m.span>
                               </span>
                             </span>
-                            <span className="block md:ml-3">
-                              <span className="block overflow-hidden">
+                            <span className="inline-block md:block md:ml-3">
+                              <span className="inline-block md:block overflow-hidden">
                                 <m.span variants={reveal} className="block">
                                   “{e.client}”
                                 </m.span>
@@ -145,15 +145,15 @@ export default function WorksIndex(initialData) {
                         )}
                         {e.location && (
                           <div className="w-full md:w-auto">
-                            <span className="block mb-px md:mb-0">
-                              <span className="block overflow-hidden">
+                            <span className="hidden md:block mb-px md:mb-0">
+                              <span className="inline-block md:block overflow-hidden">
                                 <m.span variants={reveal} className="block">
                                   (Location)
                                 </m.span>
                               </span>
                             </span>
-                            <span className="block md:ml-3">
-                              <span className="block overflow-hidden">
+                            <span className="inline-block md:block md:ml-3">
+                              <span className="inline-block md:block overflow-hidden">
                                 <m.span variants={reveal} className="block">
                                   “{e.location}”
                                 </m.span>
@@ -163,15 +163,15 @@ export default function WorksIndex(initialData) {
                         )}
                         {e.gps && (
                           <div className="w-full md:w-auto">
-                            <span className="block mb-px md:mb-0">
-                              <span className="block overflow-hidden">
+                            <span className="hidden md:block mb-px md:mb-0">
+                              <span className="inline-block md:block overflow-hidden">
                                 <m.span variants={reveal} className="block">
                                   (GPS)
                                 </m.span>
                               </span>
                             </span>  
-                            <span className="block md:ml-3">
-                              <span className="block overflow-hidden">
+                            <span className="inline-block md:block md:ml-3">
+                              <span className="inline-block md:block overflow-hidden">
                                 <m.span variants={reveal} className="block">
                                   “{e.gps}”
                                 </m.span>
@@ -181,15 +181,15 @@ export default function WorksIndex(initialData) {
                         )}
                         {e.year && (
                           <div className="w-full md:w-auto">
-                            <span className="block mb-px md:mb-0">
-                              <span className="block overflow-hidden">
+                            <span className="hidden md:block mb-px md:mb-0">
+                              <span className="inline-block md:block overflow-hidden">
                                 <m.span variants={reveal} className="block">
                                   (Year)
                                 </m.span>
                               </span>
                             </span>
-                            <span className="block md:ml-3">
-                              <span className="block overflow-hidden">
+                            <span className="inline-block md:block md:ml-3">
+                              <span className="inline-block md:block overflow-hidden">
                                 <m.span variants={reveal} className="block">
                                   “{e.year}”
                                 </m.span>
@@ -210,16 +210,16 @@ export default function WorksIndex(initialData) {
                                 let optimisedHeight = Math.round(height);
                                 let layoutWrapper = ''
                                 if (f.layout == 'full-portrait') {
-                                  layoutWrapper = 'w-[10vw] md:w-[7vw] max-w-[150px]'
+                                  layoutWrapper = 'w-[22vw] md:w-[7vw] max-w-[150px]'
                                 } else if (f.layout == 'full-landscape') {
-                                  layoutWrapper = 'w-[20vw] md:w-[14vw] max-w-[260px]'
+                                  layoutWrapper = 'w-[38vw] md:w-[14vw] max-w-[260px]'
                                 } else if (f.layout == 'two-portrait') {
-                                  layoutWrapper = 'w-[7vw] max-w-[150px]'
+                                  layoutWrapper = 'w-[22vw] md:w-[7vw] max-w-[150px]'
                                 }
 
                                 return (
                                   <Link href={`/works/${e.slug.current}#slider/slide${index}`} key={i}>
-                                    <a className={`${layoutWrapper} h-[13vw] md:h-[10vw] max-h-[175px] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-700 will-change inline-block group`}>
+                                    <a className={`${layoutWrapper} h-[28vw] md:h-[10vw] max-h-[175px] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-700 will-change inline-block group`}>
                                       <div className="w-full h-full relative overflow-hidden">
                                         <m.div className="w-full h-full absolute inset-0" variants={slightScale}>
                                           <Photo
@@ -309,7 +309,7 @@ export default function WorksIndex(initialData) {
                         </div>
                       </m.div>
 
-                      <m.div variants={growWidth} className="my-8 w-full h-[1px] bg-black"></m.div>
+                      <m.div variants={growWidth} className="my-2 md:my-8 w-full h-[1px] bg-transparent md:bg-black"></m.div>
                     </div>
                   )
                 })}

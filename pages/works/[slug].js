@@ -45,6 +45,24 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
       }
     }
   },
+  'next': *[indexNumber > ^.indexNumber] | order(indexNumber asc) [0] {
+    title,
+    client,
+    location,
+    gps,
+    year,
+    slug {
+      current
+    },
+    imageSlides[] {
+      layout,
+      images[] {
+        asset-> {
+          ...
+        }
+      }
+    },
+  },
   slug {
     current
   }
@@ -53,7 +71,7 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
 const pageService = new SanityPageService(query)
 
 export default function WorksSlug(initialData) {
-  const { data: { title, seo, slug, indexNumber, client, location, gps, year, imageSlides }  } = pageService.getPreviewHook(initialData)()
+  const { data: { title, seo, slug, indexNumber, client, location, gps, year, imageSlides, next }  } = pageService.getPreviewHook(initialData)()
   const [introContext, setIntroContext] = useContext(Context);
 
   useEffect(() => {
@@ -185,43 +203,70 @@ export default function WorksSlug(initialData) {
                       </div> */}
 
                       <div className="slide will-change relative" id="slide-4">
-                        <div className="font-mono text-[12px] md:text-[13px] uppercase absolute top-auto bottom-0 md:bottom-auto md:top-0 left-0 mb-[78vw] md:mb-0 md:mt-20">
-                          <div className="w-full mb-[2px] md:mb-2">
-                            <span className="hidden md:block mb-px md:mb-0">(Client)</span>
-                            <span className="block md:ml-3">“Gensler Architects”</span>
-                          </div>
-                          <div className="w-full mb-[2px] md:mb-2">
-                            <span className="hidden md:block mb-px md:mb-0">(Location)</span>
-                            <span className="block md:ml-3">“San Francisco”</span>
-                          </div>
-                          <div className="w-full mb-[2px] md:mb-2">
-                            <span className="hidden md:block mb-px md:mb-0">(GPS)</span>
-                            <span className="block md:ml-3">“37°46'09.3"N 122°23'20.5"W”</span>
-                          </div>
-                          <div className="w-full mb-[2px] md:mb-2">
-                            <span className="hidden md:block mb-px md:mb-0">(Year)</span>
-                            <span className="block md:ml-3">“2021”</span>
-                          </div>
-                        </div>
+                        { next ? (
+                          <>
+                            <div className="font-mono text-[12px] md:text-[13px] uppercase absolute top-auto bottom-0 md:bottom-auto md:top-0 left-0 mb-[78vw] md:mb-0 md:mt-20">
+                              <div className="w-full mb-[2px] md:mb-2">
+                                <span className="hidden md:block mb-px md:mb-0">(Client)</span>
+                                <span className="block md:ml-3">“{next.client}”</span>
+                              </div>
+                              <div className="w-full mb-[2px] md:mb-2">
+                                <span className="hidden md:block mb-px md:mb-0">(Location)</span>
+                                <span className="block md:ml-3">“{next.location}”</span>
+                              </div>
+                              <div className="w-full mb-[2px] md:mb-2">
+                                <span className="hidden md:block mb-px md:mb-0">(GPS)</span>
+                                <span className="block md:ml-3">“{next.gps}”</span>
+                              </div>
+                              <div className="w-full mb-[2px] md:mb-2">
+                                <span className="hidden md:block mb-px md:mb-0">(Year)</span>
+                                <span className="block md:ml-3">“{next.year}”</span>
+                              </div>
+                            </div>
+                            
+                            <div className="my-auto mt-[-30vw] md:mt-0 flex w-full mx-auto space-x-[5vw] max-w-screen-xl items-center justify-center">
+                              <Link href={`/works/${next.slug.current}`}>
+                                <a className="will-change mt-[-6vh] block text-center md:text-left">
+                                  <span className="block uppercase text-[14px] md:text-[20px] leading-none mb-[12px] md:mb-[20px] 2xl:mb-[28px]">Next Project</span>
+                                  <span className="block text-[8vw] md:text-[11vw] 2xl:text-[12vw] uppercase font-semibold leading-[0.875] ml-[-1vw] 2xl:ml-[-18px] -mt-px md:-mt-1 2xl:-mt-3">{next.title}</span>
+                                </a>
+                              </Link>
+                            </div>
 
-                        <div className="my-auto mt-[-30vw] md:mt-0 flex w-full mx-auto space-x-[5vw] max-w-screen-xl items-center justify-center">
-                          <Link href="/work">
-                            <a className="will-change mt-[-6vh] block text-center md:text-left">
-                              <span className="block uppercase text-[14px] md:text-[20px] leading-none mb-[12px] md:mb-[20px] 2xl:mb-[28px]">Next Project</span>
-                              <span className="block text-[8vw] md:text-[11vw] 2xl:text-[12vw] uppercase font-semibold leading-[0.875] ml-[-1vw] 2xl:ml-[-18px] -mt-px md:-mt-1 2xl:-mt-3">{title}</span>
-                            </a>
-                          </Link>
-                        </div>
+                            <div className="w-full md:w-[25vw] h-[30vh] md:h-[24vh] mx-auto will-change absolute bottom-0 right-0 left-0 md:left-auto mb-[65px] md:mb-[48px]">
+                              <Photo
+                                photo={next.imageSlides[0].images[0]}
+                                width={next.imageSlides[0].images[0].asset.metadata.dimensions.width / 3}
+                                height={next.imageSlides[0].images[0].asset.metadata.dimensions.height / 3}
+                                srcSizes={[900]}
+                                sizes="(min-width: 900px) 100vw, 100vw"
+                                layout="fill"
+                                className="w-full h-full object-cover object-center will-change "
+                              />
+                            </div>
+                          </>
+                        ) : (
+                          <>                            
+                            <div className="my-auto mt-[-30vw] md:mt-0 flex w-full mx-auto space-x-[5vw] max-w-screen-xl items-center justify-center">
+                              <Link href={`/works`}>
+                                <a className="will-change mt-[-6vh] block text-center md:text-left">
+                                  <span className="block uppercase text-[14px] md:text-[20px] leading-none mb-[12px] md:mb-[20px] 2xl:mb-[28px]">Back To</span>
+                                  <span className="block text-[8vw] md:text-[11vw] 2xl:text-[12vw] uppercase font-semibold leading-[0.875] ml-[-1vw] 2xl:ml-[-18px] -mt-px md:-mt-1 2xl:-mt-3">All Projects</span>
+                                </a>
+                              </Link>
+                            </div>
 
-                        <div className="w-full md:w-[25vw] h-[30vh] md:h-[24vh] mx-auto will-change absolute bottom-0 right-0 left-0 md:left-auto mb-[65px] md:mb-[48px]">
-                          <Image
-                            src={workImage}
-                            alt="Placeholder"
-                            layout="fill"
-                            className="w-full h-full object-cover object-center will-change"
-                            placeholder="blur"
-                          />
-                        </div>
+                            {/* <div className="w-full md:w-[25vw] h-[30vh] md:h-[24vh] mx-auto will-change absolute bottom-0 right-0 left-0 md:left-auto mb-[65px] md:mb-[48px]">
+                              <Image
+                                src={workImage}
+                                alt="Placeholder"
+                                layout="fill"
+                                className="w-full h-full object-cover object-center will-change"
+                                placeholder="blur"
+                              />
+                            </div> */}
+                          </>
+                        )}
                       </div>
                     </m.div>
                   </ReactFullpage.Wrapper>

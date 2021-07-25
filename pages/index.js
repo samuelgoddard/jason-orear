@@ -71,14 +71,14 @@ export default function Home(initialData) {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIntroContext(true)
-    }, 5000);
+    }, 5500);
   },[]);
 
   const reveal = {
     initial: { y: '100%' },
     enter: { 
       y: 0,
-      transition: { delay: introContext ? 0 : 4.2, duration: 1, ease: [0.83, 0, 0.17, 1] }
+      transition: { delay: introContext ? 0 : 4.25, duration: 1, ease: [0.83, 0, 0.17, 1] }
     },
     exit: {
       y: '100%',
@@ -219,35 +219,35 @@ export default function Home(initialData) {
                           <span className="block leading-none">
                             {numberSplit.map((e, i) => {
                               return (
-                                <span className={`${i == 1 ? `${numberRoll} inline-block transition-transform ease-in-out duration-500` : ''}`}>{e}</span>
+                                <span key={i} className={`${i == 1 ? `${numberRoll} inline-block transition-transform ease-in-out duration-500` : ''}`}>{e}</span>
                               )
                             })}
                           </span>
                           <span className="hidden md:block leading-none">
                             {numberSplit1.map((e, i) => {
                               return (
-                                <span className={`${i == 1 ? `${numberRoll} inline-block transition-transform ease-in-out duration-500` : ''}`}>{e}</span>
+                                <span key={i} className={`${i == 1 ? `${numberRoll} inline-block transition-transform ease-in-out duration-500` : ''}`}>{e}</span>
                               )
                             })}
                           </span>
                           <span className="hidden md:block leading-none">
                             {numberSplit2.map((e, i) => {
                               return (
-                                <span className={`${i == 1 ? `${numberRoll} inline-block transition-transform ease-in-out duration-500` : ''}`}>{e}</span>
+                                <span key={i} className={`${i == 1 ? `${numberRoll} inline-block transition-transform ease-in-out duration-500` : ''}`}>{e}</span>
                               )
                             })}
                           </span>
                           <span className="hidden md:block leading-none">
                             {numberSplit3.map((e, i) => {
                               return (
-                                <span className={`${i == 1 ? `${numberRoll} inline-block transition-transform ease-in-out duration-500` : ''}`}>{e}</span>
+                                <span key={i} className={`${i == 1 ? `${numberRoll} inline-block transition-transform ease-in-out duration-500` : ''}`}>{e}</span>
                               )
                             })}
                           </span>
                           <span className="hidden md:block leading-none">
                             {numberSplit4.map((e, i) => {
                               return (
-                                <span className={`${i == 1 ? `${numberRoll} inline-block transition-transform ease-in-out duration-500` : ''}`}>{e}</span>
+                                <span key={i} className={`${i == 1 ? `${numberRoll} inline-block transition-transform ease-in-out duration-500` : ''}`}>{e}</span>
                               )
                             })}
                           </span>

@@ -1,4 +1,4 @@
-import { AnimatePresence, domAnimation, LazyMotion, m } from 'framer-motion';
+import { domAnimation, LazyMotion, m } from 'framer-motion';
 import Link from 'next/link'
 import { useContext } from 'react';
 import { Context } from '../context/state'
