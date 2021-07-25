@@ -14,6 +14,8 @@ import ReactFullpage from '@fullpage/react-fullpage';
 import SanityPageService from '@/services/sanityPageService'
 import { NextSeo } from 'next-seo'
 import { Context } from '../../context/state'
+import Photo from '@/components/photo';
+import Div100vh from 'react-div-100vh';
 
 const pluginWrapper = () => {
   require('../../static/fullpage.scrollHorizontally.min.js');
@@ -71,7 +73,7 @@ export default function WorksSlug(initialData) {
           id="inner-container"
           data-scroll-section
         >
-          <div className="min-h-screen flex flex-col p-[20px]">
+          <Div100vh className="flex flex-col p-[14px] md:p-[20px]">
             <ReactFullpage
               navigation={false}
               anchors={['slider']}
@@ -94,30 +96,35 @@ export default function WorksSlug(initialData) {
                       let layoutWrapper = 'flex items-center h-full';
                       
                       if (f.layout == 'full-portrait') {
-                        layoutWrapper = 'overflow-hidden w-7/12 md:w-6/12 xl:w-5/12 h-[55vh] md:h-[72vh] relative mx-auto will-change mt-[-6vh]';
+                        layoutWrapper = 'overflow-hidden w-7/12 md:w-[32%] xl:w-[28%] 2xl:w-[28%] h-[55vh] md:h-[62vh] xl:h-[69vh] relative mx-auto will-change mt-[-6vh]';
                         layoutOuterWrapper = 'my-auto flex items-center max-w-screen-2xl mx-auto';
                       } else if (f.layout == 'full-landscape') {
-                        layoutWrapper = 'overflow-hidden w-9/12 h-[55vh] md:h-[52vh] relative mx-auto will-change mt-[-6vh]';
+                        layoutWrapper = 'overflow-hidden w-9/12 md:w-8/12 h-[55vh] md:h-[63vh] xl:h-[66vh] 2xl:h-[62vh] relative mx-auto will-change mt-[-6vh]';
                         layoutOuterWrapper = 'flex items-center h-full';
                       } else if (f.layout == 'two-portrait') {
-                        layoutWrapper = 'overflow-hidden w-1/2 h-[55vh] md:h-[72vh] relative mx-auto will-change mt-[-6vh]';
-                        layoutOuterWrapper = 'my-auto flex w-8/12 mx-auto space-x-[5vw] max-w-screen-xl';
+                        layoutWrapper = 'overflow-hidden w-1/2 md:w-1/2 h-[55vh] md:h-[62vh] xl:h-[69vh] relative mx-auto will-change mt-[-6vh]';
+                        layoutOuterWrapper = 'my-auto flex w-8/12 md:w-[40%] xl:md:w-[55%] mx-auto space-x-[5vw] max-w-screen-xl';
                       }
                       
                       return (
                         <div className="slide will-change flex items-center TEST" id={i} data-anchor={`slide${i}`} key={i}>
                           <div className={layoutOuterWrapper}>
                             { f.images.map((g, i) => {
+                              let width = g.asset.metadata.dimensions.width / 2
+                              let optimisedWidth = Math.round(width);
+                              let height = g.asset.metadata.dimensions.height / 2
+                              let optimisedHeight = Math.round(height);
+
                               return (
                                 <div className={layoutWrapper} key={i}>
                                   <m.div variants={slightScale} className="absolute inset-0">
-                                    <Image
-                                      src={g.asset.url}
-                                      alt="Placeholder"
+                                    <Photo
+                                      photo={g}
+                                      width={optimisedWidth}
+                                      height={optimisedHeight}
+                                      sizes="(min-width: 1920px) 100vw, (min-width: 1600px) 100vw, (min-width: 1280px) 90vw, (min-width: 768px) 90vw, 200vw"
                                       layout="fill"
                                       className="w-full h-full object-cover object-center will-change"
-                                      placeholder="blur"
-                                      blurDataURL={g.asset.metadata.lqip}
                                     />
                                   </m.div>
                                 </div>
@@ -178,35 +185,35 @@ export default function WorksSlug(initialData) {
                       </div> */}
 
                       <div className="slide will-change relative" id="slide-4">
-                        <div className="font-mono text-[13px] uppercase absolute top-0 left-0 mt-20">
-                          <div className="w-full mb-3">
-                            <span className="block mb-px md:mb-0">(Client)</span>
+                        <div className="font-mono text-[12px] md:text-[13px] uppercase absolute top-auto bottom-0 md:bottom-auto md:top-0 left-0 mb-[78vw] md:mb-0 md:mt-20">
+                          <div className="w-full mb-[2px] md:mb-2">
+                            <span className="hidden md:block mb-px md:mb-0">(Client)</span>
                             <span className="block md:ml-3">“Gensler Architects”</span>
                           </div>
-                          <div className="w-full mb-3">
-                            <span className="block mb-px md:mb-0">(Location)</span>
+                          <div className="w-full mb-[2px] md:mb-2">
+                            <span className="hidden md:block mb-px md:mb-0">(Location)</span>
                             <span className="block md:ml-3">“San Francisco”</span>
                           </div>
-                          <div className="w-full mb-3">
-                            <span className="block mb-px md:mb-0">(GPS)</span>
+                          <div className="w-full mb-[2px] md:mb-2">
+                            <span className="hidden md:block mb-px md:mb-0">(GPS)</span>
                             <span className="block md:ml-3">“37°46'09.3"N 122°23'20.5"W”</span>
                           </div>
-                          <div className="w-full mb-3">
-                            <span className="block mb-px md:mb-0">(Year)</span>
+                          <div className="w-full mb-[2px] md:mb-2">
+                            <span className="hidden md:block mb-px md:mb-0">(Year)</span>
                             <span className="block md:ml-3">“2021”</span>
                           </div>
                         </div>
 
-                        <div className="my-auto flex w-8/12 mx-auto space-x-[5vw] max-w-screen-xl items-center justify-center">
+                        <div className="my-auto mt-[-30vw] md:mt-0 flex w-full mx-auto space-x-[5vw] max-w-screen-xl items-center justify-center">
                           <Link href="/work">
-                            <a className="will-change mt-[-6vh] block">
-                              <span className="block uppercase font-semibold text-[17px] md:text-[20px] leading-none">Next Project</span>
-                              <span className="block text-[22vw] 2xl:text-[340px] uppercase font-semibold leading-none ml-[-1vw] 2xl:ml-[-18px] -mt-px md:-mt-1 2xl:-mt-3">{title}</span>
+                            <a className="will-change mt-[-6vh] block text-center md:text-left">
+                              <span className="block uppercase text-[14px] md:text-[20px] leading-none mb-[12px] md:mb-[20px] 2xl:mb-[28px]">Next Project</span>
+                              <span className="block text-[8vw] md:text-[11vw] 2xl:text-[12vw] uppercase font-semibold leading-[0.875] ml-[-1vw] 2xl:ml-[-18px] -mt-px md:-mt-1 2xl:-mt-3">{title}</span>
                             </a>
                           </Link>
                         </div>
 
-                        <div className="w-[30vw] xl:w-[25vw] h-[25vh] md:h-[24vh] mx-auto will-change absolute bottom-0 right-0 mb-[48px]">
+                        <div className="w-full md:w-[25vw] h-[30vh] md:h-[24vh] mx-auto will-change absolute bottom-0 right-0 left-0 md:left-auto mb-[65px] md:mb-[48px]">
                           <Image
                             src={workImage}
                             alt="Placeholder"
@@ -231,11 +238,11 @@ export default function WorksSlug(initialData) {
             }}
           >
               <div data-scroll data-scroll-sticky data-scroll-target="#inner-container" className="fixed md:absolute bottom-0 left-0 z-40 w-auto text-center">
-                <span className="block overflow-hidden m-[18px]">
+                <span className="block overflow-hidden m-[14px] md:m-[18px]">
                   <m.span variants={reveal} className="block">
                     <Link href="/works">
                       <a className="text-center uppercase text-[15px] md:text-[19px] xl:text-[22px] w-auto relative inline-block group">
-                        <span className="hidden md:inline-block">Back To</span><span className="inline-block md:hidden">all</span> Works
+                        <span className="inline-block">Back</span>
                         <span className="block transition-all ease-in-out duration-500 w-full scale-x-0 group-hover:scale-x-100 h-[2px] bg-black"></span>
                       </a>
                     </Link>
@@ -243,15 +250,15 @@ export default function WorksSlug(initialData) {
                 </span>
               </div>
 
-              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute bottom-0 left-0 right-0 z-30 mb-[18px] w-auto text-center mx-auto">
+              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute bottom-0 left-0 right-0 z-30 mb-[50px] md:mb-[18px] w-auto text-center mx-auto">
                 <span className="block overflow-hidden">
-                  <m.h1 variants={reveal} className="text-center uppercase text-[35px] md:text-[45px] xl:text-[60px] leading-none w-auto relative inline-block group m-0 p-0">
+                  <m.h1 variants={reveal} className="text-center uppercase text-[23px] md:text-[30px] xl:text-[40px] 2xl:text-[55px] leading-[1.125] w-auto relative inline-block group m-0 p-0">
                     {title}
                   </m.h1>
                 </span>
               </div>
 
-              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute bottom-0 right-0 z-40 m-[18px] w-auto text-center">
+              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute bottom-0 right-0 z-40 m-[14px] md:m-[18px] w-auto text-center">
                 <span className="block overflow-hidden">
                   <m.span variants={reveal} className="text-center uppercase text-[15px] md:text-[19px] xl:text-[22px] w-auto relative inline-block group">
                     1/7
@@ -259,7 +266,7 @@ export default function WorksSlug(initialData) {
                 </span>
               </div>
             </m.div>
-          </div>
+          </Div100vh>
         </m.section>
       </LazyMotion>
     </Layout>

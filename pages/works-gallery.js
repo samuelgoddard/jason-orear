@@ -64,7 +64,7 @@ export default function WorksGallery() {
                 </Link>
               </m.div>
               
-              <m.div variants={fade} className="p-[20px] pt-28 md:pt-32 pb-6 md:pb-8 xl:pb-12">
+              <m.div variants={fade} className="p-[14px] md:p-[20px] pt-28 md:pt-32 pb-6 md:pb-8 xl:pb-12">
                 {Array.from(Array(3), (e, i) => {
                   return (
                     <div className="grid grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-[2.5vw] mb-[2.5vw]" key={i}>

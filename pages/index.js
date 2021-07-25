@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import SanityPageService from '@/services/sanityPageService'
 import { Context } from '../context/state'
+import Div100vh from 'react-div-100vh'
 
 const query = `{
   "home": *[_type == "home"][0]{
@@ -94,7 +95,7 @@ export default function Home(initialData) {
           exit="exit"
           className=""
         >
-          <div className="min-h-screen flex flex-col p-[20px]">
+          <Div100vh className="flex flex-col p-[14px] md:p-[20px]">
           {/* {home.featuredWork.map((e, i) => {
             e.imageSlides.map(e, i) => {
               return (
@@ -181,7 +182,7 @@ export default function Home(initialData) {
 
             <div className="flex flex-wrap items-end">
               
-              <span className={`w-full md:w-auto text-[18px] md:text-[22px] leading-none md:fixed bottom-0 left-0 mb-1 md:m-[20px] variant-numeric tracking-tighter`}>
+              <span className={`w-full md:w-auto text-[14px] md:text-[22px] leading-none md:fixed bottom-0 left-0 mb-1 md:m-[20px] variant-numeric tracking-tighter`}>
                 <span className="block overflow-hidden md:h-[22px]">
                   <m.span variants={reveal} className="block">
                     <span className={`block ${coords} transition-transform ease-in-out duration-500`}>
@@ -195,7 +196,7 @@ export default function Home(initialData) {
                 </span>
               </span>
 
-              <span className="w-full text-[18px] md:text-[22px] tracking-tight ml-auto leading-none uppercase md:fixed md:text-center block">
+              <span className="w-full text-[14px] md:text-[22px] tracking-tight ml-auto leading-none uppercase md:fixed md:text-center block">
                 <span className="block overflow-hidden md:h-[22px]">
                   <m.span variants={reveal} className="block">
                     <span className={`block ${coords} transition-transform ease-in-out duration-500`}>
@@ -209,9 +210,9 @@ export default function Home(initialData) {
                 </span>
               </span>
 
-              <span className="overflow-hidden ml-auto fixed bottom-0 right-0 flex items-end mb-[9px] md:mb-[-7px] 2xl:mb-[-12px] mr-[20px]">
+              <span className="overflow-hidden ml-auto fixed bottom-0 right-0 flex items-end mb-[9px] md:mb-[-7px] 2xl:mb-[-12px] mr-[14px] md:mr-[20px]">
                 <m.span variants={reveal} className="block">
-                  <span className="text-[60px] md:text-[160px] 2xl:text-[230px] leading-none font-semibold tracking-tight flex items-end"><span className="block text-[18px] md:text-[22px] tracking-tight leading-none mb-[33px] md:mb-[27px] 2xl:mb-[33px] uppercase font-normal">p /</span>
+                  <span className="text-[60px] md:text-[160px] 2xl:text-[230px] leading-none font-semibold tracking-tight flex items-end"><span className="block text-[14px] md:text-[22px] tracking-tight leading-none mb-[38px] md:mb-[27px] 2xl:mb-[33px] uppercase font-normal">p /</span>
                     <span className="block tracking-tighter">
                       <span className="block overflow-hidden md:h-[160px] 2xl:h-[230px]">
                         <span className={`block`}>
@@ -257,7 +258,7 @@ export default function Home(initialData) {
                 </m.span>
               </span>
             </div>
-          </div>
+          </Div100vh>
         </m.section>
       </LazyMotion>
     </Layout>

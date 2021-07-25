@@ -6,6 +6,7 @@ import { NextSeo } from 'next-seo'
 import SanityPageService from '@/services/sanityPageService'
 import { useContext, useEffect } from 'react'
 import { Context } from '../context/state'
+import Div100vh from 'react-div-100vh'
 
 const query = `*[_type == "contact"][0]{
   email
@@ -62,7 +63,7 @@ export default function Wayfinder(initialData) {
           exit="exit"
           className=""
         >
-          <div className={`min-h-screen flex flex-col p-[25px] md:p-[50px] pt-32`}>
+          <Div100vh className="flex flex-col p-[14px] md:p-[35px] pt-32">
             {/* <m.div variants={fade} className={`absolute inset-0 z-0 ${bodyColor.background}`}></m.div> */}
 
             <m.nav
@@ -126,7 +127,7 @@ export default function Wayfinder(initialData) {
                 </li>
               </ul>
             </m.nav>
-          </div>
+          </Div100vh>
         </m.section>
       </LazyMotion>
     </Layout>

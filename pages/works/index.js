@@ -89,14 +89,14 @@ export default function WorksIndex(initialData) {
                 </Link>
               </m.div>
 
-              <m.div variants={fade} className="p-[20px] pt-28 md:pt-40" data-scroll>
+              <m.div variants={fade} className="p-[14px] md:p-[20px] pt-28 md:pt-40" data-scroll>
                 {works.map((e, i) => {
                   return (
                     <div className="border-b border-black pb-6 mb-8 overflow-hidden" key={i}>
                       <span className="md:text-[20px] leading-none tracking-tighter font-semibold">{e.indexNumber}</span>
                       <Link href={`/works/${e.slug.current}`} className="">
                         <a className="block">
-                          <h2 className="text-[18vw] md:text-[13vw] ml-[-0.5vw] 2xl:ml-[-0.75vw] leading-none uppercase font-semibold tracking-tighter">{e.title}</h2>
+                          <h2 className="text-[12vw] md:text-[13vw] ml-[-0.5vw] 2xl:ml-[-0.75vw] leading-none uppercase font-semibold tracking-tighter">{e.title}</h2>
                         </a>
                       </Link>
                       

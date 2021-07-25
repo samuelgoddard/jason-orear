@@ -79,7 +79,7 @@ export default function Info(initialData) {
               exit="exit"
               className=""
             >
-              <div className={`text-black min-h-screen flex flex-col p-[20px] pt-28 md:pt-32 justify-end selection:bg-black selection:text-pink relative`}>
+              <div className={`text-black min-h-screen flex flex-col p-[14px] md:p-[20px] pt-24 md:pt-32 justify-end selection:bg-black selection:text-pink relative`}>
 
                 {/* <m.div variants={fade} className="absolute inset-0 z-0 bg-pink"></m.div> */}
                 
