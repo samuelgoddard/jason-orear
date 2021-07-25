@@ -57,7 +57,7 @@ export default function WorksGallery(initialData) {
         options={
           {
             smooth: true,
-            lerp: 0.035
+            lerp: 0.075
           }
         }
         watch={[]}

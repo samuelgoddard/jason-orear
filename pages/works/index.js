@@ -54,16 +54,7 @@ export default function WorksIndex(initialData) {
     <Layout>
       <NextSeo title="Works" />
 
-      <LocomotiveScrollProvider
-        options={
-          {
-            smooth: true,
-            lerp: 0.04
-          }
-        }
-        watch={[]}
-        containerRef={containerRef}
-      >
+      <LocomotiveScrollProvider options={{ smooth: true, lerp: 0.075 }} watch={[]} containerRef={containerRef}>
         <main data-scroll-container ref={containerRef} id="scroll-container">
           <LazyMotion features={domAnimation}>
             <m.section
@@ -103,7 +94,7 @@ export default function WorksIndex(initialData) {
                 </Link>
               </div>
 
-              <div className="p-[14px] md:p-[20px] pt-28 md:pt-40" data-scroll>
+              <m.div variants={fade} className="p-[14px] md:p-[20px] pt-28 md:pt-40" data-scroll>
                 {works.map((e, i) => {
                   return (
                     <div className="overflow-hidden" key={i}>
@@ -117,7 +108,7 @@ export default function WorksIndex(initialData) {
                       <Link href={`/works/${e.slug.current}`} className="">
                         <a className="block">
                           <span className="block overflow-hidden">
-                            <m.span variants={reveal} className="block">
+                            <m.span variants={reveal} className="block will-change">
                               <h2 className="text-[12vw] md:text-[13vw] ml-[-0.5vw] 2xl:ml-[-0.75vw] leading-[0.85] uppercase font-semibold tracking-tighter mb-0 pb-0">{e.title}</h2>
                             </m.span>
                           </span>
@@ -129,14 +120,14 @@ export default function WorksIndex(initialData) {
                           <div className="w-full md:w-auto">
                             <span className="hidden md:block mb-px md:mb-0">
                               <span className="inline-block md:block overflow-hidden">
-                                <m.span variants={reveal} className="block">
+                                <m.span variants={fade} className="block">
                                   (Client)
                                 </m.span>
                               </span>
                             </span>
                             <span className="inline-block md:block md:ml-3">
                               <span className="inline-block md:block overflow-hidden">
-                                <m.span variants={reveal} className="block">
+                                <m.span variants={fade} className="block">
                                   “{e.client}”
                                 </m.span>
                               </span>
@@ -147,14 +138,14 @@ export default function WorksIndex(initialData) {
                           <div className="w-full md:w-auto">
                             <span className="hidden md:block mb-px md:mb-0">
                               <span className="inline-block md:block overflow-hidden">
-                                <m.span variants={reveal} className="block">
+                                <m.span variants={fade} className="block">
                                   (Location)
                                 </m.span>
                               </span>
                             </span>
                             <span className="inline-block md:block md:ml-3">
                               <span className="inline-block md:block overflow-hidden">
-                                <m.span variants={reveal} className="block">
+                                <m.span variants={fade} className="block">
                                   “{e.location}”
                                 </m.span>
                               </span>
@@ -165,14 +156,14 @@ export default function WorksIndex(initialData) {
                           <div className="w-full md:w-auto">
                             <span className="hidden md:block mb-px md:mb-0">
                               <span className="inline-block md:block overflow-hidden">
-                                <m.span variants={reveal} className="block">
+                                <m.span variants={fade} className="block">
                                   (GPS)
                                 </m.span>
                               </span>
                             </span>  
                             <span className="inline-block md:block md:ml-3">
                               <span className="inline-block md:block overflow-hidden">
-                                <m.span variants={reveal} className="block">
+                                <m.span variants={fade} className="block">
                                   “{e.gps}”
                                 </m.span>
                               </span>
@@ -183,14 +174,14 @@ export default function WorksIndex(initialData) {
                           <div className="w-full md:w-auto">
                             <span className="hidden md:block mb-px md:mb-0">
                               <span className="inline-block md:block overflow-hidden">
-                                <m.span variants={reveal} className="block">
+                                <m.span variants={fade} className="block">
                                   (Year)
                                 </m.span>
                               </span>
                             </span>
                             <span className="inline-block md:block md:ml-3">
                               <span className="inline-block md:block overflow-hidden">
-                                <m.span variants={reveal} className="block">
+                                <m.span variants={fade} className="block">
                                   “{e.year}”
                                 </m.span>
                               </span>
@@ -199,121 +190,119 @@ export default function WorksIndex(initialData) {
                         )}
                       </div>
                       
-                      <m.div variants={slightTransformHori}>
-                        <div className="whitespace-nowrap space-x-[2.5vw] md:space-x-[2vw] xl:space-x-[1.5vw] overflow-visible" data-scroll-direction="horizontal" data-scroll data-scroll-speed="1">
-                          {e.imageSlides.map((f, index) => {
-                            return (
-                              f.images.map((g, i) => {
-                                let width = g.asset.metadata.dimensions.width / 3
-                                let optimisedWidth = Math.round(width);
-                                let height = g.asset.metadata.dimensions.height / 3
-                                let optimisedHeight = Math.round(height);
-                                let layoutWrapper = ''
-                                if (f.layout == 'full-portrait') {
-                                  layoutWrapper = 'w-[22vw] md:w-[7vw] max-w-[150px]'
-                                } else if (f.layout == 'full-landscape') {
-                                  layoutWrapper = 'w-[38vw] md:w-[14vw] max-w-[260px]'
-                                } else if (f.layout == 'two-portrait') {
-                                  layoutWrapper = 'w-[22vw] md:w-[7vw] max-w-[150px]'
-                                }
+                      <div className="whitespace-nowrap space-x-[2.5vw] md:space-x-[2vw] xl:space-x-[1.5vw] overflow-visible" data-scroll-direction="horizontal" data-scroll data-scroll-speed="1">
+                        {e.imageSlides.map((f, index) => {
+                          return (
+                            f.images.map((g, i) => {
+                              let width = g.asset.metadata.dimensions.width / 3
+                              let optimisedWidth = Math.round(width);
+                              let height = g.asset.metadata.dimensions.height / 3
+                              let optimisedHeight = Math.round(height);
+                              let layoutWrapper = ''
+                              if (f.layout == 'full-portrait') {
+                                layoutWrapper = 'w-[22vw] md:w-[7vw] max-w-[150px]'
+                              } else if (f.layout == 'full-landscape') {
+                                layoutWrapper = 'w-[38vw] md:w-[14vw] max-w-[260px]'
+                              } else if (f.layout == 'two-portrait') {
+                                layoutWrapper = 'w-[22vw] md:w-[7vw] max-w-[150px]'
+                              }
 
-                                return (
-                                  <Link href={`/works/${e.slug.current}#slider/slide${index}`} key={i}>
-                                    <a className={`${layoutWrapper} h-[28vw] md:h-[10vw] max-h-[175px] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-700 will-change inline-block group`}>
-                                      <div className="w-full h-full relative overflow-hidden">
-                                        <m.div className="w-full h-full absolute inset-0" variants={slightScale}>
-                                          <Photo
-                                            photo={g}
-                                            width={optimisedWidth}
-                                            height={optimisedHeight}
-                                            srcSizes={[550]}
-                                            sizes="(min-width: 550px) 100vw, 100vw"
-                                            layout="fill"
-                                            className="w-full h-full object-cover object-center will-change "
-                                          />
-                                        </m.div>
+                              return (
+                                <Link href={`/works/${e.slug.current}#slider/slide${index}`} key={i}>
+                                  <a className={`${layoutWrapper} h-[28vw] md:h-[10vw] max-h-[175px] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-700 will-change inline-block group`}>
+                                    <div className="w-full h-full relative overflow-hidden">
+                                      <div className="w-full h-full absolute inset-0">
+                                        <Photo
+                                          photo={g}
+                                          width={optimisedWidth}
+                                          height={optimisedHeight}
+                                          srcSizes={[520]}
+                                          sizes="(min-width: 520px) 100vw, 100vw"
+                                          layout="fill"
+                                          className="w-full h-full object-cover object-center"
+                                        />
                                       </div>
-                                    </a>
-                                  </Link>
-                                )
-                              })
-                            )
-                          })}
+                                    </div>
+                                  </a>
+                                </Link>
+                              )
+                            })
+                          )
+                        })}
 
-                          {/* <Link href="/work">
-                            <a className="w-[12vw] h-[16vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change">
-                              <Image
-                                src={image1}
-                                alt="Placeholder"
-                                layout="fill"
-                                className="w-full h-full object-cover object-center will-change"
-                                placeholder="blur"
-                              />
-                            </a>
-                          </Link>
-                          <Link href="/work">
-                            <a className="w-[25vw] h-[16vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change">
-                              <Image
-                                src={image2}
-                                alt="Placeholder"
-                                layout="fill"
-                                className="w-full h-full object-cover object-center will-change"
-                                placeholder="blur"
-                              />
-                            </a>
-                          </Link>
-                          <Link href="/work">
-                            <a className="w-[12vw] h-[16vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change">
-                              <Image
-                                src={image6}
-                                alt="Placeholder"
-                                layout="fill"
-                                className="w-full h-full object-cover object-center will-change"
-                                placeholder="blur"
-                              />
-                            </a>
-                          </Link>
-                          <Link href="/work">
-                            <a className="w-[12vw] h-[16vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change">
-                              <Image
-                                src={image3}
-                                alt="Placeholder"
-                                layout="fill"
-                                className="w-full h-full object-cover object-center will-change"
-                                placeholder="blur"
-                              />
-                            </a>
-                          </Link>
-                          <Link href="/work">
-                            <a className="w-[25vw] h-[16vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change">
-                              <Image
-                                src={image4}
-                                alt="Placeholder"
-                                layout="fill"
-                                className="w-full h-full object-cover object-center will-change"
-                                placeholder="blur"
-                              />
-                            </a>
-                          </Link>
-                          <Link href="/work">
-                            <a className="w-[12vw] h-[16vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change">
-                              <Image
-                                src={image5}
-                                alt="Placeholder"
-                                layout="fill"
-                                className="w-full h-full object-cover object-center will-change"
-                                placeholder="blur"
-                              />
-                            </a>
-                          </Link> */}
-                        </div>
-                      </m.div>
+                        {/* <Link href="/work">
+                          <a className="w-[12vw] h-[16vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change">
+                            <Image
+                              src={image1}
+                              alt="Placeholder"
+                              layout="fill"
+                              className="w-full h-full object-cover object-center will-change"
+                              placeholder="blur"
+                            />
+                          </a>
+                        </Link>
+                        <Link href="/work">
+                          <a className="w-[25vw] h-[16vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change">
+                            <Image
+                              src={image2}
+                              alt="Placeholder"
+                              layout="fill"
+                              className="w-full h-full object-cover object-center will-change"
+                              placeholder="blur"
+                            />
+                          </a>
+                        </Link>
+                        <Link href="/work">
+                          <a className="w-[12vw] h-[16vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change">
+                            <Image
+                              src={image6}
+                              alt="Placeholder"
+                              layout="fill"
+                              className="w-full h-full object-cover object-center will-change"
+                              placeholder="blur"
+                            />
+                          </a>
+                        </Link>
+                        <Link href="/work">
+                          <a className="w-[12vw] h-[16vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change">
+                            <Image
+                              src={image3}
+                              alt="Placeholder"
+                              layout="fill"
+                              className="w-full h-full object-cover object-center will-change"
+                              placeholder="blur"
+                            />
+                          </a>
+                        </Link>
+                        <Link href="/work">
+                          <a className="w-[25vw] h-[16vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change">
+                            <Image
+                              src={image4}
+                              alt="Placeholder"
+                              layout="fill"
+                              className="w-full h-full object-cover object-center will-change"
+                              placeholder="blur"
+                            />
+                          </a>
+                        </Link>
+                        <Link href="/work">
+                          <a className="w-[12vw] h-[16vw] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-500 will-change">
+                            <Image
+                              src={image5}
+                              alt="Placeholder"
+                              layout="fill"
+                              className="w-full h-full object-cover object-center will-change"
+                              placeholder="blur"
+                            />
+                          </a>
+                        </Link> */}
+                      </div>
 
-                      <m.div variants={growWidth} className="my-2 md:my-8 w-full h-[1px] bg-transparent md:bg-black"></m.div>
+                      <div className="my-2 md:my-8 w-full h-[1px] bg-transparent md:bg-black"></div>
                     </div>
                   )
                 })}
-              </div>
+              </m.div>
             </m.section>
           </LazyMotion>
         </main>

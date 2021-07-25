@@ -130,7 +130,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, h6 {
 }
 
 .will-change {
-  will-change: transform, opacity;
+  will-change: transform;
 }
 
 html.has-scroll-smooth {
@@ -178,34 +178,13 @@ html.has-scroll-dragging {
   }
 
   img {
-    @apply block absolute top-1/2 left-1/2 z-10 opacity-0;
+    @apply block absolute top-1/2 left-1/2 z-10 opacity-0 transition-opacity ease-in-out duration-500;
     width: calc(100% + 1px); /* helps with half pixel renderings */
     height: calc(100% + 1px); /* helps with half pixel renderings */
     transform: translate3d(-50%,-50%,0);
-    transition: opacity .4s linear;
+    /* will-change: transform, opacity; */
 
     &.is-loaded {
-      @apply opacity-100;
-    }
-  }
-
-  &--placeholder {
-    @apply absolute inset-0;
-    filter: grayscale(1);
-    transform: scale(1.15);
-    transition: opacity 0s .4s linear;
-
-    &.is-loaded {
-      @apply opacity-0;
-    }
-
-    &::after {
-      @apply absolute inset-0 z-10;
-      backdrop-filter: blur(1rem) contrast(1.5);
-      content: "";
-    }
-    
-    img {
       @apply opacity-100;
     }
   }

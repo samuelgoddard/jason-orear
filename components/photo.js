@@ -12,7 +12,6 @@ const Photo = ({
   sizes = '(min-width: 940px) 50vw, 100vw',
   layout = 'intrinsic',
   quality = 60,
-  hasPlaceholder = true,
   forceLoad,
   onLoad,
   className,
@@ -64,7 +63,7 @@ const Photo = ({
     <figure className={className ? className : null}>
       <div
         className={cx('ar', {
-          'has-fill will-change': layout === 'fill' || layout === 'contain',
+          'has-fill': layout === 'fill' || layout === 'contain',
         })}
         style={aspectCustom}
       >
@@ -82,12 +81,6 @@ const Photo = ({
             className={cx(getSize(layout), { 'is-loaded': isLoaded })}
           />
         </picture>
-
-        {hasPlaceholder && (
-          <div className={cx('ar--placeholder', { 'is-loaded': isLoaded })}>
-            <img src={photo.lqip} alt="" role="presentation" />
-          </div>
-        )}
       </div>
     </figure>
   )

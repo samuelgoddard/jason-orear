@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import Layout from '@/components/layout'
-import { fade } from "@/helpers/transitions"
+import { fade, slightScale } from "@/helpers/transitions"
 import { LazyMotion, domAnimation, m } from "framer-motion"
 import Link from 'next/link'
 import Image from 'next/image'
@@ -124,58 +124,61 @@ export default function Home(initialData) {
                     <a className="w-1/5" onMouseEnter={() => setCurrentProject(5)} onMouseLeave={() => setCurrentProject(1)}></a>
                   </Link>
                 </div>
-                
-                <Image
-                  src={home.featuredWork[0].homeCarouselImage.asset.url}
-                  alt="Placeholder"
-                  layout="fill"
-                  className={`w-full h-full object-cover object-center [z-2] home-image ${currentProject === 1 ? 'opacity-100 scale-[1.005]' : 'md:opacity-0 md:scale-[1.0275]'}`}
-                  placeholder="blur"
-                  blurDataURL={home.featuredWork[0].homeCarouselImage.asset.metadata.lqip}
-                />
+                <div className="absolute inset-0 overflow-hidden">
+                  <m.div className="absolute inset-0" variants={slightScale}>
+                    <Image
+                      src={home.featuredWork[0].homeCarouselImage.asset.url}
+                      alt="Placeholder"
+                      layout="fill"
+                      className={`w-full h-full object-cover object-center [z-2] home-image ${currentProject === 1 ? 'opacity-100 scale-[1.005]' : 'md:opacity-0 md:scale-[1.0275]'}`}
+                      placeholder="blur"
+                      blurDataURL={home.featuredWork[0].homeCarouselImage.asset.metadata.lqip}
+                    />
 
-                <div className="hidden md:block">
-                  <Image
-                    src={home.featuredWork[1].homeCarouselImage.asset.url}
-                    alt="Placeholder"
-                    layout="fill"
-                    className={`w-full h-full object-cover object-center [z-1] home-image ${currentProject === 2 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
-                    placeholder="blur"
-                    blurDataURL={home.featuredWork[1].homeCarouselImage.asset.metadata.lqip}
-                  />
-                </div>
+                    <div className="hidden md:block">
+                      <Image
+                        src={home.featuredWork[1].homeCarouselImage.asset.url}
+                        alt="Placeholder"
+                        layout="fill"
+                        className={`w-full h-full object-cover object-center [z-1] home-image ${currentProject === 2 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
+                        placeholder="blur"
+                        blurDataURL={home.featuredWork[1].homeCarouselImage.asset.metadata.lqip}
+                      />
+                    </div>
 
-                <div className="hidden md:block">
-                  <Image
-                    src={home.featuredWork[2].homeCarouselImage.asset.url}
-                    alt="Placeholder"
-                    layout="fill"
-                    className={`w-full h-full object-cover object-center [z-2] home-image ${currentProject === 3 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
-                    placeholder="blur"
-                    blurDataURL={home.featuredWork[2].homeCarouselImage.asset.metadata.lqip}
-                  />
-                </div>
-                
-                <div className="hidden md:block">
-                  <Image
-                    src={home.featuredWork[3].homeCarouselImage.asset.url}
-                    alt="Placeholder"
-                    layout="fill"
-                    className={`w-full h-full object-cover object-center [z-3] home-image ${currentProject === 4 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
-                    placeholder="blur"
-                    blurDataURL={home.featuredWork[3].homeCarouselImage.asset.metadata.lqip}
-                  />
-                </div>
-                
-                <div className="hidden md:block">
-                  <Image
-                    src={home.featuredWork[4].homeCarouselImage.asset.url}
-                    alt="Placeholder"
-                    layout="fill"
-                    className={`w-full h-full object-cover object-center [z-4] home-image ${currentProject === 5 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
-                    placeholder="blur"
-                    blurDataURL={home.featuredWork[4].homeCarouselImage.asset.metadata.lqip}
-                  />
+                    <div className="hidden md:block">
+                      <Image
+                        src={home.featuredWork[2].homeCarouselImage.asset.url}
+                        alt="Placeholder"
+                        layout="fill"
+                        className={`w-full h-full object-cover object-center [z-2] home-image ${currentProject === 3 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
+                        placeholder="blur"
+                        blurDataURL={home.featuredWork[2].homeCarouselImage.asset.metadata.lqip}
+                      />
+                    </div>
+                    
+                    <div className="hidden md:block">
+                      <Image
+                        src={home.featuredWork[3].homeCarouselImage.asset.url}
+                        alt="Placeholder"
+                        layout="fill"
+                        className={`w-full h-full object-cover object-center [z-3] home-image ${currentProject === 4 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
+                        placeholder="blur"
+                        blurDataURL={home.featuredWork[3].homeCarouselImage.asset.metadata.lqip}
+                      />
+                    </div>
+                    
+                    <div className="hidden md:block">
+                      <Image
+                        src={home.featuredWork[4].homeCarouselImage.asset.url}
+                        alt="Placeholder"
+                        layout="fill"
+                        className={`w-full h-full object-cover object-center [z-4] home-image ${currentProject === 5 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
+                        placeholder="blur"
+                        blurDataURL={home.featuredWork[4].homeCarouselImage.asset.metadata.lqip}
+                      />
+                    </div>
+                  </m.div>
                 </div>
               </div>
             </m.div>

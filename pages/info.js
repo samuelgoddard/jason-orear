@@ -65,7 +65,7 @@ export default function Info(initialData) {
         options={
           {
             smooth: true,
-            lerp: 0.035
+            lerp: 0.075
           }
         }
         watch={[]}
