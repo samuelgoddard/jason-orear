@@ -146,7 +146,7 @@ export default function WorksGallery(initialData) {
                     let optimisedHeight = Math.round(height);
 
                     return (
-                      <Link href={`/works/${e.slug}`} key={i}>
+                      <Link href={`/works/${e.slug.current}`} key={i}>
                         <a className={`grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition ease-in-out duration-700 relative ${classList}`}>
                           <span className="absolute top-0 left-0 m-2 md:m-3 xl:m-4 z-10 text-white text-sm font-mono bg-black bg-opacity-20 w-8 h-8 flex items-center justify-center">{i}</span>
 
@@ -207,7 +207,7 @@ export default function WorksGallery(initialData) {
                     let optimisedHeight = Math.round(height);
 
                     return (
-                      <Link href={`/works/${e.slug}`} key={i}>
+                      <Link href={`/works/${e.slug.current}`} key={i}>
                         <a className={`grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition ease-in-out duration-700 relative ${classList}`}>
                           <span className="absolute top-0 left-0 m-2 md:m-3 xl:m-4 z-10 text-white text-sm font-mono bg-black bg-opacity-20 w-8 h-8 flex items-center justify-center">{i}</span>
 
