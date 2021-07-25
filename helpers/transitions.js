@@ -58,6 +58,18 @@ export const growHeight = {
 	}
 }
 
+export const growWidth = {
+	initial: { width: 0 },
+  enter: { 
+    width: '100%',
+    transition: { duration: 0.75, ease: [0.83, 0, 0.17, 1] }
+  },
+	exit: {
+    width: 0,
+		transition: { duration: 0.65, ease: [0.83, 0, 0.17, 1] }
+	}
+}
+
 export const slightScale = {
 	initial: { scale: 1.125 },
   enter: { 
@@ -66,6 +78,20 @@ export const slightScale = {
   },
 	exit: {
     scale: 1.2,
+		transition: { duration: 0.65, ease: [0.83, 0, 0.17, 1] }
+	}
+}
+
+export const slightTransformHori = {
+	initial: { x: '-5%', opacity: 0 },
+  enter: { 
+    x: 0,
+    opacity: 1,
+    transition: { duration: 1.25, ease: [0.83, 0, 0.17, 1] }
+  },
+	exit: {
+    x: '-10%',
+    opacity: 0,
 		transition: { duration: 0.65, ease: [0.83, 0, 0.17, 1] }
 	}
 }
