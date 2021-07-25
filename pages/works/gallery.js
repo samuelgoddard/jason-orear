@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Layout from '@/components/layout'
-import { fade, reveal } from "@/helpers/transitions"
+import { fade, reveal, slightScale } from "@/helpers/transitions"
 import { LazyMotion, domAnimation, m } from "framer-motion"
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { NextSeo } from 'next-seo'
@@ -147,18 +147,28 @@ export default function WorksGallery(initialData) {
 
                     return (
                       <Link href={`/works/${e.slug.current}`} key={i}>
-                        <a className={`grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition ease-in-out duration-700 relative ${classList}`}>
-                          <span className="absolute top-0 left-0 m-2 md:m-3 xl:m-4 z-10 text-white text-sm font-mono bg-black bg-opacity-20 w-8 h-8 flex items-center justify-center">{i}</span>
+                        <a className={`grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition ease-in-out duration-700 relative group ${classList}`}>
+                          {/* <span className="absolute top-0 left-0 m-2 md:m-3 xl:m-4 z-10 text-white text-sm font-mono bg-black bg-opacity-20 w-8 h-8 flex items-center justify-center">{i}</span> */}
 
-                          <Photo
-                            photo={e.imageSlides[0].images[0]}
-                            width={optimisedWidth}
-                            height={optimisedHeight}
-                            srcSizes={[900]}
-                            sizes="(min-width: 900px) 100vw, 100vw"
-                            layout="fill"
-                            className="w-full h-full object-cover object-center will-change "
-                          />
+                          <div className="w-full h-full relative overflow-hidden">
+                            <m.div className="w-full h-full absolute inset-0" variants={slightScale}>
+                              <Photo
+                                photo={e.imageSlides[0].images[0]}
+                                width={optimisedWidth}
+                                height={optimisedHeight}
+                                srcSizes={[900]}
+                                sizes="(min-width: 900px) 100vw, 100vw"
+                                layout="fill"
+                                className="w-full h-full object-cover object-center will-change "
+                              />
+                            </m.div>
+                          </div>
+
+                          <span className="hidden md:block overflow-hidden mt-[14px]">
+                            <span className="block transition-transform ease-in-out duration-[350ms] translate-y-[14px] group-hover:translate-y-0 will-change">
+                              <span className="font-mono text-[14px] text-center block mb-0 pb-0 leading-none uppercase">{e.indexNumber} {e.title}</span>
+                            </span>
+                          </span>
                         </a>
                       </Link>
                     )
@@ -208,18 +218,29 @@ export default function WorksGallery(initialData) {
 
                     return (
                       <Link href={`/works/${e.slug.current}`} key={i}>
-                        <a className={`grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition ease-in-out duration-700 relative ${classList}`}>
-                          <span className="absolute top-0 left-0 m-2 md:m-3 xl:m-4 z-10 text-white text-sm font-mono bg-black bg-opacity-20 w-8 h-8 flex items-center justify-center">{i}</span>
+                        <a className={`grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition ease-in-out duration-700 relative group ${classList}`}>
+                          {/* <span className="absolute top-0 left-0 m-2 md:m-3 xl:m-4 z-10 text-white text-sm font-mono bg-black bg-opacity-20 w-8 h-8 flex items-center justify-center">{i}</span> */}
 
-                          <Photo
-                            photo={e.imageSlides[1].images[0]}
-                            width={optimisedWidth}
-                            height={optimisedHeight}
-                            srcSizes={[900]}
-                            sizes="(min-width: 900px) 100vw, 100vw"
-                            layout="fill"
-                            className="w-full h-full object-cover object-center will-change "
-                          />
+                          <div className="w-full h-full relative overflow-hidden">
+                            <m.div className="w-full h-full absolute inset-0" variants={slightScale}>
+                              <Photo
+                                photo={e.imageSlides[1].images[0]}
+                                width={optimisedWidth}
+                                height={optimisedHeight}
+                                srcSizes={[900]}
+                                sizes="(min-width: 900px) 100vw, 100vw"
+                                layout="fill"
+                                className="w-full h-full object-cover object-center will-change "
+                              />
+                            </m.div>
+                          </div>
+
+
+                          <span className="hidden md:block overflow-hidden mt-[14px]">
+                            <span className="block transition-transform ease-in-out duration-[350ms] translate-y-[14px] group-hover:translate-y-0 will-change">
+                              <span className="font-mono text-[14px] text-center block mb-0 pb-0 leading-none uppercase">{e.indexNumber} {e.title}</span>
+                            </span>
+                          </span>
                         </a>
                       </Link>
                     )
