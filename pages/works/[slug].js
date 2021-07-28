@@ -114,10 +114,10 @@ export default function WorksSlug(initialData) {
                       let layoutWrapper = 'flex items-center h-full';
                       
                       if (f.layout == 'full-portrait') {
-                        layoutWrapper = 'overflow-hidden w-7/12 md:w-[32%] xl:w-[28%] 2xl:w-[28%] h-[55vh] md:h-[62vh] xl:h-[69vh] relative mx-auto will-change mt-[-6vh]';
+                        layoutWrapper = 'overflow-hidden w-7/12 md:w-[32%] xl:w-[30%] 2xl:w-[33%] 3xl:w-[39%] h-[55vh] md:h-[62vh] xl:h-[69vh] relative mx-auto will-change mt-[-6vh]';
                         layoutOuterWrapper = 'my-auto flex items-center max-w-screen-2xl mx-auto';
                       } else if (f.layout == 'full-landscape') {
-                        layoutWrapper = 'overflow-hidden w-9/12 md:w-8/12 h-[55vh] md:h-[63vh] xl:h-[66vh] 2xl:h-[62vh] relative mx-auto will-change mt-[-6vh]';
+                        layoutWrapper = 'overflow-hidden w-9/12 md:w-8/12 h-[55vh] md:h-[63vh] xl:h-[68vh] 2xl:h-[72vh] relative mx-auto will-change mt-[-6vh]';
                         layoutOuterWrapper = 'flex items-center h-full';
                       } else if (f.layout == 'two-portrait') {
                         layoutWrapper = 'overflow-hidden w-1/2 md:w-1/2 h-[55vh] md:h-[62vh] xl:h-[69vh] relative mx-auto will-change mt-[-6vh]';

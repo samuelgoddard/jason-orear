@@ -104,7 +104,7 @@ export default function WorksGallery(initialData) {
               </div>
               
               <m.div variants={fade} className="p-[14px] md:p-[20px] pt-28 md:pt-32 pb-6 md:pb-8 xl:pb-12">
-                <div className="grid grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-[2.5vw] mb-[2.5vw]">
+                <div className="grid grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-[3vw] mb-[2.5vw]">
                   {works.map((e, i) => {
                     let classList = '';
 
@@ -175,7 +175,7 @@ export default function WorksGallery(initialData) {
                   })}
                 </div>
 
-                <div className="grid grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-[2.5vw] mb-[2.5vw]">
+                {/* <div className="grid grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-[2.5vw] mb-[2.5vw]">
                   {works.map((e, i) => {
                     let classList = '';
 
@@ -219,7 +219,6 @@ export default function WorksGallery(initialData) {
                     return (
                       <Link href={`/works/${e.slug.current}`} key={i}>
                         <a className={`grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition ease-in-out duration-700 relative group ${classList}`}>
-                          {/* <span className="absolute top-0 left-0 m-2 md:m-3 xl:m-4 z-10 text-white text-sm font-mono bg-black bg-opacity-20 w-8 h-8 flex items-center justify-center">{i}</span> */}
 
                           <div className="w-full h-full relative overflow-hidden">
                             <m.div className="w-full h-full absolute inset-0" variants={slightScale}>
@@ -245,7 +244,7 @@ export default function WorksGallery(initialData) {
                       </Link>
                     )
                   })}
-                </div>
+                </div> */}
               </m.div>
             </m.section>
           </LazyMotion>

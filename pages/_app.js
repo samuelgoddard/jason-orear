@@ -66,7 +66,7 @@ export default function App({ Component, pageProps }) {
       setImage4(false);
       setImage5(false);
       setImage1(false);
-    }, 1000);
+    }, 350);
 
     const imageSwap2 = setTimeout(() => {
       setImage2(false);
@@ -74,7 +74,7 @@ export default function App({ Component, pageProps }) {
       setImage4(false);
       setImage5(false);
       setImage1(false);
-    }, 1400);
+    }, 700);
     
     const imageSwap3 = setTimeout(() => {
       setImage2(false);
@@ -82,7 +82,7 @@ export default function App({ Component, pageProps }) {
       setImage4(true);
       setImage5(false);
       setImage1(false);
-    }, 1800);
+    }, 1050);
     
     const imageSwap4 = setTimeout(() => {
       setImage2(false);
@@ -90,7 +90,7 @@ export default function App({ Component, pageProps }) {
       setImage4(false);
       setImage5(false);
       setImage1(true);
-    }, 2200);
+    }, 1400);
     
     const imageSwap5 = setTimeout(() => {
       setImage2(true);
@@ -98,7 +98,7 @@ export default function App({ Component, pageProps }) {
       setImage4(false);
       setImage5(false);
       setImage1(false);
-    }, 2600);
+    }, 1750);
     
     const imageSwap6 = setTimeout(() => {
       setImage2(false);
@@ -106,7 +106,7 @@ export default function App({ Component, pageProps }) {
       setImage4(false);
       setImage5(false);
       setImage1(false);
-    }, 3000);
+    }, 2100);
 
     const imageSwap7 = setTimeout(() => {
       setImage2(false);
@@ -114,7 +114,7 @@ export default function App({ Component, pageProps }) {
       setImage4(true);
       setImage5(false);
       setImage1(false);
-    }, 3400);
+    }, 2450);
 
     const imageSwap8 = setTimeout(() => {
       setImage2(false);
@@ -122,7 +122,7 @@ export default function App({ Component, pageProps }) {
       setImage4(false);
       setImage5(true);
       setImage1(false);
-    }, 3800);
+    }, 2800);
     
     const imageSwap9 = setTimeout(() => {
       setImage2(false);
@@ -130,7 +130,7 @@ export default function App({ Component, pageProps }) {
       setImage4(false);
       setImage5(false);
       setImage1(true);
-    }, 4200);
+    }, 3150);
   },[]);
 
   const router = useRouter()
@@ -141,7 +141,7 @@ export default function App({ Component, pageProps }) {
       div></> }
       <DefaultSeo {...SEO} />
 
-      <div className={`scroll-conainer transition-colors ease-in-out duration-700 delay-[400ms] ${router.asPath === '/info' || router.asPath === '/wayfinder' ? 'bg-pink' : 'bg-#FFFFFF' }`}>
+      <div className={`scroll-conainer transition-colors ease-in-out duration-700 delay-[400ms] ${router.asPath === '/info' || router.asPath === '/wayfinder' ? 'bg-yellow' : 'bg-#FFFFFF' }`}>
         <Context.Provider value={[introContext, setIntroContext]}>
 
           <Header route={router.asPath} />
@@ -153,7 +153,7 @@ export default function App({ Component, pageProps }) {
                 initial="hidden"
                 animate="visible"
                 variants={introEnd}
-                transition={{ delay: 4.5, duration: 0.75, ease: [0.83, 0, 0.17, 1] }}
+                transition={{ delay: 3.2, duration: 0.75, ease: [0.83, 0, 0.17, 1] }}
                 className="bg-white fixed inset-0 z-[100] pointer-events-none flex flex-col p-[14px] md:p-[20px]"
               >
                 <Div100vh className="bg-white fixed inset-0 z-[100] pointer-events-none flex flex-col p-[14px] md:p-[20px]">
@@ -172,7 +172,7 @@ export default function App({ Component, pageProps }) {
 
                   <div className="my-auto">
                     <div className="w-full h-[60vh] md:h-[63vh] relative mt-[-2vw] bg-gray-200 overflow-hidden">
-                      <m.div
+                      {/* <m.div
                         initial="hidden"
                         animate="visible"
                         variants={imageRevealUp}
@@ -185,21 +185,21 @@ export default function App({ Component, pageProps }) {
                         variants={imageRevealDown}
                         transition={{ delay: 0.8, duration: 2, ease: [0.83, 0, 0.17, 1] }}
                         className="w-full h-[50%] bg-white absolute bottom-0 left-0 right-0 z-10"
-                      ></m.div>
+                      ></m.div> */}
 
                       <m.div
                         initial="hidden"
                         animate="visible"
                         variants={imageRevealLeft}
-                        transition={{ delay: 2.5, duration: 2.5, ease: [0.83, 0, 0.17, 1] }}
-                        className="w-[35%] h-full bg-white absolute top-0 bottom-0 left-0 z-10"
+                        transition={{ delay: 0.8, duration: 3, ease: [0.83, 0, 0.17, 1] }}
+                        className="w-[50%] h-full bg-white absolute top-0 bottom-0 left-0 z-10"
                       ></m.div>
                       <m.div
                         initial="hidden"
                         animate="visible"
                         variants={imageRevealRight}
-                        transition={{ delay: 2.5, duration: 2.5, ease: [0.83, 0, 0.17, 1] }}
-                        className="w-[35%] h-full bg-white absolute top-0 bottom-0 right-0 z-10"
+                        transition={{ delay: 0.8, duration: 3, ease: [0.83, 0, 0.17, 1] }}
+                        className="w-[50%] h-full bg-white absolute top-0 bottom-0 right-0 z-10"
                       ></m.div>
 
                       {/* <m.div 
@@ -216,7 +216,7 @@ export default function App({ Component, pageProps }) {
                         initial="hidden"
                         animate="visible"
                         variants={imageScale}
-                        transition={{ delay: 2, duration: 2.75, ease: [0.785, 0.135, 0.150, 0.860] }}
+                        transition={{ delay: 0.8, duration: 3, ease: [0.785, 0.135, 0.150, 0.860] }}
                         className="absolute inset-0 w-full h-full"
                       >
                         <div className={`absolute inset-0 w-full h-full transition-opacity ease-in-out duration-300 ${image1 ? 'opacity-100' : 'opacity-0'}`}>

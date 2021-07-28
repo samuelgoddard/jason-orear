@@ -45,8 +45,8 @@ export default function Wayfinder(initialData) {
     //   text: "hover:text-burnt-blue"
     // },
     {
-      background: "bg-pink",
-      text: "hover:text-burnt-pink"
+      background: "bg-yellow",
+      text: "hover:text-burnt-yellow"
     }
   ];
 

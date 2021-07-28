@@ -79,9 +79,9 @@ export default function Info(initialData) {
               exit="exit"
               className=""
             >
-              <div className={`text-black min-h-screen flex flex-col p-[14px] md:p-[20px] pt-24 md:pt-32 justify-end selection:bg-black selection:text-pink relative`}>
+              <div className={`text-black min-h-screen flex flex-col p-[14px] md:p-[20px] pt-24 md:pt-32 justify-end selection:bg-black selection:text-yellow relative`}>
 
-                {/* <m.div variants={fade} className="absolute inset-0 z-0 bg-pink"></m.div> */}
+                {/* <m.div variants={fade} className="absolute inset-0 z-0 bg-yellow"></m.div> */}
                 
                 <div className="flex flex-wrap h-full lg:-mx-5 relative z-10">
                   <div className="w-full lg:w-2/3 lg:px-5 relative mb-12 lg:mb-0">
@@ -163,21 +163,21 @@ export default function Info(initialData) {
                         </div>
                       </div>
                       
-                      <m.div variants={fade} className="w-full h-[65vh] md:h-[50vh] mt-auto order-1 md:order-2 relative bg-pink">
+                      <m.div variants={fade} className="w-full h-[65vh] md:h-[50vh] mt-auto order-1 md:order-2 relative bg-yellow">
                         <div className="relative overflow-hidden w-full h-full mix-blend-multiply bg-blend-multiply">
                           <m.div variants={slightScale} className="absolute inset-0 w-full h-full mix-blend-multiply bg-blend-multiply">
                             <Image
                               src={biographyImage.asset.url}
                               alt="Jason O'Rear Biography Image"
                               layout="fill"
-                              className={`w-full h-full object-cover object-center mix-blend-multiply bg-blend-multiply will-change bg-pink`}
+                              className={`w-full h-full object-cover object-center mix-blend-multiply bg-blend-multiply will-change bg-yellow`}
                               placeholder="blur"
                               blurDataURL={biographyImage.asset.metadata.lqip}
                             />
                           </m.div>
                         </div>
 
-                        <h1 className="block text-upright uppercase font-semibold text-[32vw] md:text-[20vh] lg:text-[24vh] xl:text-[27vh] 2xl:text-[38vh] leading-[0.825] absolute bottom-0 right-0 z-30 mb-[-10vw] md:mb-0 2xl:mr-[-7vw] text-[#101010] overflow-hidden">
+                        <h1 className="block text-upright uppercase font-semibold text-[32vw] md:text-[20vh] lg:text-[24vh] xl:text-[27vh] 2xl:text-[35vh] leading-[0.825] absolute bottom-0 right-0 z-30 mb-[-10vw] md:mb-0 2xl:mr-[-1.75vw] text-[#101010] overflow-hidden">
                           <m.span variants={revealHori} className="block">
                             Info
                           </m.span>
