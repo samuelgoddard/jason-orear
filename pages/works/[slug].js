@@ -311,10 +311,10 @@ export default function WorksSlug(initialData) {
                 </span>
               </div>
 
-              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute top-0 left-0 right-0 z-40 m-[18px] md:m-[18px] w-[50%] md:w-[70%] mx-[25%] md:mx-[15%] text-center font-mono">
+              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute top-0 left-0 right-0 z-40 m-[20px] md:m-[20px] w-[50%] md:w-[70%] mx-[25%] md:mx-[15%] text-center font-mono">
                 <span className="block overflow-hidden h-[50px] group relative">
                   <div className="relative overflow-hidden">
-                    <m.span variants={reveal} className="text-center uppercase text-[14px] md:text-[16px] xl:text-[16px] w-auto relative block group-hover:opacity-0 opacity-100 transition-opacity ease-in-out duration-500">
+                    <m.span variants={reveal} className="text-center uppercase text-[14px] md:text-[16px] xl:text-[16px] w-auto relative block group-hover:opacity-0 opacity-100 transition-opacity ease-in-out duration-500 leading-none">
                       + Info
                     </m.span>
                   </div>

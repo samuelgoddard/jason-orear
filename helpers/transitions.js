@@ -46,6 +46,18 @@ export const revealHori = {
 	}
 }
 
+export const revealHoriReverse = {
+	initial: { x: '-100%' },
+  enter: { 
+    x: 0,
+    transition: { duration: 1, ease: [0.83, 0, 0.17, 1] }
+  },
+	exit: {
+    x: '-100%',
+		transition: { duration: 0.65, ease: [0.83, 0, 0.17, 1] }
+	}
+}
+
 export const growHeight = {
 	initial: { height: 0 },
   enter: { 

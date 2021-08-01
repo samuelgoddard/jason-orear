@@ -87,6 +87,18 @@ export default function Home(initialData) {
     }
   }
 
+  const revealMore = {
+    initial: { y: '110%' },
+    enter: { 
+      y: 0,
+      transition: { delay: introContext ? 0 : 3.2, duration: 1, ease: [0.83, 0, 0.17, 1] }
+    },
+    exit: {
+      y: '110%',
+      transition: { duration: 1, ease: [0.83, 0, 0.17, 1] }
+    }
+  }
+
   return (
     <Layout>
       <LazyMotion features={domAnimation}>
@@ -187,7 +199,9 @@ export default function Home(initialData) {
             <div className="flex flex-wrap items-end">
               
               <span className={`w-full md:w-auto text-[13px] md:text-[16px] tracking-tighter md:tracking-normal leading-none md:fixed bottom-0 left-0 mb-1 md:m-[20px] variant-numeric font-mono`}>
-                <span className="block uppercase mb-[5px]">(Info)</span>
+                <span className="block relative overflow-hidden mb-[5px]">
+                  <m.span variants={revealMore} className="block uppercase leading-none">(Info)</m.span>
+                </span>
                 <span className="block overflow-hidden md:h-[13px]">
                   <m.span variants={reveal} className="block">
                     <span className={`block ${coords} transition-transform ease-in-out duration-500`}>
@@ -214,10 +228,10 @@ export default function Home(initialData) {
                   </m.span>
                 </span>
               </span>
-
-              <span className="overflow-hidden ml-auto fixed bottom-0 right-0 flex items-end mb-[9px] md:mb-[-7px] 2xl:mb-[-12px] mr-[14px] md:mr-[20px]">
-                <m.span variants={reveal} className="block">
-                  <span className="text-[60px] md:text-[160px] 2xl:text-[230px] leading-none font-semibold tracking-tight flex items-end"><span className="block text-[13px] md:text-[16px] tracking-tighter md:tracking-normal leading-none mb-[38px] md:mb-[24px] 2xl:mb-[30px] uppercase font-normal font-mono"><span className="transform hidden md:inline-block rotate-180">◄</span> p<span className="hidden md:inline">roject</span> /</span>
+              {/* mb-[9px] md:mb-[-7px] 2xl:mb-[-12px] */}
+              <span className="overflow-hidden ml-auto fixed bottom-0 right-0 flex items-end mb-[9px] md:mb-[20px] 2xl:mb-[20px] mr-[14px] md:mr-[20px]">
+                <m.span variants={reveal} className="block md:mb-[-23px] 2xl:mb-[-32px]">
+                  <span className="text-[60px] md:text-[160px] 2xl:text-[230px] leading-none font-semibold tracking-tight flex items-end"><span className="block text-[13px] md:text-[16px] tracking-tighter md:tracking-normal leading-none mb-[38px] md:mb-[20px] 2xl:mb-[30px] uppercase font-normal font-mono"><span className="transform hidden md:inline-block rotate-180">◄</span> p<span className="hidden md:inline">roject</span> /</span>
                     <span className="block tracking-tighter">
                       <span className="block overflow-hidden md:h-[160px] 2xl:h-[230px]">
                         <span className={`block`}>
