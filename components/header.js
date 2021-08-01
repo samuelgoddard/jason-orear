@@ -64,9 +64,9 @@ export default function Header({route}) {
 
           <Link href="/wayfinder">
             <a className="fixed top-0 right-0 m-[14px] md:m-[20px] ml-auto hover:outline-none focus:outline-none block w-[40px] md:w-[64px] group py-3 z-40 group">
-              <m.span variants={navFull} className={`origin-top-left transition ease-in-out duration-300 block w-full h-[3px] md:h-1 bg-black mb-2 md:mb-3 group-hover:scale-x-75 ${route == '/wayfinder' || route == '/info' ? '' : ''}`}></m.span>
+              <m.span variants={navFull} className={`origin-top-left transition ease-in-out duration-300 block w-full h-[3px] md:h-1 bg-black mb-2 md:mb-3 group-hover:scale-x-75 group-hover:bg-yellow ${route == '/wayfinder' || route == '/info' ? '' : ''}`}></m.span>
 
-              <m.span variants={nav} className={`origin-top-left transition ease-in-out duration-300 block h-[3px] md:h-1 bg-black group-hover:scale-x-50 ${route == '/wayfinder' || route == '/info' ? '' : ''}`}></m.span>
+              <m.span variants={nav} className={`origin-top-left transition ease-in-out duration-300 block h-[3px] md:h-1 bg-black group-hover:scale-x-50 group-hover:bg-yellow ${route == '/wayfinder' || route == '/info' ? '' : ''}`}></m.span>
             </a>
           </Link>
         </m.header>

@@ -73,6 +73,7 @@ export default function Home(initialData) {
       setIntroContext(true)
     }, 4000);
   },[]);
+  
 
   const reveal = {
     initial: { y: '100%' },
