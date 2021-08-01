@@ -190,7 +190,7 @@ export default function WorksIndex(initialData) {
                         )}
                       </div>
                       
-                      <div className="whitespace-nowrap space-x-[2.5vw] md:space-x-[2vw] xl:space-x-[1.5vw] overflow-visible" data-scroll-direction="horizontal" data-scroll data-scroll-speed="1">
+                      <div className="whitespace-nowrap space-x-[2.5vw] md:space-x-[2vw] xl:space-x-[1.5vw] overflow-scroll md:overflow-visible" data-scroll-direction="horizontal" data-scroll data-scroll-speed="1">
                         {e.imageSlides.map((f, index) => {
                           return (
                             f.images.map((g, i) => {
