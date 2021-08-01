@@ -60,7 +60,7 @@ const Photo = ({
   }, [isLoaded])
 
   return (
-    <figure className={className ? className : null}>
+    <figure className={className ? `${className} bg-gray-100` : `bg-gray-100`}>
       <div
         className={cx('ar', {
           'has-fill': layout === 'fill' || layout === 'contain',

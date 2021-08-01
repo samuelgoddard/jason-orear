@@ -11,34 +11,42 @@ import { Context } from '../context/state'
 import SplitText from '@/components/split-text'
 import ConditionalWrap from 'conditional-wrap';
 
-const query = `*[_type == "info"][0]{
-  seo {
-    ...,
-    shareGraphic {
-      asset->
+const query = `{
+  "info": *[_type == "info"][0]{
+    seo {
+      ...,
+      shareGraphic {
+        asset->
+      }
+    },
+    title,
+    biographyText,
+    clients[] {
+      title,
+      url
+    },
+    publications[] {
+      title,
+      url
+    },
+    biographyImage {
+      asset -> {
+        ...
+      }
     }
   },
-  title,
-  biographyText,
-  clients[] {
-    title,
-    url
-  },
-  publications[] {
-    title,
-    url
-  },
-  biographyImage {
-    asset -> {
-      ...
-    }
+  "contact": *[_type == "contact"][0]{
+    email,
+    instagramUrl,
+    phone,
+    address
   }
 }`
 
 const pageService = new SanityPageService(query)
 
 export default function Info(initialData) {
-  const { data: { title, seo, biographyText, clients, publications, biographyImage }  } = pageService.getPreviewHook(initialData)()
+  const { data: { info, contact }  } = pageService.getPreviewHook(initialData)()
   const containerRef = useRef(null)
   const [introContext, setIntroContext] = useContext(Context);
 
@@ -104,7 +112,7 @@ export default function Info(initialData) {
                               className="mb-[3vh] font-mono uppercase tracking-wider text-[11px] md:text-[13px]"
                             >
 
-                              {clients.map((e,i) => {
+                              {info.clients.map((e,i) => {
                                 return (
                                   <li key={i} className="block overflow-hidden">
                                     <m.span variants={reveal} className="block">
@@ -140,7 +148,7 @@ export default function Info(initialData) {
                               className="mb-[3vh] font-mono uppercase tracking-wider text-[11px] md:text-[13px]"
                             >
 
-                              {publications.map((e,i) => {
+                              {info.publications.map((e,i) => {
                                 return (
                                   <li key={i} className="block overflow-hidden">
                                     <m.span variants={reveal} className="block">
@@ -167,12 +175,12 @@ export default function Info(initialData) {
                         <div className="relative overflow-hidden w-full h-full mix-blend-multiply bg-blend-multiply">
                           <m.div variants={slightScale} className="absolute inset-0 w-full h-full mix-blend-multiply bg-blend-multiply">
                             <Image
-                              src={biographyImage.asset.url}
+                              src={info.biographyImage.asset.url}
                               alt="Jason O'Rear Biography Image"
                               layout="fill"
                               className={`w-full h-full object-cover object-center mix-blend-multiply bg-blend-multiply will-change bg-white`}
                               placeholder="blur"
-                              blurDataURL={biographyImage.asset.metadata.lqip}
+                              blurDataURL={info.biographyImage.asset.metadata.lqip}
                             />
                           </m.div>
                         </div>
@@ -194,7 +202,7 @@ export default function Info(initialData) {
                         </div>
                       </div>
                       <m.div variants={fade} className="w-full content max-w-[480px] lg:max-w-none">
-                        <BlockContent serializers={{ container: ({ children }) => children }} blocks={biographyText} />
+                        <BlockContent serializers={{ container: ({ children }) => children }} blocks={info.biographyText} />
                       </m.div>
                     </div>
 
@@ -206,44 +214,56 @@ export default function Info(initialData) {
                       </div>
                       
                       {/* Phone */}
-                      <div className="w-full">
-                        <div className="relative block overflow-hidden mb-2">
-                          <m.span variants={reveal} className="font-mono block uppercase text-[11px] md:text-[13px]">(Phone)</m.span>
-                        </div>
-                      </div>
-                      <m.div variants={fade} className="w-full mb-6">
-                        <a href="#" className="block uppercase text-[13px] md:text-[15px] lg:text-[16px] ml-[10px] md:ml-[20px] underline transition-colors ease-in-out duration-300 hover:text-burnt-yellow focus:text-burnt-yellow">01020123213</a>
-                      </m.div>
+                      {contact.phone && (
+                        <>
+                          <div className="w-full">
+                            <div className="relative block overflow-hidden mb-2">
+                              <m.span variants={reveal} className="font-mono block uppercase text-[11px] md:text-[13px]">(Phone)</m.span>
+                            </div>
+                          </div>
+                          <m.div variants={fade} className="w-full mb-6">
+                            <a href={`tel:${contact.phone}`} className="block uppercase text-[13px] md:text-[15px] lg:text-[16px] ml-[10px] md:ml-[20px] underline transition-colors ease-in-out duration-300 hover:text-burnt-yellow focus:text-burnt-yellow">{contact.phone}</a>
+                          </m.div>
+                        </>
+                      )}
                       
-                      {/* Phone */}
+                      {/* Email */}
                       <div className="w-full">
                         <div className="relative block overflow-hidden mb-2">
                           <m.span variants={reveal} className="font-mono block uppercase text-[11px] md:text-[13px]">(Email)</m.span>
                         </div>
                       </div>
                       <m.div variants={fade} className="w-full mb-6">
-                        <a href="#" className="block uppercase text-[13px] md:text-[15px] lg:text-[16px] ml-[10px] md:ml-[20px] underline transition-colors ease-in-out duration-300 hover:text-burnt-yellow focus:text-burnt-yellow">efwef@wefwef.com</a>
+                        <a href={`mailto:${contact.email}`} className="block uppercase text-[13px] md:text-[15px] lg:text-[16px] ml-[10px] md:ml-[20px] underline transition-colors ease-in-out duration-300 hover:text-burnt-yellow focus:text-burnt-yellow">{contact.email}</a>
                       </m.div>
 
                       {/* Address */}
-                      <div className="w-full">
-                        <div className="relative block overflow-hidden mb-2">
-                          <m.span variants={reveal} className="font-mono block uppercase text-[11px] md:text-[13px]">(Address)</m.span>
-                        </div>
-                      </div>
-                      <m.div variants={fade} className="w-full mb-6">
-                        <span className="block uppercase text-[13px] md:text-[15px] lg:text-[16px] ml-[10px] md:ml-[20px]">34 CERVANTES BLVD.<br/>SAN FRANCISCO, CA<br/>94123</span>
-                      </m.div>
+                      {contact.address && (
+                        <>
+                          <div className="w-full">
+                            <div className="relative block overflow-hidden mb-2">
+                              <m.span variants={reveal} className="font-mono block uppercase text-[11px] md:text-[13px]">(Address)</m.span>
+                            </div>
+                          </div>
+                          <m.div variants={fade} className="w-full mb-6">
+                            <span className="block uppercase text-[13px] md:text-[15px] lg:text-[16px] ml-[10px] md:ml-[20px] max-w-[200px]">{contact.address}</span>
+                          </m.div>
+                        </>
+                      )}
 
                       {/* Social */}
-                      <div className="w-full">
-                        <div className="relative block overflow-hidden mb-2">
-                          <m.span variants={reveal} className="font-mono block uppercase text-[11px] md:text-[13px]">(Social)</m.span>
-                        </div>
-                      </div>
-                      <m.div variants={fade} className="w-full">
-                        <a href="#" className="block uppercase text-[13px] md:text-[15px] lg:text-[16px] ml-[10px] md:ml-[20px] underline transition-colors ease-in-out duration-300 hover:text-burnt-yellow focus:text-burnt-yellow">Instagram</a>
-                      </m.div>
+                      {contact.instagramUrl && (
+                        <>
+                          <div className="w-full">
+                            <div className="relative block overflow-hidden mb-2">
+                              <m.span variants={reveal} className="font-mono block uppercase text-[11px] md:text-[13px]">(Social)</m.span>
+                            </div>
+                          </div>
+                          <m.div variants={fade} className="w-full">
+                            <a href={contact.instagramUrl} className="block uppercase text-[13px] md:text-[15px] lg:text-[16px] ml-[10px] md:ml-[20px] underline transition-colors ease-in-out duration-300 hover:text-burnt-yellow focus:text-burnt-yellow">Instagram</a>
+                          </m.div>
+                        </>
+                      )}
 
                     </div>
                   </div>

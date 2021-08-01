@@ -67,10 +67,13 @@ export default function WorksSlug(initialData) {
   const { data: { title, seo, slug, indexNumber, client, location, gps, year, imageSlides, next }  } = pageService.getPreviewHook(initialData)()
   const [introContext, setIntroContext] = useContext(Context);
   const [infoOpen, setInfoOpen] = useState(false);
+  const [nextHovered, setNextHovered] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0)
   // const currentSlide = fullpageApi.getActiveSlide();
 
   const toggleInfoOpen = () => setInfoOpen(!infoOpen);
+  const toggleNextHoveredOn = () => setNextHovered(true);
+  const toggleNextHoveredOff = () => setNextHovered(false);
 
   useEffect(() => {
     setIntroContext(true)
@@ -97,9 +100,10 @@ export default function WorksSlug(initialData) {
               pluginWrapper={pluginWrapper}
               licenseKey={'3E8E8C87-B0B24A84-8C40386A-A5CE366D'}
               // onLeave={this.onLeave.bind(this)}
-              scrollingSpeed = {800}
+              scrollingSpeed = {1100}
               loopHorizontal={false}
               scrollHorizontally={true}
+              easingcss3="cubic-bezier(0.83, 0, 0.17, 1)"
               scrollHorizontallyKey={'dmVyY2VsLmFwcF9icnZjMk55YjJ4c1NHOXlhWHB2Ym5SaGJHeDUwcHo='}
               render={({ state, fullpageApi }) => {
                 console.log(state)
@@ -109,7 +113,7 @@ export default function WorksSlug(initialData) {
                     <div className="slider-button">
                       <button
                         onClick={() => fullpageApi.moveSlideLeft() && fullpageApi.getActiveSlide()}
-                        className="fixed top-0 left-0 z-20 h-[80vh] w-[12%] my-[10vh] flex items-center group transition-opacity ease-in-out duration-500 slider-buttons--prev"
+                        className="absolute top-0 left-0 z-20 h-[80vh] w-[12%] my-[10vh] flex items-center group transition-opacity ease-in-out duration-500 slider-buttons--prev md:ml-[-2px]"
                       >
                         <div className="overflow-hidden relative leading-none mt-[-20vh] md:mt-0">
                           <m.span className="block" variants={reveal}>
@@ -127,15 +131,15 @@ export default function WorksSlug(initialData) {
 
                       <button
                         onClick={() => fullpageApi.moveSlideRight()}
-                        className="fixed top-0 right-0 z-20 h-[80vh] w-[12%] my-[10vh] flex items-center justify-end group slider-buttons--next transition-opacity ease-in-out duration-500"
+                        className="absolute top-0 right-0 bottom-0 z-20 h-[80vh] w-[12vw] my-[10vh] flex flex-wrap items-center group slider-buttons--next transition-opacity ease-in-out duration-500 text-right md:mr-[-2px]"
                       >
-                        <div className="overflow-hidden relative leading-none mt-[-20vh] md:mt-0">
-                          <m.span className="block" variants={reveal}>
-                            <span className="block transition ease-in-out duration-[550ms] opacity-30 md:opacity-20 font-mono uppercase text-[20px] md:text-[15px] slider-buttons--next-inner absolute top-0 mt-[1px] right-0 group-hover:opacity-0">
+                        <div className="overflow-hidden relative leading-none mt-[-20vh] md:mt-0 text-right w-full ">
+                          <m.span className="block text-right" variants={reveal}>
+                            <span className="block transition ease-in-out duration-[550ms] opacity-30 md:opacity-20 font-mono uppercase text-[20px] md:text-[15px] slider-buttons--next-inner absolute top-0 mt-[1px] right-0 group-hover:opacity-0 text-right">
                               <span className="block md:hidden">&#x3e;</span>
                               <span className="hidden md:block">Next</span>
                             </span>
-                            <span className="block transition-transform ease-in-out duration-[550ms] translate-y-full group-hover:translate-y-0 font-mono uppercase text-[20px] md:text-[15px] slider-buttons--next-inner">
+                            <span className="block transition-transform ease-in-out duration-[550ms] translate-y-full group-hover:translate-y-0 font-mono uppercase text-[20px] md:text-[15px] slider-buttons--next-inner text-right">
                               <span className="block md:hidden">&#x3e;</span>
                               <span className="hidden md:block">Next</span>
                             </span>
@@ -216,24 +220,31 @@ export default function WorksSlug(initialData) {
                             
                             <div className="my-auto mt-[-30vw] md:mt-0 flex w-full mx-auto space-x-[5vw] max-w-screen-xl items-center justify-center relative z-10">
                               <Link href={`/works/${next.slug.current}`}>
-                                <a className="will-change mt-[-6vh] block text-center md:text-left">
-                                  <span className="block uppercase text-[14px] md:text-[20px] leading-none mb-[12px] md:mb-[20px] 2xl:mb-[28px] text-center">Next Project</span>
-                                  <span className="block text-[8vw] md:text-[11vw] 2xl:text-[12vw] uppercase font-semibold leading-[0.875] ml-[-1vw] 2xl:ml-[-18px] -mt-px md:-mt-1 2xl:-mt-3 text-center">{next.title}</span>
+                                <a className="will-change mt-[-6vh] block text-center md:text-left group" onMouseOver={toggleNextHoveredOn} onMouseOut={toggleNextHoveredOff}>
+                                  <span className="block uppercase text-[14px] md:text-[20px] leading-none mb-[12px] md:mb-[20px] 2xl:mb-[28px] text-center transition-colors ease-in-out duration-500">Next Project</span>
+                                  <span className="block text-[8vw] md:text-[11vw] 2xl:text-[12vw] uppercase font-semibold leading-[0.875] ml-[-1vw] 2xl:ml-[-18px] -mt-px md:-mt-1 2xl:-mt-3 text-center transition-colors ease-in-out duration-500">
+                                    {next.title}
+                                    <div className="overflow-hidden relative flex justify-center">
+                                      <div className={`h-[10px] transition-all ease-in-out duration-[600ms] bg-black ${nextHovered ? 'w-full' : 'w-[0px] scale-x-[0.9]' }`}></div>
+                                    </div>
+                                  </span>
                                 </a>
                               </Link>
                             </div>
 
                             <div className="w-full md:w-full h-[30vh] md:h-screen mx-auto will-change absolute bottom-0 right-0 left-0 md:top-0 mb-[65px] md:mb-[48px] md:z-0 md:flex md:flex-wrap md:items-center md:justify-center bg-white">
-                              <div className="w-full h-[30vh] md:w-1/2 md:h-[50vh] opacity-25 grayscale bg-white md:mt-[-7.5vh]">
-                                <Photo
-                                  photo={next.imageSlides[0].images[0]}
-                                  width={next.imageSlides[0].images[0].asset.metadata.dimensions.width / 3}
-                                  height={next.imageSlides[0].images[0].asset.metadata.dimensions.height / 3}
-                                  srcSizes={[900]}
-                                  sizes="(min-width: 900px) 100vw, 100vw"
-                                  layout="fill"
-                                  className="w-full h-full object-cover object-center will-change bg-white"
-                                />
+                              <div className={`w-full h-[30vh] md:w-1/2 md:h-[50vh] opacity-25 bg-white md:mt-[-7.5vh] overflow-hidden relative transition ease-in-out duration-500 ${ nextHovered ? 'grayscale-0 opacity-50' : 'grayscale' }`}>
+                                <m.div variants={slightScale} className="absolute inset-0" onMouseOver={toggleNextHoveredOn} onMouseOut={toggleNextHoveredOff}>
+                                  <Photo
+                                    photo={next.imageSlides[0].images[0]}
+                                    width={next.imageSlides[0].images[0].asset.metadata.dimensions.width / 3}
+                                    height={next.imageSlides[0].images[0].asset.metadata.dimensions.height / 3}
+                                    srcSizes={[900]}
+                                    sizes="(min-width: 900px) 100vw, 100vw"
+                                    layout="fill"
+                                    className={`w-full h-full object-cover object-center will-change bg-white transition-transform ease-in-out duration-700 ${nextHovered ? 'scale-110' : 'scale-100' }`}
+                                  />
+                                </m.div>
                               </div>
                             </div>
                           </>
@@ -287,9 +298,9 @@ export default function WorksSlug(initialData) {
                 </span>
               </div>
 
-              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute bottom-0 left-0 right-0 z-30 mb-[50px] md:mb-[18px] w-auto text-center mx-auto">
+              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute bottom-0 left-0 right-0 z-30 mb-[50px] md:mb-[13px] w-auto text-center mx-auto">
                 <span className="block overflow-hidden">
-                  <m.h1 variants={revealMore} className="text-center uppercase text-[23px] md:text-[30px] xl:text-[40px] 2xl:text-[55px] leading-[1.125] w-auto relative inline-block group m-0 p-0">
+                  <m.h1 variants={revealMore} className="text-center uppercase text-[23px] md:text-[30px] xl:text-[40px] 2xl:text-[55px] leading-[1] w-auto relative inline-block group m-0 p-0">
                     <span className="block relative overflow-hidden">
                       <span className={`block transition-translate ease-in-out duration-500 ${infoOpen ? 'translate-y-full' : 'delay-[150ms]' }`}>{title}</span>
                     </span>
