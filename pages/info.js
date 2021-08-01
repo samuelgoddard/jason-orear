@@ -260,7 +260,7 @@ export default function Info(initialData) {
                             </div>
                           </div>
                           <m.div variants={fade} className="w-full">
-                            <a href={contact.instagramUrl} className="block uppercase text-[13px] md:text-[15px] lg:text-[16px] ml-[10px] md:ml-[20px] underline transition-colors ease-in-out duration-300 hover:text-burnt-yellow focus:text-burnt-yellow">Instagram</a>
+                            <a href={contact.instagramUrl} target="_blank" rel="noopener noreferrer" className="block uppercase text-[13px] md:text-[15px] lg:text-[16px] ml-[10px] md:ml-[20px] underline transition-colors ease-in-out duration-300 hover:text-burnt-yellow focus:text-burnt-yellow">Instagram</a>
                           </m.div>
                         </>
                       )}
