@@ -111,7 +111,7 @@ export default function WorksSlug(initialData) {
                         onClick={() => fullpageApi.moveSlideLeft() && fullpageApi.getActiveSlide()}
                         className="fixed top-0 left-0 z-20 h-[80vh] w-[12%] my-[10vh] flex items-center group transition-opacity ease-in-out duration-500 slider-buttons--prev"
                       >
-                        <div className="overflow-hidden relative leading-none mt-[-15vh] md:mt-0">
+                        <div className="overflow-hidden relative leading-none mt-[-20vh] md:mt-0">
                           <m.span className="block" variants={reveal}>
                             <span className="block transition ease-in-out duration-[550ms] opacity-30 md:opacity-20 font-mono uppercase text-[20px] md:text-[15px] slider-buttons--prev-inner absolute top-0 mt-[1px] left-0 group-hover:opacity-0">
                               <span className="block md:hidden">&#x3c;</span>
@@ -129,7 +129,7 @@ export default function WorksSlug(initialData) {
                         onClick={() => fullpageApi.moveSlideRight()}
                         className="fixed top-0 right-0 z-20 h-[80vh] w-[12%] my-[10vh] flex items-center justify-end group slider-buttons--next transition-opacity ease-in-out duration-500"
                       >
-                        <div className="overflow-hidden relative leading-none mt-[-15vh] md:mt-0">
+                        <div className="overflow-hidden relative leading-none mt-[-20vh] md:mt-0">
                           <m.span className="block" variants={reveal}>
                             <span className="block transition ease-in-out duration-[550ms] opacity-30 md:opacity-20 font-mono uppercase text-[20px] md:text-[15px] slider-buttons--next-inner absolute top-0 mt-[1px] right-0 group-hover:opacity-0">
                               <span className="block md:hidden">&#x3e;</span>
