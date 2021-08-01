@@ -9,6 +9,7 @@ import { useContext, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Context } from '../context/state';
 import Div100vh from 'react-div-100vh'
+import { isWindows } from "react-device-detect";
 
 const reveal = {
   visible: { y: 0 },
@@ -141,7 +142,7 @@ export default function App({ Component, pageProps }) {
       div></> }
       <DefaultSeo {...SEO} />
 
-      <div className={`scroll-conainer transition-colors ease-in-out duration-700 delay-[400ms] ${router.asPath === '/wayfinder' ? 'bg-yellow' : 'bg-#FFFFFF' }`}>
+      <div className={`scroll-conainer transition-colors ease-in-out duration-700 delay-[400ms] ${isWindows ? 'windows' : 'mac'} ${router.asPath === '/wayfinder' ? 'bg-yellow' : 'bg-#FFFFFF' }`}>
         <Context.Provider value={[introContext, setIntroContext]}>
 
           <Header route={router.asPath} />
