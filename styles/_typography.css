@@ -189,3 +189,16 @@ html.has-scroll-dragging {
     }
   }
 }
+
+.fp-viewing-slider-slide-final .slider-buttons--next-inner {
+  @apply pointer-events-none translate-y-full !important;
+}
+
+.fp-viewing-slider-slide0 .slider-buttons--prev,
+.fp-viewing-slider-slide-final .slider-buttons--next {
+  @apply pointer-events-none !important;
+}
+
+.fp-viewing-slider-slide0 .slider-buttons--prev-inner {
+  @apply pointer-events-none translate-y-full !important;
+}

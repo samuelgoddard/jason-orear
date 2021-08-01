@@ -22,6 +22,18 @@ export const reveal = {
 	}
 }
 
+export const revealMore = {
+	initial: { y: '120%' },
+  enter: { 
+    y: 0,
+    transition: { duration: 0.65, ease: [0.83, 0, 0.17, 1] }
+  },
+	exit: {
+    y: '120%',
+		transition: { duration: 0.65, ease: [0.83, 0, 0.17, 1] }
+	}
+}
+
 export const revealIn = {
 	initial: { y: '100%' },
   enter: { 
