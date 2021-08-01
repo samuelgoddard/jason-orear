@@ -63,7 +63,7 @@ export default function Wayfinder(initialData) {
           exit="exit"
           className=""
         >
-          <Div100vh className="flex flex-col p-[14px] md:p-[35px] pt-32">
+          <Div100vh className="p-[14px] md:p-[22px] pt-[22px] md:pt-[22px] flex flex-row w-full justify-center">
             {/* <m.div variants={fade} className={`absolute inset-0 z-0 ${bodyColor.background}`}></m.div> */}
 
             <m.nav
@@ -74,9 +74,9 @@ export default function Wayfinder(initialData) {
               variants={{
                 enter: { transition: { staggerChildren: 0.015 } }
               }}
-             className="mt-auto"
+             className="w-full"
             >
-              <ul className={`flex flex-wrap max-w-screen-2xl mx-auto text-black relative z-10 ${bodyColor.text}`}>
+              <ul className={`flex flex-wrap max-w-screen-xl mx-auto text-black relative z-10 h-full w-full ${bodyColor.text}`}>
                 <li className="w-1/3 flex justify-center relative overflow-hidden">
                   <Link href="/info">
                     <a className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] transition-all ease-in-out duration-500 group hover:text-black">
@@ -92,7 +92,7 @@ export default function Wayfinder(initialData) {
                       </div>
                     </a>
                   </Link>
-                  <m.div variants={revealIn} className="border-r border-black w-[1px] h-full origin-bottom"></m.div>
+                  <m.div variants={revealIn} className="border-r border-white border-opacity-40 w-[1px] h-full origin-bottom"></m.div>
                 </li>
                 <li className="w-1/3 flex justify-center relative overflow-hidden">
                   <Link href="/works">
@@ -109,7 +109,7 @@ export default function Wayfinder(initialData) {
                       </div>
                     </a>
                   </Link>
-                  <m.div variants={revealIn} className="border-r border-black w-[1px] h-full"></m.div>
+                  <m.div variants={revealIn} className="border-r border-white border-opacity-40 w-[1px] h-full"></m.div>
                 </li>
                 <li className="w-1/3 flex justify-center">
                   <a href={`mailto:${email}`} className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] transition-all ease-in-out duration-500 group hover:text-black">

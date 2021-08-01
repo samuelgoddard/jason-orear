@@ -55,16 +55,16 @@ export default function Home(initialData) {
   let numberRoll = ''
 
   if (currentProject == 2) {
-    coords = 'md:translate-y-[-22px]'
+    coords = 'md:translate-y-[-16px]'
     numberRoll = 'md:translate-y-[-160px] 2xl:translate-y-[-230px]'
   } else if (currentProject == 3) {
-    coords = 'md:translate-y-[-44px]'
+    coords = 'md:translate-y-[-32px]'
     numberRoll = 'md:translate-y-[-320px] 2xl:translate-y-[-460px]'
   } else if (currentProject == 4) {
-    coords = 'md:translate-y-[-66px]'
+    coords = 'md:translate-y-[-48px]'
     numberRoll = 'md:translate-y-[-480px] 2xl:translate-y-[-690px]'
   } else if (currentProject == 5) {
-    coords = 'md:translate-y-[-88px]'
+    coords = 'md:translate-y-[-64px]'
     numberRoll = 'md:translate-y-[-640px] 2xl:translate-y-[-920px]'
   }
 
@@ -186,8 +186,9 @@ export default function Home(initialData) {
 
             <div className="flex flex-wrap items-end">
               
-              <span className={`w-full md:w-auto text-[14px] md:text-[22px] leading-none md:fixed bottom-0 left-0 mb-1 md:m-[20px] variant-numeric tracking-tighter`}>
-                <span className="block overflow-hidden md:h-[22px]">
+              <span className={`w-full md:w-auto text-[13px] md:text-[16px] tracking-tighter md:tracking-normal leading-none md:fixed bottom-0 left-0 mb-1 md:m-[20px] variant-numeric font-mono`}>
+                <span className="block uppercase mb-[5px]">(Info)</span>
+                <span className="block overflow-hidden md:h-[13px]">
                   <m.span variants={reveal} className="block">
                     <span className={`block ${coords} transition-transform ease-in-out duration-500`}>
                       <span className="block leading-none">{home.featuredWork[0].gps}</span>
@@ -200,8 +201,8 @@ export default function Home(initialData) {
                 </span>
               </span>
 
-              <span className="w-full text-[14px] md:text-[22px] tracking-tight ml-auto leading-none uppercase md:fixed md:text-center block">
-                <span className="block overflow-hidden md:h-[22px]">
+              <span className="w-full text-[13px] md:text-[16px] tracking-tighter md:tracking-normal ml-auto leading-none uppercase md:fixed md:text-center block font-mono">
+                <span className="block overflow-hidden md:h-[13px]">
                   <m.span variants={reveal} className="block">
                     <span className={`block ${coords} transition-transform ease-in-out duration-500`}>
                       <span className="block leading-none">{home.featuredWork[0].title}</span>
@@ -216,7 +217,7 @@ export default function Home(initialData) {
 
               <span className="overflow-hidden ml-auto fixed bottom-0 right-0 flex items-end mb-[9px] md:mb-[-7px] 2xl:mb-[-12px] mr-[14px] md:mr-[20px]">
                 <m.span variants={reveal} className="block">
-                  <span className="text-[60px] md:text-[160px] 2xl:text-[230px] leading-none font-semibold tracking-tight flex items-end"><span className="block text-[14px] md:text-[22px] tracking-tight leading-none mb-[38px] md:mb-[27px] 2xl:mb-[33px] uppercase font-normal">p /</span>
+                  <span className="text-[60px] md:text-[160px] 2xl:text-[230px] leading-none font-semibold tracking-tight flex items-end"><span className="block text-[13px] md:text-[16px] tracking-tighter md:tracking-normal leading-none mb-[38px] md:mb-[24px] 2xl:mb-[30px] uppercase font-normal font-mono"><span className="transform hidden md:inline-block rotate-180">◄</span> p<span className="hidden md:inline">roject</span> /</span>
                     <span className="block tracking-tighter">
                       <span className="block overflow-hidden md:h-[160px] 2xl:h-[230px]">
                         <span className={`block`}>

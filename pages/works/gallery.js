@@ -73,9 +73,9 @@ export default function WorksGallery(initialData) {
               data-scroll-section
             >
 
-              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute top-0 left-0 right-0 mt-[25px] mx-auto z-40 w-[130px] md:w-[190px] text-center flex">
+              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute top-0 left-0 right-0 mt-[20px] mx-auto z-40 w-[130px] md:w-[190px] text-center flex">
                 <Link href="/works">
-                  <a className="text-center uppercase text-[15px] md:text-[22px] w-auto relative inline-block group opacity-25 transition ease-in-out duration-500 leading-[1.1]">
+                  <a className="text-center uppercase text-[15px] md:text-[20px] w-auto relative inline-block group opacity-25 transition ease-in-out duration-500 leading-[1.1]">
                     <span className="block overflow-hidden">
                       <m.span className="block" variants={reveal}>
                         Index
@@ -84,7 +84,7 @@ export default function WorksGallery(initialData) {
                   </a>
                 </Link>
 
-                <span className="text-center uppercase text-[15px] md:text-[22px] w-auto relative inline-block group mx-1 transition ease-in-out duration-500 opacity-25 leading-[1.1]">
+                <span className="text-center uppercase text-[15px] md:text-[20px] w-auto relative inline-block group mx-1 transition ease-in-out duration-500 opacity-25 leading-[1.1]">
                   <span className="block overflow-hidden">
                     <m.span className="block" variants={reveal}>
                       /
@@ -93,7 +93,7 @@ export default function WorksGallery(initialData) {
                 </span>
 
                 <Link href="/works/gallery">
-                  <a className="text-center uppercase text-[15px] md:text-[22px] w-auto relative inline-block group transition ease-in-out duration-500 leading-[1.1]">
+                  <a className="text-center uppercase text-[15px] md:text-[20px] w-auto relative inline-block group transition ease-in-out duration-500 leading-[1.1]">
                     <span className="block overflow-hidden">
                       <m.span className="block" variants={reveal}>
                         Gallery

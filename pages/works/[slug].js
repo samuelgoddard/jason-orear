@@ -283,10 +283,10 @@ export default function WorksSlug(initialData) {
             }}
           >
               <div data-scroll data-scroll-sticky data-scroll-target="#inner-container" className="fixed md:absolute bottom-0 left-0 z-40 w-auto text-center">
-                <span className="block overflow-hidden m-[14px] md:m-[18px]">
+                <span className="block overflow-hidden m-[18px] mb-[12px] md:m-[18px] md:mb-[12px]">
                   <m.span variants={reveal} className="block">
                     <Link href="/works">
-                      <a className="text-center uppercase text-[15px] md:text-[19px] xl:text-[22px] w-auto relative inline-block group">
+                      <a className="text-center uppercase text-[15px] md:text-[14px] xl:text-[16px] w-auto relative inline-block group font-mono">
                         <span className="inline-block">Back</span>
                         <span className="block transition-all ease-in-out duration-500 w-full scale-x-0 group-hover:scale-x-100 h-[2px] bg-black"></span>
                       </a>
@@ -303,10 +303,41 @@ export default function WorksSlug(initialData) {
                 </span>
               </div>
 
-              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute bottom-0 right-0 z-40 m-[14px] md:m-[18px] w-auto text-center">
+              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute bottom-0 right-0 z-40 m-[18px] mb-[12px] md:m-[18px] md:mb-[12px] w-auto text-center font-mono">
                 <span className="block overflow-hidden">
-                  <m.span variants={reveal} className="text-center uppercase text-[15px] md:text-[19px] xl:text-[22px] w-auto relative inline-block group">
+                  <m.span variants={reveal} className="text-center uppercase text-[14px] md:text-[16px] xl:text-[16px] w-auto relative inline-block group">
                     1/7
+                  </m.span>
+                </span>
+              </div>
+
+              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute top-0 left-0 right-0 z-40 m-[18px] md:m-[18px] w-[50%] md:w-[70%] mx-[25%] md:mx-[15%] text-center font-mono">
+                <span className="block overflow-hidden h-[50px] group relative">
+                  <div className="relative overflow-hidden">
+                    <m.span variants={reveal} className="text-center uppercase text-[14px] md:text-[16px] xl:text-[16px] w-auto relative block group-hover:opacity-0 opacity-100 transition-opacity ease-in-out duration-500">
+                      + Info
+                    </m.span>
+                  </div>
+
+                  <m.span variants={reveal} className="text-center uppercase text-[14px] md:text-[16px] xl:text-[16px] w-auto opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-500 absolute top-0 left-0 right-0 flex justify-center">
+                    <div className="font-mono text-[12px] md:text-[12px] uppercase flex text-center">
+                      <div className="w-auto mx-3 text-left">
+                        <span className="hidden md:block mb-px md:mb-0">(Client)</span>
+                        <span className="block md:ml-3">“{client}”</span>
+                      </div>
+                      <div className="w-auto mx-3 text-left">
+                        <span className="hidden md:block mb-px md:mb-0">(Location)</span>
+                        <span className="block md:ml-3">“{location}”</span>
+                      </div>
+                      <div className="w-auto mx-3 text-left">
+                        <span className="hidden md:block mb-px md:mb-0">(GPS)</span>
+                        <span className="block md:ml-3">“{gps}”</span>
+                      </div>
+                      <div className="w-auto mx-3 text-left">
+                        <span className="hidden md:block mb-px md:mb-0">(Year)</span>
+                        <span className="block md:ml-3">“{year}”</span>
+                      </div>
+                    </div>
                   </m.span>
                 </span>
               </div>
