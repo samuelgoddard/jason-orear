@@ -234,7 +234,7 @@ export default function Home(initialData) {
                   <span className="text-[60px] md:text-[160px] 2xl:text-[230px] leading-none font-semibold tracking-tight flex items-end"><span className="block text-[13px] md:text-[16px] tracking-tighter md:tracking-normal leading-none mb-[38px] md:mb-[20px] 2xl:mb-[30px] uppercase font-normal font-mono"><span className="transform hidden md:inline-block rotate-180">◄</span> p<span className="hidden md:inline">roject</span> /</span>
                     <span className="block tracking-tighter">
                       <span className="block overflow-hidden md:h-[160px] 2xl:h-[230px]">
-                        <span className={`block`}>
+                        <span className={`block index-number`}>
                           <span className="block leading-none">
                             {numberSplit.map((e, i) => {
                               return (

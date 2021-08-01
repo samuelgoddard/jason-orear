@@ -79,7 +79,7 @@ export default function Wayfinder(initialData) {
               <ul className={`flex flex-wrap max-w-screen-xl mx-auto text-black relative z-10 h-full w-full ${bodyColor.text}`}>
                 <li className="w-1/3 flex justify-center relative overflow-hidden">
                   <Link href="/info">
-                    <a className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] transition-all ease-in-out duration-500 group hover:text-black">
+                    <a className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] transition-all ease-in-out duration-500 group hover:text-black wayfinder-text">
                       <div>
                         <div className="overflow-hidden">
                           <m.div variants={revealHori}>
@@ -96,7 +96,7 @@ export default function Wayfinder(initialData) {
                 </li>
                 <li className="w-1/3 flex justify-center relative overflow-hidden">
                   <Link href="/works">
-                    <a className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] transition-all ease-in-out duration-500 group hover:text-black mb-1 md:mb-2">
+                    <a className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] transition-all ease-in-out duration-500 group hover:text-black mb-1 md:mb-2 wayfinder-text">
                       <div>
                         <div className="overflow-hidden">
                           <m.div variants={revealHori}>
@@ -112,7 +112,7 @@ export default function Wayfinder(initialData) {
                   <m.div variants={revealIn} className="border-r border-white border-opacity-40 w-[1px] h-full"></m.div>
                 </li>
                 <li className="w-1/3 flex justify-center">
-                  <a href={`mailto:${email}`} className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] transition-all ease-in-out duration-500 group hover:text-black">
+                  <a href={`mailto:${email}`} className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] transition-all ease-in-out duration-500 group hover:text-black wayfinder-text">
                     <div>
                       <div className="overflow-hidden">
                         <m.div variants={revealHori}>

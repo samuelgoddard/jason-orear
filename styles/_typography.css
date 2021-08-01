@@ -202,3 +202,16 @@ html.has-scroll-dragging {
 .fp-viewing-slider-slide0 .slider-buttons--prev-inner {
   @apply pointer-events-none translate-y-full !important;
 }
+
+
+.windows .wayfinder-text {
+  @apply leading-[1] ml-[5vw] 2xl:ml-[3.5vw] 3xl:ml-[2vw] !important;
+}
+
+.windows .project-index-text {
+  @apply leading-[1] !important;
+}
+
+.windows .index-number {
+  @apply mb-[-0.5vw] !important;
+}
