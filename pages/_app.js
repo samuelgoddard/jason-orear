@@ -59,8 +59,12 @@ export default function App({ Component, pageProps }) {
   const [image5, setImage5] = useState(true);
 
   const [introContext, setIntroContext] = useState(false);
+  const [windows, setWindows] = useState(false)
+
 
   useEffect(() => {
+    setWindows(isWindows)
+
     const imageSwap1 = setTimeout(() => {
       setImage2(true);
       setImage3(false);
@@ -132,9 +136,10 @@ export default function App({ Component, pageProps }) {
       setImage5(false);
       setImage1(true);
     }, 3150);
-  },[]);
+  },[setWindows]);
 
   const router = useRouter()
+  
 
   return (
     <>
@@ -142,7 +147,7 @@ export default function App({ Component, pageProps }) {
       div></> }
       <DefaultSeo {...SEO} />
 
-      <div className={`scroll-conainer transition-colors ease-in-out duration-700 delay-[400ms] ${isWindows ? 'windows' : 'mac'} ${router.asPath === '/wayfinder' ? 'bg-yellow' : 'bg-#FFFFFF' }`}>
+      <div className={`scroll-conainer transition-colors ease-in-out duration-700 delay-[400ms] ${windows ? 'windows' : 'mac'} ${router.asPath === '/wayfinder' ? 'bg-yellow' : 'bg-#FFFFFF' }`}>
         <Context.Provider value={[introContext, setIntroContext]}>
 
           <Header route={router.asPath} />
