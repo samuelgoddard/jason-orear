@@ -46,7 +46,7 @@ export default function Wayfinder(initialData) {
     // },
     {
       background: "bg-yellow",
-      text: "hover:text-burnt-yellow"
+      text: ""
     }
   ];
 
@@ -79,14 +79,14 @@ export default function Wayfinder(initialData) {
               <ul className={`flex flex-wrap mx-auto text-black relative z-10 h-full w-full ${bodyColor.text}`}>
                 <li className="w-1/3 flex justify-center relative overflow-hidden">
                   <Link href="/info">
-                    <a className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] group hover:text-black wayfinder-text p-[14px] md:p-[22px] pt-[22px] md:pt-[22px]">
+                    <a className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] group hover:text-burnt-yellow wayfinder-text p-[14px] md:p-[22px] pt-[22px] md:pt-[22px]">
                       <div>
                         <div className="overflow-hidden relative">
                           <m.div variants={revealHoriMore}>
                             <span className="block mr-[1.5vw]">Info</span>
                           </m.div>
                         </div>
-                        <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0 text-black">
+                        <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0 text-burnt-yellow">
                           <span className="opacity-0 group-hover:opacity-100 group-hover:mt-[2.5%]">Biography</span>
                         </m.span>
                       </div>
@@ -96,14 +96,14 @@ export default function Wayfinder(initialData) {
                 </li>
                 <li className="w-1/3 flex justify-center relative overflow-hidden">
                   <Link href="/works">
-                    <a className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] group hover:text-black mb-1 md:mb-2 wayfinder-text p-[14px] md:p-[22px] pt-[22px] md:pt-[22px]">
+                    <a className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] group hover:text-burnt-yellow mb-1 md:mb-2 wayfinder-text p-[14px] md:p-[22px] pt-[22px] md:pt-[22px]">
                       <div>
                         <div className="overflow-hidden relative">
                           <m.div variants={revealHoriMore}>
                             <span className="block mr-[1.5vw]">Works</span>
                           </m.div>
                         </div>
-                        <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0 text-black">
+                        <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0 text-burnt-yellow">
                           <span className="opacity-0 group-hover:opacity-100 group-hover:mt-[2.5%]">Selected projects</span>
                         </m.span>
                       </div>
@@ -112,14 +112,14 @@ export default function Wayfinder(initialData) {
                   <m.div variants={revealIn} className="border-r border-white border-opacity-40 w-[1px] my-[14px] md:my-[22px] h-[[100%-14px]] md:h-[[100%-22px]] origin-bottom"></m.div>
                 </li>
                 <li className="w-1/3 flex justify-center">
-                  <a href={`mailto:${email}`} className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] group hover:text-black wayfinder-text p-[14px] md:p-[22px] pt-[22px] md:pt-[22px]">
+                  <a href={`mailto:${email}`} className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] group hover:text-burnt-yellow wayfinder-text p-[14px] md:p-[22px] pt-[22px] md:pt-[22px]">
                     <div>
                       <div className="overflow-hidden relative">
                         <m.div variants={revealHoriMore}>
                           <span className="block mr-[1.5vw]">Email</span>
                         </m.div>
                       </div>
-                      <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0 text-black">
+                      <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0 text-burnt-yellow">
                         <span className="opacity-0 group-hover:opacity-100 group-hover:mt-[2.5%]">Reach Out</span>
                       </m.span>
                     </div>

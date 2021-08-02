@@ -53,9 +53,8 @@ export default function WorksIndex(initialData) {
   return (
     <Layout>
       <NextSeo title="Works" />
-
       <LocomotiveScrollProvider options={{ smooth: true, lerp: 0.075 }} watch={[]} containerRef={containerRef}>
-        <main data-scroll-container ref={containerRef} id="scroll-container">
+        <main data-scroll-container ref={containerRef} id="scroll-container" className="z-[10]">
           <LazyMotion features={domAnimation}>
             <m.section
               initial="initial"
@@ -64,7 +63,9 @@ export default function WorksIndex(initialData) {
               className=""
               data-scroll-section
             >
-              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute top-0 left-0 right-0 mt-[25px] md:mt-[20px] mx-auto z-40 w-[130px] md:w-[190px] text-center flex justify-center">
+              <m.div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" variants={fade} className="absolute top-0 left-0 right-0 w-full h-[75px] bg-white z-[30]"></m.div>
+
+              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute top-0 left-0 right-0 mt-[25px] md:mt-[20px] mx-auto z-[40] w-[130px] md:w-[190px] text-center flex justify-center">
                 <Link href="/works">
                   <a className="text-center uppercase text-[13px] md:text-[15px] xl:text-[18px] w-auto relative inline-block group leading-[1.1]">
                     <span className="block overflow-hidden">
@@ -98,10 +99,10 @@ export default function WorksIndex(initialData) {
                 {works.map((e, i) => {
                   return (
                     <div className="overflow-hidden" key={i}>
-                      <span className="block text-[12px] md:text-[20px] mb-2 md:mb-3 leading-none tracking-tighter md:font-semibold variant-numeric">
+                      <span className="block text-[13px] md:text-[16px] mb-2 md:mb-3 leading-none tracking-tighter font-mono variant-numeric md:ml-[4px] uppercase">
                         <span className="block overflow-hidden">
                           <m.span variants={reveal} className="block">
-                            {e.indexNumber}
+                            Project / {e.indexNumber}
                           </m.span>
                         </span>
                       </span>
@@ -109,7 +110,7 @@ export default function WorksIndex(initialData) {
                         <a className="block">
                           <span className="block overflow-hidden">
                             <m.span variants={reveal} className="block will-change">
-                              <h2 className="text-[12vw] md:text-[12vw] 3xl:text-[11vw] ml-[-0.5vw] 2xl:ml-[-0.75vw] leading-[0.85] uppercase font-semibold tracking-tighter mb-0 pb-0 project-index-text">{e.title}</h2>
+                              <h2 className="text-[12vw] md:text-[12vw] 3xl:text-[200px] ml-[-2px] 2xl:ml-[-9px] 3xl:ml-[-8px] leading-[0.85] uppercase font-semibold tracking-tighter mb-0 pb-0 project-index-text">{e.title}</h2>
                             </m.span>
                           </span>
                         </a>

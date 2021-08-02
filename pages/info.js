@@ -290,7 +290,7 @@ export default function Info(initialData) {
                         </div>
                       </div>
                       
-                      <m.div variants={fade} className="w-full h-[65vh] md:h-[65vh] lg:h-[58vh] 2xl:h-[50vh] mt-auto order-1 md:order-2 relative bg-white">
+                      <m.div variants={fade} className="w-full h-[65vh] md:h-[65vh] lg:h-[58vh] 2xl:h-[50vh] 3xl:h-[57vh] mt-auto order-1 md:order-2 relative bg-white">
                         <div className="relative overflow-hidden w-full h-full mix-blend-multiply bg-blend-multiply">
                           <m.div variants={slightScale} className="absolute inset-0 w-full h-full mix-blend-multiply bg-blend-multiply">
                             <Image
@@ -304,7 +304,7 @@ export default function Info(initialData) {
                           </m.div>
                         </div>
 
-                        <h1 className="block text-upright uppercase font-semibold text-[40vw] md:text-[20vh] lg:text-[38vh] xl:text-[38vh] 2xl:text-[35vh] leading-[0.825] absolute bottom-[-2vh] md:bottom-0 right-0 z-30 mb-[-10vw] md:mb-0 lg:mr-[-5.2vw] xl:mr-[-4.8vw] 2xl:mr-[-5.75vw] text-[#101010] overflow-hidden">
+                        <h1 className="block text-upright uppercase font-semibold text-[40vw] md:text-[20vh] lg:text-[38vh] xl:text-[38vh] 2xl:text-[35vh] leading-[0.825] absolute bottom-[-2vh] md:bottom-0 right-0 z-30 mb-[-10vw] md:mb-0 lg:mr-[-5.2vw] xl:mr-[-4.8vw] 2xl:mr-[-5.75vw] text-[#101010] overflow-hidden info-text-huge">
                           <m.span variants={revealHori} className="block">
                             Info
                           </m.span>

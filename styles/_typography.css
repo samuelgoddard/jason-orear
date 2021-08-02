@@ -232,6 +232,10 @@ html.has-scroll-dragging {
   @apply mb-[-0.5vw] !important;
 }
 
+.windows .info-text-huge {
+  @apply leading-[1] !important;
+}
+
 * {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
