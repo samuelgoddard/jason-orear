@@ -22,6 +22,7 @@ const query = `{
       slug {
         current
       },
+      referenceCode,
       title,
       gps,
       indexNumber,
@@ -268,6 +269,20 @@ export default function Home(initialData) {
                       <span className="block leading-none">{home.featuredWork[2].gps}</span>
                       <span className="block leading-none">{home.featuredWork[3].gps}</span>
                       <span className="block leading-none">{home.featuredWork[4].gps}</span>
+                    </span>
+                  </m.span>
+                </span>
+              </span>
+
+              <span className={`w-full md:w-auto text-[13px] md:text-[16px] tracking-tighter md:tracking-normal leading-none md:fixed bottom-0 left-0 mb-1 md:m-[20px] md:ml-[25vw] font-mono hidden xl:block uppercase`}>
+                <span className="block overflow-hidden h-[12px] md:h-[13px]">
+                  <m.span variants={reveal} className="block">
+                    <span className={`block ${coords} transition-transform ease-in-out duration-500`}>
+                      <span className="block leading-none">{home.featuredWork[0].referenceCode}</span>
+                      <span className="block leading-none">{home.featuredWork[1].referenceCode}</span>
+                      <span className="block leading-none">{home.featuredWork[2].referenceCode}</span>
+                      <span className="block leading-none">{home.featuredWork[3].referenceCode}</span>
+                      <span className="block leading-none">{home.featuredWork[4].referenceCode}</span>
                     </span>
                   </m.span>
                 </span>
