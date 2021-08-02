@@ -59,7 +59,7 @@ export default function Header({route}) {
             </a>
           </Link>
           
-          <div className={`fixed top-0 left-0 right-0 w-full z-30 flex flex-wrap justify-center mt-[17px] md:mt-[17px] transition ease-in-out duration-500 pointer-events-none font-mono md:text-[20px] leading-none ${route.includes('works') ? 'opacity-0' : 'opacity-100 delay-700'}`}>
+          <div className={`fixed top-0 left-0 right-0 w-full z-30 flex flex-wrap justify-center mt-[25px] md:mt-[17px] transition ease-in-out duration-500 pointer-events-none font-mono md:text-[20px] leading-none ${route.includes('works') ? 'opacity-0' : 'opacity-100 delay-700'}`}>
             +
           </div>
 

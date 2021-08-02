@@ -73,7 +73,7 @@ export default function WorksGallery(initialData) {
               data-scroll-section
             >
 
-              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute top-0 left-0 right-0 mt-[20px] mx-auto z-40 w-[130px] md:w-[190px] text-center flex justify-center">
+              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute top-0 left-0 right-0 mt-[25px] md:mt-[20px] mx-auto z-40 w-[130px] md:w-[190px] text-center flex justify-center">
                 <Link href="/works">
                   <a className="text-center uppercase text-[13px] md:text-[15px] xl:text-[18px] w-auto relative inline-block group opacity-25 transition ease-in-out duration-500 leading-[1.1]">
                     <span className="block overflow-hidden">

@@ -163,8 +163,8 @@ export default function WorksSlug(initialData) {
                           layoutWrapper = 'overflow-hidden w-9/12 md:w-8/12 h-[55vh] md:h-[63vh] xl:h-[68vh] 2xl:h-[72vh] relative mx-auto will-change mt-[-6vh]';
                           layoutOuterWrapper = 'flex items-center h-full';
                         } else if (f.layout == 'two-portrait') {
-                          layoutWrapper = 'overflow-hidden w-1/2 md:w-1/2 h-[55vh] md:h-[62vh] xl:h-[69vh] relative mx-auto will-change mt-[-6vh]';
-                          layoutOuterWrapper = 'my-auto flex w-8/12 md:w-[40%] xl:md:w-[55%] mx-auto space-x-[5vw] max-w-screen-xl';
+                          layoutWrapper = 'overflow-hidden w-1/2 md:w-1/2 h-[40vh] md:h-[62vh] xl:h-[69vh] relative mx-auto will-change mt-[-6vh]';
+                          layoutOuterWrapper = 'my-auto flex w-10/12 md:w-[40%] xl:md:w-[55%] mx-auto space-x-[5vw] max-w-screen-xl';
                         }
                         
                         return (
@@ -199,7 +199,7 @@ export default function WorksSlug(initialData) {
                       <div className="slide will-change relative" data-anchor={`slide-final`} id="slide-final">
                         { next ? (
                           <>
-                            <div className="font-mono text-[12px] md:text-[13px] uppercase absolute top-auto bottom-0 md:bottom-auto md:top-0 left-0 mb-[78vw] md:mb-0 md:mt-20">
+                            <div className="font-mono text-[12px] md:text-[13px] uppercase absolute top-auto bottom-0 md:bottom-auto md:top-0 right-0 md:left-0 md:right-auto mb-[78vw] md:mb-0 md:mt-20 text-right md:text-left">
                               <div className="w-full mb-[2px] md:mb-2">
                                 <span className="hidden md:block mb-px md:mb-0">(Client)</span>
                                 <span className="block md:ml-3">“{next.client}”</span>
@@ -225,16 +225,16 @@ export default function WorksSlug(initialData) {
                                   <span className="block text-[8vw] md:text-[11vw] 2xl:text-[12vw] uppercase font-semibold leading-[0.875] ml-[-1vw] 2xl:ml-[-18px] -mt-px md:-mt-1 2xl:-mt-3 text-center transition-colors ease-in-out duration-500">
                                     {next.title}
                                     <div className="overflow-hidden relative flex justify-center">
-                                      <div className={`h-[10px] transition-all ease-in-out duration-[600ms] bg-black ${nextHovered ? 'w-full' : 'w-[0px] scale-x-[0.9]' }`}></div>
+                                      <div className={`h-[6px] md:h-[10px] transition-all ease-in-out duration-[600ms] bg-black ${nextHovered ? 'w-full' : 'w-[0px] scale-x-[0.9]' }`}></div>
                                     </div>
                                   </span>
                                 </a>
                               </Link>
                             </div>
 
-                            <div className="w-full md:w-full h-[30vh] md:h-screen mx-auto will-change absolute bottom-0 right-0 left-0 md:top-0 mb-[65px] md:mb-[48px] md:z-0 md:flex md:flex-wrap md:items-center md:justify-center bg-white">
-                              <div className={`w-full h-[30vh] md:w-1/2 md:h-[50vh] opacity-25 bg-white md:mt-[-7.5vh] overflow-hidden relative transition ease-in-out duration-500 ${ nextHovered ? 'grayscale-0 opacity-50' : 'grayscale' }`}>
-                                <m.div variants={slightScale} className="absolute inset-0" onMouseOver={toggleNextHoveredOn} onMouseOut={toggleNextHoveredOff}>
+                            <div className="w-full md:w-[19vw] xl:w-[22vw] h-[30vh] md:h-screen mx-auto md:ml-auto md:mr-0 will-change absolute bottom-0 right-0 left-0 md:left-auto md:top-0 mb-[65px] md:pb-[40px] md:z-0 md:flex md:flex-wrap md:items-end md:justify-center">
+                              <div className={`w-full h-[30vh] md:w-full md:h-[13vw] xl:h-[16vw] bg-white md:mt-[-7.5vh] overflow-hidden relative`}>
+                                <m.div className="absolute inset-0">
                                   <Photo
                                     photo={next.imageSlides[0].images[0]}
                                     width={next.imageSlides[0].images[0].asset.metadata.dimensions.width / 3}
@@ -298,11 +298,11 @@ export default function WorksSlug(initialData) {
                 </span>
               </div>
 
-              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute bottom-0 left-0 right-0 z-30 mb-[50px] md:mb-[13px] w-auto text-center mx-auto">
+              <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute bottom-0 left-0 right-0 z-30 mb-[60px] md:mb-[13px] w-auto text-center mx-auto">
                 <span className="block overflow-hidden">
-                  <m.h1 variants={revealMore} className="text-center uppercase text-[23px] md:text-[30px] xl:text-[40px] 2xl:text-[55px] leading-[1] w-auto relative inline-block group m-0 p-0">
+                  <m.h1 variants={revealMore} className="text-center uppercase text-[25px] md:text-[30px] xl:text-[40px] 2xl:text-[55px] leading-[1] w-auto relative inline-block group m-0 p-0">
                     <span className="block relative overflow-hidden">
-                      <span className={`block transition-translate ease-in-out duration-500 ${infoOpen ? 'translate-y-full' : 'delay-[150ms]' }`}>{title}</span>
+                      <span className={`block transition-translate ease-in-out duration-500 project-title ${infoOpen ? 'translate-y-full' : 'delay-[150ms]' }`}>{title}</span>
                     </span>
                   </m.h1>
                 </span>
@@ -311,7 +311,9 @@ export default function WorksSlug(initialData) {
               <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="fixed md:absolute bottom-0 right-0 z-40 m-[18px] mb-[12px] md:m-[18px] md:mb-[12px] w-auto text-center font-mono">
                 <span className="block overflow-hidden">
                   <m.span variants={reveal} className="text-center uppercase text-[14px] md:text-[16px] xl:text-[16px] w-auto relative inline-block group">
-                    {imageSlides.length} Images
+                    <span className="block transition ease-in-out duration-500 image-length-tag delay-[150ms]">
+                      {imageSlides.length} Images
+                    </span>
                   </m.span>
                 </span>
               </div>
@@ -320,14 +322,16 @@ export default function WorksSlug(initialData) {
               <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="hidden md:block fixed md:absolute top-0 left-0 right-0 z-40 m-[20px] md:m-[20px] w-[50%] md:w-[70%] mx-[25%] md:mx-[15%] text-center font-mono">
                 <span className="block overflow-hidden h-[50px] group relative">
                   <div className="relative overflow-hidden">
-                    <m.span variants={reveal} className="text-center uppercase text-[14px] md:text-[16px] xl:text-[16px] w-auto relative block group-hover:opacity-0 opacity-100 transition-opacity ease-in-out duration-500 leading-none">
-                      <div className="overflow-hidden">
-                      <span className="block transition-translate ease-in-out duration-500 translate-y-0 group-hover:translate-y-full">+ Info</span>
-                      </div>
-                    </m.span>
+                    <span className="block info-button transition ease-in-out duration-500 delay-[150ms]">
+                      <m.span variants={reveal} className="text-center uppercase text-[14px] md:text-[16px] xl:text-[16px] w-auto relative block group-hover:opacity-0 opacity-100 transition-opacity ease-in-out duration-500 leading-none">
+                        <div className="overflow-hidden">
+                        <span className="block transition-translate ease-in-out duration-500 translate-y-0 group-hover:translate-y-full">+ Info</span>
+                        </div>
+                      </m.span>
+                    </span>
                   </div>
 
-                  <m.span variants={reveal} className="text-center uppercase text-[14px] md:text-[16px] xl:text-[16px] w-auto opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-500 absolute top-0 left-0 right-0 flex justify-center">
+                  <m.span variants={reveal} className="text-center uppercase text-[14px] md:text-[16px] xl:text-[16px] w-auto opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-500 absolute top-0 left-0 right-0 flex justify-center info-revealer">
                     <div className="font-mono text-[12px] md:text-[12px] uppercase flex text-center">
                       <div className="w-auto mx-3 text-left">
                         <div className="overflow-hidden">
@@ -370,16 +374,18 @@ export default function WorksSlug(initialData) {
               <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="block md:hidden fixed bottom-0 left-0 right-0 z-40 m-[18px] md:m-[20px] w-[70%] mx-[15%] text-center font-mono">
                 <button onClick={toggleInfoOpen} className={`overflow-hidden h-[12vh] w-full group relative flex items-end justify-center border-none outline-none focus:outline-none hover:outline-none hover:border-none focus:border-none`}>
                   <div className="relative overflow-hidden">
-                    <m.span variants={reveal} className="text-center uppercase text-[14px] md:text-[16px] xl:text-[16px] w-auto relative block transition-opacity ease-in-out duration-500 leading-none">
-                      <div className="overflow-hidden w-[90px]">
-                      <span className={`block transition-translate ease-in-out duration-500 ${ infoOpen ? 'delay-[0ms] translate-y-full' : ' delay-[150ms] translate-y-0' }`}>+ Info</span>
+                    <span className="block info-button transition ease-in-out duration-500 delay-[150ms]">
+                      <m.span variants={reveal} className="text-center uppercase text-[14px] md:text-[16px] xl:text-[16px] w-auto relative block transition-opacity ease-in-out duration-500 leading-none">
+                        <div className="overflow-hidden w-[90px]">
+                        <span className={`block transition-translate ease-in-out duration-500 ${ infoOpen ? 'delay-[0ms] translate-y-full' : ' delay-[150ms] translate-y-0' }`}>+ Info</span>
 
-                      <span className={`absolute inset-0 transition-translate ease-in-out duration-500 translate-y-full ${ infoOpen ? 'delay-[150ms] translate-y-0' : '' }`}>- Close</span>
-                      </div>
-                    </m.span>
+                        <span className={`absolute inset-0 transition-translate ease-in-out duration-500 translate-y-full ${ infoOpen ? 'delay-[150ms] translate-y-0' : '' }`}>- Close</span>
+                        </div>
+                      </m.span>
+                    </span>
                   </div>
 
-                  <m.span variants={reveal} className={`text-center uppercase text-[10px] md:text-[16px] xl:text-[16px] w-auto transition-opacity ease-in-out duration-500 absolute top-0 left-0 right-0 flex justify-center ${ infoOpen ? 'opacity-100' : 'opacity-0' }`}>
+                  <m.span variants={reveal} className={`text-center uppercase text-[10px] md:text-[16px] xl:text-[16px] w-auto transition-opacity ease-in-out duration-500 absolute top-0 left-0 right-0 flex justify-center info-revealer ${ infoOpen ? 'opacity-100' : 'opacity-0' }`}>
                     <div className="font-mono text-[10px] md:text-[12px] uppercase flex flex-wrap justify-center text-center">
                       <div className="w-full mx-2 text-center">
                         <div className="overflow-hidden">

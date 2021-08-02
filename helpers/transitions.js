@@ -58,6 +58,18 @@ export const revealHori = {
 	}
 }
 
+export const revealHoriMore = {
+	initial: { x: '120%' },
+  enter: { 
+    x: 0,
+    transition: { duration: 1, ease: [0.83, 0, 0.17, 1] }
+  },
+	exit: {
+    x: '120%',
+		transition: { duration: 0.65, ease: [0.83, 0, 0.17, 1] }
+	}
+}
+
 export const revealHoriReverse = {
 	initial: { x: '-100%' },
   enter: { 

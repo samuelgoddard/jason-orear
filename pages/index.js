@@ -66,16 +66,16 @@ export default function Home(initialData) {
   // Set translate properties dependant on currentProject state
   if (currentProject == 2) {
     coords = 'translate-y-[-13px] md:translate-y-[-16px]'
-    numberRoll = 'translate-y-[-60px] md:translate-y-[-160px] 2xl:translate-y-[-230px]'
+    numberRoll = 'translate-y-[-90px] md:translate-y-[-160px] 2xl:translate-y-[-230px]'
   } else if (currentProject == 3) {
     coords = 'translate-y-[-26px] md:translate-y-[-32px]'
-    numberRoll = 'translate-y-[-120px] md:translate-y-[-320px] 2xl:translate-y-[-460px]'
+    numberRoll = 'translate-y-[-180px] md:translate-y-[-320px] 2xl:translate-y-[-460px]'
   } else if (currentProject == 4) {
     coords = 'translate-y-[-39px] md:translate-y-[-48px]'
-    numberRoll = 'translate-y-[-180px] md:translate-y-[-480px] 2xl:translate-y-[-690px]'
+    numberRoll = 'translate-y-[-270px] md:translate-y-[-480px] 2xl:translate-y-[-690px]'
   } else if (currentProject == 5) {
     coords = 'translate-y-[-52px] md:translate-y-[-64px]'
-    numberRoll = 'translate-y-[-240px] md:translate-y-[-640px] 2xl:translate-y-[-920px]'
+    numberRoll = 'translate-y-[-360px] md:translate-y-[-640px] 2xl:translate-y-[-920px]'
   }
 
   useEffect(() => {
@@ -304,9 +304,9 @@ export default function Home(initialData) {
               {/* mb-[9px] md:mb-[-7px] 2xl:mb-[-12px] */}
               <span className="overflow-hidden ml-auto fixed bottom-0 right-0 flex items-end mb-[9px] md:mb-[20px] 2xl:mb-[20px] mr-[14px] md:mr-[20px]">
                 <m.span variants={reveal} className="block md:mb-[-23px] 2xl:mb-[-32px]">
-                  <span className="text-[60px] md:text-[160px] 2xl:text-[230px] leading-none font-semibold tracking-tight flex items-end"><span className="block text-[13px] md:text-[16px] tracking-tighter md:tracking-normal leading-none mb-[38px] md:mb-[20px] 2xl:mb-[30px] uppercase font-normal font-mono"><span className="transform hidden md:inline-block rotate-180">◄</span> p<span className="hidden md:inline">roject</span> /</span>
+                  <span className="text-[90px] md:text-[160px] 2xl:text-[230px] leading-none font-semibold tracking-tight flex items-end"><span className="text-[13px] md:text-[16px] tracking-tighter md:tracking-normal leading-none mb-[5px] md:mb-[20px] 2xl:mb-[30px] uppercase font-normal font-mono hidden md:block"><span className="transform hidden md:inline-block rotate-180">◄</span> p<span className="hidden md:inline">roject</span><span className="hidden md:inline-block">&nbsp;</span>/</span>
                     <span className="block tracking-tighter">
-                      <span className="block overflow-hidden h-[65px] md:h-[160px] 2xl:h-[230px]">
+                      <span className="block overflow-hidden h-[80px] md:h-[160px] 2xl:h-[230px]">
                         <span className={`block index-number`}>
                           <span className="block leading-none">
                             {numberSplit.map((e, i) => {

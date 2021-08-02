@@ -374,7 +374,7 @@ export default function Info(initialData) {
                             </div>
                           </div>
                           <m.div variants={fade} className="w-full mb-6">
-                            <a href={contact.instagramUrl} target="_blank" rel="noopener noreferrer" className="block uppercase 6ext-[13px] md:text-[15px] 2xl:text-[15px] lg:text-[14px] ml-[10px] md:ml-[20px] underline transition-colors ease-in-out duration-300 hover:text-burnt-yellow focus:text-burnt-yellow">Instagram</a>
+                            <a href={contact.instagramUrl} target="_blank" rel="noopener noreferrer" className="block uppercase text-[13px] md:text-[15px] 2xl:text-[15px] lg:text-[14px] ml-[10px] md:ml-[20px] underline transition-colors ease-in-out duration-300 hover:text-burnt-yellow focus:text-burnt-yellow">Instagram</a>
                           </m.div>
                         </>
                       )}
@@ -385,7 +385,7 @@ export default function Info(initialData) {
                         </div>
                       </div>
                       <m.div variants={fade} className="w-full">
-                        <a href="https://shiftwalk.studio" target="_blank" rel="noopener noreferrer" className="block uppercase 6ext-[13px] md:text-[15px] 2xl:text-[15px] lg:text-[14px] ml-[10px] md:ml-[20px] underline transition-colors ease-in-out duration-300 hover:text-burnt-yellow focus:text-burnt-yellow">ShiftWalk&trade;</a>
+                        <a href="https://shiftwalk.studio" target="_blank" rel="noopener noreferrer" className="block uppercase text-[13px] md:text-[15px] 2xl:text-[15px] lg:text-[14px] ml-[10px] md:ml-[20px] underline transition-colors ease-in-out duration-300 hover:text-burnt-yellow focus:text-burnt-yellow">ShiftWalk&trade;</a>
                       </m.div>
 
                     </div>

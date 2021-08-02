@@ -194,6 +194,22 @@ html.has-scroll-dragging {
   @apply pointer-events-none translate-y-full !important;
 }
 
+.fp-viewing-slider-slide-final .image-length-tag {
+  @apply translate-y-full !important;
+}
+
+.fp-viewing-slider-slide-final .project-title {
+  @apply translate-y-full !important;
+}
+
+.fp-viewing-slider-slide-final .info-button {
+  @apply translate-y-full !important;
+}
+
+.fp-viewing-slider-slide-final .info-revealer {
+  @apply opacity-0 !important;
+}
+
 .fp-viewing-slider-slide0 .slider-buttons--prev,
 .fp-viewing-slider-slide-final .slider-buttons--next {
   @apply pointer-events-none !important;
@@ -214,4 +230,9 @@ html.has-scroll-dragging {
 
 .windows .index-number {
   @apply mb-[-0.5vw] !important;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 }
