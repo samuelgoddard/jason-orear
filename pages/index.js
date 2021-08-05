@@ -82,25 +82,21 @@ export default function Home(initialData) {
     // Set the intro global context to true after 4 seconds
     setTimeout(() => {
       setIntroContext(true)
-    }, 4000);
+    }, 2000);
     
-    if (window.innerWidth > 768) {
-      return null;
-    } else {
-      // Set an interval that updates the currentProject every 3 seconds on mobile to rotate the projects
-      const i_id = setInterval(() => {
-        if (currentProject == 5) {
-          // If we hit the cap (5)... Reset...
-          setCurrentProject(1)
-        } else {
-          // Else... Tick along...
-          setCurrentProject(currentProject => currentProject+1)
-        }
-        // If introContext is set delay the ticker by 4 seconds (defined above)
-      }, introContext ? 4000 : 8000);
-      return () => {
-        clearInterval(i_id);
+    // Set an interval that updates the currentProject every 3 seconds on mobile to rotate the projects
+    const i_id = setInterval(() => {
+      if (currentProject == 5) {
+        // If we hit the cap (5)... Reset...
+        setCurrentProject(1)
+      } else {
+        // Else... Tick along...
+        setCurrentProject(currentProject => currentProject+1)
       }
+      // If introContext is set delay the ticker by 4 seconds (defined above)
+    }, introContext ? 2000 : 4000);
+    return () => {
+      clearInterval(i_id);
     }
   },[currentProject]);
   
@@ -109,7 +105,7 @@ export default function Home(initialData) {
     initial: { y: '100%' },
     enter: { 
       y: 0,
-      transition: { delay: introContext ? 0 : 3.2, duration: 1, ease: [0.83, 0, 0.17, 1] }
+      transition: { delay: introContext ? 0 : 1, duration: 1, ease: [0.83, 0, 0.17, 1] }
     },
     exit: {
       y: '100%',
@@ -121,7 +117,7 @@ export default function Home(initialData) {
     initial: { y: '110%' },
     enter: { 
       y: 0,
-      transition: { delay: introContext ? 0 : 3.2, duration: 1, ease: [0.83, 0, 0.17, 1] }
+      transition: { delay: introContext ? 0 : 1, duration: 1, ease: [0.83, 0, 0.17, 1] }
     },
     exit: {
       y: '110%',
@@ -150,7 +146,7 @@ export default function Home(initialData) {
             
             <m.div variants={fade} className="text-white my-auto">
               <div className="w-full h-[60vh] md:h-[63vh] relative mt-[-2vw]">
-                <div className="absolute inset-0 flex-wrap z-[6] hidden md:flex">  
+                {/* <div className="absolute inset-0 flex-wrap z-[6] hidden md:flex">  
                   <Link href={`/works/${home.featuredWork[0].slug.current}`}>
                     <a className="w-1/5" onMouseEnter={() => setCurrentProject(1)} onMouseLeave={() => setCurrentProject(1)}></a>
                   </Link>
@@ -166,9 +162,9 @@ export default function Home(initialData) {
                   <Link href={`/works/${home.featuredWork[4].slug.current}`}>
                     <a className="w-1/5" onMouseEnter={() => setCurrentProject(5)} onMouseLeave={() => setCurrentProject(1)}></a>
                   </Link>
-                </div>
+                </div> */}
 
-                <div className="absolute inset-0 flex-wrap z-[6] flex md:hidden">
+                {/* <div className="absolute inset-0 flex-wrap z-[6] flex">
                   { currentProject == 1 && (
                     <Link href={`/works/${home.featuredWork[0].slug.current}`}>
                       <a className="w-full" onMouseEnter={() => setCurrentProject(1)} onMouseLeave={() => setCurrentProject(1)}></a>
@@ -194,7 +190,7 @@ export default function Home(initialData) {
                       <a className="w-full" onMouseEnter={() => setCurrentProject(5)} onMouseLeave={() => setCurrentProject(1)}></a>
                     </Link>
                   )}
-                </div>
+                </div> */}
 
                 <div className="absolute inset-0 overflow-hidden">
                   <m.div className="absolute inset-0" variants={slightScale}>

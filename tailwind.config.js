@@ -16,6 +16,15 @@ module.exports = {
       "3xl": "1920px"
     },
     extend: {
+      animation: {
+        'caret': 'caret 1s ease-in-out infinite',
+      },
+      keyframes: {
+        caret: {
+          '0%, 100%': { opacity: 0 },
+          '50%': { opacity: 1 },
+        }
+      },
       colors: {
         'black': '#000',
         'off-black': '#1F1F1F',

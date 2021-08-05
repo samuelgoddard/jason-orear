@@ -83,7 +83,15 @@ export default function Wayfinder(initialData) {
                       <div>
                         <div className="overflow-hidden relative">
                           <m.div variants={revealHoriMore}>
-                            <span className="block mr-[1.5vw]">Info</span>
+                            <span className="block mr-[1.5vw] pb-8">Info</span>
+
+                            <div className="opacity-0 md:group-hover:opacity-100">
+                              <m.span
+                                animate={{ opacity: 0 }}
+                                transition={{ repeat: Infinity, duration: 1 }}
+                                className="block w-full h-[4px] absolute bottom-0 right-0 bg-current"
+                              ></m.span>
+                            </div>
                           </m.div>
                         </div>
                         <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0 text-burnt-yellow">
@@ -100,7 +108,15 @@ export default function Wayfinder(initialData) {
                       <div>
                         <div className="overflow-hidden relative">
                           <m.div variants={revealHoriMore}>
-                            <span className="block mr-[1.5vw]">Works</span>
+                            <span className="block mr-[1.5vw] pb-8">Works</span>
+
+                            <div className="opacity-0 md:group-hover:opacity-100">
+                              <m.span
+                                animate={{ opacity: 0 }}
+                                transition={{ repeat: Infinity, duration: 1 }}
+                                className="block w-full h-[4px] absolute bottom-0 right-0 bg-current"
+                              ></m.span>
+                            </div>
                           </m.div>
                         </div>
                         <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0 text-burnt-yellow">
@@ -116,7 +132,15 @@ export default function Wayfinder(initialData) {
                     <div>
                       <div className="overflow-hidden relative">
                         <m.div variants={revealHoriMore}>
-                          <span className="block mr-[1.5vw]">Email</span>
+                          <span className="block mr-[1.5vw] pb-8">Email</span>
+
+                          <div className="opacity-0 md:group-hover:opacity-100">
+                            <m.span
+                              animate={{ opacity: 0 }}
+                              transition={{ repeat: Infinity, duration: 1 }}
+                              className="block w-full h-[4px] absolute bottom-0 right-0 bg-current"
+                            ></m.span>
+                          </div>
                         </m.div>
                       </div>
                       <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0 text-burnt-yellow">

@@ -8,7 +8,6 @@ import Image from 'next/image'
 import SanityPageService from '@/services/sanityPageService'
 import BlockContent from '@sanity/block-content-to-react'
 import { Context } from '../context/state'
-import SplitText from '@/components/split-text'
 import ConditionalWrap from 'conditional-wrap';
 
 const query = `{
