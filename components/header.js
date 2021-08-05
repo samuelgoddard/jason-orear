@@ -11,7 +11,7 @@ export default function Header({route}) {
     initial: { y: '-100%' },
     enter: { 
       y: 0,
-      transition: { delay: route == '/' ? 1 : 0, duration: 1, ease: [0.83, 0, 0.17, 1] }
+      transition: { delay: route == '/' ? 2 : 0, duration: 1, ease: [0.83, 0, 0.17, 1] }
     },
     exit: {
       y: '100%',
@@ -23,7 +23,7 @@ export default function Header({route}) {
     initial: { width: '0' },
     enter: { 
       width: '66%',
-      transition: { delay: route == '/' ? 1 : 0, duration: 1, ease: [0.83, 0, 0.17, 1] }
+      transition: { delay: route == '/' ? 2 : 0, duration: 1, ease: [0.83, 0, 0.17, 1] }
     },
     exit: {
       y: '66%',
@@ -35,7 +35,7 @@ export default function Header({route}) {
     initial: { width: '0' },
     enter: { 
       width: '100%',
-      transition: { delay: route == '/' ? 1 : 0, duration: 1, ease: [0.83, 0, 0.17, 1] }
+      transition: { delay: route == '/' ? 2 : 0, duration: 1, ease: [0.83, 0, 0.17, 1] }
     },
     exit: {
       y: '66%',

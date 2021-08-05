@@ -16,6 +16,11 @@ const reveal = {
   hidden: { y: 0 }
 }
 
+const revealBox = {
+  visible: { y: '-100%' },
+  hidden: { y: 0 }
+}
+
 const revealTop = {
   visible: { y: '-100%' },
   hidden: { y: 0 }
@@ -28,7 +33,12 @@ const introEnd = {
 
 const revealHoriReverse = {
   visible: { x: '-100%' },
-  hidden: { x: 0 }
+  hidden: { x: 0 },
+}
+
+const revealHoriReverseBox = {
+  visible: { x: '100%' },
+  hidden: { x: 0 },
 }
 
 const imageRevealUp = {
@@ -164,11 +174,11 @@ export default function App({ Component, pageProps }) {
                 initial="hidden"
                 animate="visible"
                 variants={introEnd}
-                transition={{ delay: 1, duration: 1, ease: [0.83, 0, 0.17, 1] }}
+                transition={{ delay: 2, duration: 1, ease: [0.83, 0, 0.17, 1] }}
                 className="bg-white fixed inset-0 z-[100] pointer-events-none flex flex-col p-[14px] md:p-[20px]"
               >
                 <Div100vh className="bg-white fixed inset-0 z-[100] pointer-events-none flex flex-col p-[14px] md:p-[20px]">
-                  <div className={`fixed top-0 left-0 right-0 w-full z-30 flex flex-wrap justify-center mt-5 `}>
+                  {/* <div className={`fixed top-0 left-0 right-0 w-full z-30 flex flex-wrap justify-center mt-5 `}>
                     <div className="block overflow-hidden">
                       <m.div 
                         initial="hidden"
@@ -179,16 +189,23 @@ export default function App({ Component, pageProps }) {
                         <span className="block leading-none font-mono uppercase text-[14px] md:text-[16px]">Jason O'Rear</span>
                       </m.div>
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="my-auto">
                     <div className="w-full h-[60vh] md:h-[63vh] relative mt-[-2vw] overflow-hidden flex items-center justify-center">
                       <div className="relative overflow-hidden">
                         <m.svg
                           variants={revealHoriReverse}
-                          transition={{ delay: 0.75, duration: 1, ease: [0.83, 0, 0.17, 1] }}
+                          transition={{ delay: 1.5, duration: 1, ease: [0.83, 0, 0.17, 1] }}
                           className="block w-[65px] md:w-[90px]" viewBox="0 0 90 39" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M.402 13.34l-.1 1.62c.82.14 1.54.16 2.34.16 2.74 0 4.66-1.28 4.66-4.18V1h-6.26v1.62h4.44V11c0 1.9-1.08 2.52-3 2.52-.82 0-1.4-.04-2.08-.18zM17.114 3.68l2.14 6.14h-4.28l2.14-6.14zM11.334 15h1.82l1.24-3.56h5.44l1.24 3.56h1.84l-4.98-14h-1.62l-4.98 14zM30.166 15.16c2.96 0 4.96-1.56 4.96-3.94 0-5.6-7.8-3.52-7.8-6.72 0-1.26 1.06-2.04 2.78-2.04 1.68 0 2.9.96 3.16 2.48l1.66-.64c-.36-2.04-2.28-3.46-4.82-3.46-2.7 0-4.64 1.48-4.64 3.66 0 4.96 7.78 3 7.78 6.74 0 1.4-1.24 2.3-3.06 2.3-1.78 0-3.28-1.28-3.52-3.24l-1.76.56c.46 2.56 2.6 4.3 5.26 4.3zM43.098 15.16c3.4 0 5.56-2.76 5.56-7.16S46.498.84 43.098.84c-3.4 0-5.56 2.76-5.56 7.16s2.16 7.16 5.56 7.16zM39.418 8c0-3.38 1.32-5.54 3.68-5.54 2.36 0 3.68 2.16 3.68 5.54s-1.32 5.52-3.68 5.52c-2.36 0-3.68-2.14-3.68-5.52zM51.17 15h1.76V4l6.12 11h1.96V1h-1.78v11l-6.1-11h-1.96v14zM7.162 23.72L1.842 38H.122l5.32-14.28h1.72zM27.355 38.16c3.4 0 5.56-2.76 5.56-7.16s-2.16-7.16-5.56-7.16c-3.4 0-5.56 2.76-5.56 7.16s2.16 7.16 5.56 7.16zM23.675 31c0-3.38 1.32-5.54 3.68-5.54 2.36 0 3.68 2.16 3.68 5.54s-1.32 5.52-3.68 5.52c-2.36 0-3.68-2.14-3.68-5.52zM37.607 23.94a20.4 20.4 0 01-.76 2.34 38.22 38.22 0 01-.96 2.34h-1.3c.134-.507.26-1.047.38-1.62.134-.587.254-1.16.36-1.72.107-.573.194-1.093.26-1.56h1.88l.14.22zM40.184 38h1.84v-6.24h2.86l3.56 6.24h2.08l-3.8-6.52c1.54-.56 2.5-1.88 2.5-3.6 0-2.34-1.68-3.88-4.2-3.88h-4.84v14zm1.82-7.88v-4.5h2.82c1.6 0 2.56.84 2.56 2.26s-.96 2.24-2.56 2.24h-2.82zM53.476 38h9.42v-1.64h-7.6v-4.98h6.08v-1.64h-6.08v-4.12h7.38V24h-9.2v14zM70.828 26.68l2.14 6.14h-4.28l2.14-6.14zM65.048 38h1.82l1.24-3.56h5.44l1.24 3.56h1.84l-4.98-14h-1.62l-4.98 14zM79.16 38H81v-6.24h2.86L87.42 38h2.08l-3.8-6.52c1.54-.56 2.5-1.88 2.5-3.6 0-2.34-1.68-3.88-4.2-3.88h-4.84v14zm1.82-7.88v-4.5h2.82c1.6 0 2.56.84 2.56 2.26s-.96 2.24-2.56 2.24h-2.82z" fill="currentColor"/></m.svg>
+                          
+                          <m.div
+                            variants={revealHoriReverseBox}
+                            transition={{ delay: 0.25, duration: 1, ease: [0.83, 0, 0.17, 1] }}
+                            className="absolute inset-0 bg-white"
+                          ></m.div>
                       </div>
+                      
                       {/* <m.div
                         initial="hidden"
                         animate="visible"
@@ -294,8 +311,13 @@ export default function App({ Component, pageProps }) {
                           animate="visible"
                           variants={reveal}
                           className="block"
-                          transition={{ delay: 0.75, duration: 1, ease: [0.83, 0, 0.17, 1] }}
+                          transition={{ delay: 1.5, duration: 1, ease: [0.83, 0, 0.17, 1] }}
                         >
+                          <m.div
+                            variants={revealBox}
+                            transition={{ delay: 0.25, duration: 1, ease: [0.83, 0, 0.17, 1] }}
+                            className="absolute inset-0 bg-white"
+                          ></m.div>
                           <span className="block leading-none font-mono uppercase text-[14px] md:text-[16px]">Architectural Photographer</span>
                         </m.span>
                       </span>

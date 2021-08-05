@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext, useRef } from 'react'
 import Layout from '@/components/layout'
-import { fade, slightScale } from "@/helpers/transitions"
+import { fade } from "@/helpers/transitions"
 import { LazyMotion, domAnimation, m } from "framer-motion"
 import Link from 'next/link'
 import Image from 'next/image'
@@ -82,7 +82,7 @@ export default function Home(initialData) {
     // Set the intro global context to true after 4 seconds
     setTimeout(() => {
       setIntroContext(true)
-    }, 2000);
+    }, 3500);
     
     // Set an interval that updates the currentProject every 3 seconds on mobile to rotate the projects
     const i_id = setInterval(() => {
@@ -94,7 +94,7 @@ export default function Home(initialData) {
         setCurrentProject(currentProject => currentProject+1)
       }
       // If introContext is set delay the ticker by 4 seconds (defined above)
-    }, introContext ? 2000 : 4000);
+    }, introContext ? 4000 : 6250);
     return () => {
       clearInterval(i_id);
     }
@@ -105,7 +105,7 @@ export default function Home(initialData) {
     initial: { y: '100%' },
     enter: { 
       y: 0,
-      transition: { delay: introContext ? 0 : 1, duration: 1, ease: [0.83, 0, 0.17, 1] }
+      transition: { delay: introContext ? 0 : 2, duration: 1, ease: [0.83, 0, 0.17, 1] }
     },
     exit: {
       y: '100%',
@@ -113,11 +113,23 @@ export default function Home(initialData) {
     }
   }
 
+  const slightScale = {
+    initial: { scale: 1.125 },
+    enter: { 
+      scale: 1,
+      transition: { delay: introContext ? 0 : 1.75, duration: 1.5, ease: [0.83, 0, 0.17, 1] }
+    },
+    exit: {
+      scale: 1.2,
+      transition: { duration: 0.65, ease: [0.83, 0, 0.17, 1] }
+    }
+  }
+
   const revealMore = {
     initial: { y: '110%' },
     enter: { 
       y: 0,
-      transition: { delay: introContext ? 0 : 1, duration: 1, ease: [0.83, 0, 0.17, 1] }
+      transition: { delay: introContext ? 0 : 2, duration: 1, ease: [0.83, 0, 0.17, 1] }
     },
     exit: {
       y: '110%',
