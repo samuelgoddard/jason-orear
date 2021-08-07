@@ -104,7 +104,7 @@ export default function WorksSlug(initialData) {
               loopHorizontal={false}
               scrollHorizontally={true}
               easingcss3="cubic-bezier(0.83, 0, 0.17, 1)"
-              scrollHorizontallyKey={'970B2A2A-85E54A53-987720D2-564FF1E9'}
+              scrollHorizontallyKey={'amFzb25vcmVhci5jb21fMWxqYzJOeWIyeHNTRzl5YVhwdmJuUmhiR3g1NThR'}
               render={({ state, fullpageApi }) => {
                 console.log(state)
                 // console.log("render prop change", state, fullpageApi); // eslint-disable-line no-console
