@@ -20,9 +20,9 @@
 
 @font-face {
   font-family: 'Matter SQ Mono';
-  src: local('Matter SQ Mono Regular'), local('MatterSQMonoTRIAL-Regular'),
-      url('@/public/fonts/MatterSQMonoTRIAL-Regular.woff2') format('woff2'),
-      url('@/public/fonts/MatterSQMonoTRIAL-Regular.woff') format('woff');
+  src: local('Matter SQ Mono Regular'), local('MatterSQMono-Regular'),
+      url('@/public/fonts/MatterSQMono-Regular.woff2') format('woff2'),
+      url('@/public/fonts/MatterSQMono-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
