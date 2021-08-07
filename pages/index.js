@@ -8,6 +8,7 @@ import SanityPageService from '@/services/sanityPageService'
 import { Context } from '../context/state'
 import Div100vh from 'react-div-100vh'
 import { useWindowSize } from '@/helpers/window-size'
+import ImageWrapper from '@/components/image-wrapper'
 
 const query = `{
   "home": *[_type == "home"][0]{
@@ -27,7 +28,13 @@ const query = `{
       gps,
       indexNumber,
       homeCarouselImage {
-        asset ->
+        hotspot {
+          x,
+          y
+        },
+        asset -> {
+          ...
+        }
       },
       imageSlides[]{
         layout,
@@ -94,7 +101,7 @@ export default function Home(initialData) {
         setCurrentProject(currentProject => currentProject+1)
       }
       // If introContext is set delay the ticker by 4 seconds (defined above)
-    }, introContext ? 4000 : 6250);
+    }, introContext ? 4000 : 4000);
     return () => {
       clearInterval(i_id);
     }
@@ -155,7 +162,13 @@ export default function Home(initialData) {
               )
             })
             })} */}
-            
+            {/* <div className="mt-24"> */}
+              {/* <div>TEST: {JSON.stringify(home.featuredWork[0].homeCarouselImage.hotspot)}</div>
+              <div>TEST: {JSON.stringify(home.featuredWork[1].homeCarouselImage.hotspot)}</div>
+              <div>TEST: {JSON.stringify(home.featuredWork[2].homeCarouselImage.hotspot)}</div>
+              <div>TEST: {JSON.stringify(home.featuredWork[3].homeCarouselImage.hotspot)}</div>
+              <div>TEST: {JSON.stringify(home.featuredWork[4].homeCarouselImage.hotspot)}</div> */}
+            {/* </div> */}
             <m.div variants={fade} className="text-white my-auto">
               <div className="w-full h-[60vh] md:h-[63vh] relative mt-[-2vw]">
                 {/* <div className="absolute inset-0 flex-wrap z-[6] hidden md:flex">  
@@ -206,56 +219,62 @@ export default function Home(initialData) {
 
                 <div className="absolute inset-0 overflow-hidden">
                   <m.div className="absolute inset-0" variants={slightScale}>
-                    <Image
-                      src={home.featuredWork[0].homeCarouselImage.asset.url}
+                    
+                    <ImageWrapper
+                      image={home.featuredWork[0].homeCarouselImage.asset}
+                      focalPoint={home.featuredWork[0].homeCarouselImage.hotspot ?? null}
+                      baseWidth={1920}
+                      baseHeight={1080}
                       alt="Placeholder"
-                      layout="fill"
-                      className={`w-full h-full object-cover object-center [z-2] home-image ${currentProject === 1 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
-                      placeholder="blur"
-                      blurDataURL={home.featuredWork[0].homeCarouselImage.asset.metadata.lqip}
+                      fill
+                      className={`w-full h-full object-cover [z-2] home-image ${currentProject === 1 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
                     />
 
-                    <div className="block">
-                      <Image
-                        src={home.featuredWork[1].homeCarouselImage.asset.url}
+                    <div className="block absolute inset-0">
+                      <ImageWrapper
+                        image={home.featuredWork[1].homeCarouselImage.asset}
+                        focalPoint={home.featuredWork[1].homeCarouselImage.hotspot ?? null}
+                        baseWidth={1920}
+                        baseHeight={1080}
                         alt="Placeholder"
-                        layout="fill"
-                        className={`w-full h-full object-cover object-center [z-1] home-image ${currentProject === 2 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
-                        placeholder="blur"
-                        blurDataURL={home.featuredWork[1].homeCarouselImage.asset.metadata.lqip}
+                        fill
+                        className={`w-full h-full object-cover [z-1] home-image ${currentProject === 2 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
                       />
                     </div>
 
-                    <div className="block">
-                      <Image
-                        src={home.featuredWork[2].homeCarouselImage.asset.url}
+                    <div className="block absolute inset-0">
+                      <ImageWrapper
+                        image={home.featuredWork[2].homeCarouselImage.asset}
+                        focalPoint={home.featuredWork[2].homeCarouselImage.hotspot ?? null}
+                        baseWidth={1920}
+                        baseHeight={1080}
                         alt="Placeholder"
-                        layout="fill"
-                        className={`w-full h-full object-cover object-center [z-2] home-image ${currentProject === 3 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
-                        placeholder="blur"
-                        blurDataURL={home.featuredWork[2].homeCarouselImage.asset.metadata.lqip}
+                        fill
+                        className={`w-full h-full object-cover [z-2] home-image ${currentProject === 3 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
                       />
                     </div>
                     
-                    <div className="block">
-                      <Image
-                        src={home.featuredWork[3].homeCarouselImage.asset.url}
+                    <div className="block absolute inset-0">
+                      <ImageWrapper
+                        image={home.featuredWork[3].homeCarouselImage.asset}
+                        focalPoint={home.featuredWork[3].homeCarouselImage.hotspot ?? null}
+                        baseWidth={1920}
+                        baseHeight={1080}
                         alt="Placeholder"
-                        layout="fill"
-                        className={`w-full h-full object-cover object-center [z-3] home-image ${currentProject === 4 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
-                        placeholder="blur"
-                        blurDataURL={home.featuredWork[3].homeCarouselImage.asset.metadata.lqip}
+                        fill
+                        className={`w-full h-full object-cover [z-3] home-image ${currentProject === 4 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
                       />
                     </div>
                     
-                    <div className="block">
-                      <Image
-                        src={home.featuredWork[4].homeCarouselImage.asset.url}
+                    <div className="block absolute inset-0">
+                      <ImageWrapper
+                        image={home.featuredWork[4].homeCarouselImage.asset}
+                        focalPoint={home.featuredWork[4].homeCarouselImage.hotspot ?? null}
+                        baseWidth={1920}
+                        baseHeight={1080}
                         alt="Placeholder"
-                        layout="fill"
+                        fill
                         className={`w-full h-full object-cover object-center [z-4] home-image ${currentProject === 5 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
-                        placeholder="blur"
-                        blurDataURL={home.featuredWork[4].homeCarouselImage.asset.metadata.lqip}
                       />
                     </div>
                   </m.div>

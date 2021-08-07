@@ -5,7 +5,7 @@ export default {
   openGraph: {
     type: 'website',
     locale: 'en_GB',
-    url: 'https://jason-orear.vercel.app/', // -> https://jasonorear.com/
+    url: 'https://jasonorear.com/',
     site_name: `Jason O'Rear - Architectural Photographer`,
     images: [
       {

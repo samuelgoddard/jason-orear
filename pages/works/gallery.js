@@ -165,7 +165,7 @@ export default function WorksGallery(initialData) {
                           </div>
 
                           <span className="hidden md:block overflow-hidden mt-[14px]">
-                            <span className="block transition-transform ease-in-out duration-[350ms] translate-y-[14px] group-hover:translate-y-0 will-change">
+                            <span className="block transition-transform ease-in-out duration-[350ms] translate-y-full group-hover:translate-y-0 will-change">
                               <span className="font-mono text-[14px] text-center block mb-0 pb-0 leading-none uppercase">{e.indexNumber} {e.title}</span>
                             </span>
                           </span>

@@ -88,7 +88,7 @@ export default function Wayfinder(initialData) {
                             <div className="opacity-0 md:group-hover:opacity-100">
                               <m.span
                                 animate={{ opacity: 0 }}
-                                transition={{ repeat: Infinity, duration: 1 }}
+                                transition={{ repeat: Infinity, duration: 0.25, repeatDelay: 0.75 }}
                                 className="block w-full h-[4px] absolute bottom-0 right-0 bg-current"
                               ></m.span>
                             </div>
@@ -113,7 +113,7 @@ export default function Wayfinder(initialData) {
                             <div className="opacity-0 md:group-hover:opacity-100">
                               <m.span
                                 animate={{ opacity: 0 }}
-                                transition={{ repeat: Infinity, duration: 1 }}
+                                transition={{ repeat: Infinity, duration: 0.25, repeatDelay: 0.75 }}
                                 className="block w-full h-[4px] absolute bottom-0 right-0 bg-current"
                               ></m.span>
                             </div>
@@ -137,7 +137,7 @@ export default function Wayfinder(initialData) {
                           <div className="opacity-0 md:group-hover:opacity-100">
                             <m.span
                               animate={{ opacity: 0 }}
-                              transition={{ repeat: Infinity, duration: 1 }}
+                              transition={{ repeat: Infinity, duration: 0.25, repeatDelay: 0.75 }}
                               className="block w-full h-[4px] absolute bottom-0 right-0 bg-current"
                             ></m.span>
                           </div>

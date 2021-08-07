@@ -59,7 +59,7 @@ export default function Header({route}) {
                 <div className="opacity-0 md:group-hover:opacity-100">
                   <m.span
                     animate={{ opacity: 0 }}
-                    transition={{ repeat: Infinity, duration: 1 }}
+                    transition={{ repeat: Infinity, duration: .5, repeatDelay: 0.5 }}
                     className="block w-[1px] h-[15px] absolute bottom-0 right-0 bg-current"
                   ></m.span>
                 </div>
