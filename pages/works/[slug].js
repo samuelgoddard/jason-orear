@@ -98,13 +98,13 @@ export default function WorksSlug(initialData) {
               anchors={['slider']}
               controlArrows={false}
               pluginWrapper={pluginWrapper}
-              licenseKey={'3E8E8C87-B0B24A84-8C40386A-A5CE366D'}
+              licenseKey={'E35C20B2-4B1C4CAA-AEB26F61-7D51579F'}
               // onLeave={this.onLeave.bind(this)}
               scrollingSpeed = {1100}
               loopHorizontal={false}
               scrollHorizontally={true}
               easingcss3="cubic-bezier(0.83, 0, 0.17, 1)"
-              scrollHorizontallyKey={'dmVyY2VsLmFwcF9icnZjMk55YjJ4c1NHOXlhWHB2Ym5SaGJHeDUwcHo='}
+              scrollHorizontallyKey={'970B2A2A-85E54A53-987720D2-564FF1E9'}
               render={({ state, fullpageApi }) => {
                 console.log(state)
                 // console.log("render prop change", state, fullpageApi); // eslint-disable-line no-console
