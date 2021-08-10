@@ -98,7 +98,7 @@ export default function WorksIndex(initialData) {
               <m.div variants={fade} className="p-[14px] md:p-[20px] pt-28 md:pt-40" data-scroll>
                 {works.map((e, i) => {
                   return (
-                    <div className="overflow-hidden" key={i}>
+                    <div className="overflow-hidden mb-5 md:mb-0" key={i}>
                       <span className="block text-[13px] md:text-[16px] mb-2 md:mb-3 leading-none tracking-tighter font-mono variant-numeric md:ml-[4px] uppercase">
                         <span className="block overflow-hidden">
                           <m.span variants={reveal} className="block">
