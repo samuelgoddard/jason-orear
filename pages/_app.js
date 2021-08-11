@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import { DefaultSeo } from 'next-seo'
 import { useContext, useEffect, useState } from 'react'
 import Image from 'next/image'
+import * as gtag from '@/helpers/gtag'
 import { Context } from '../context/state';
 import Div100vh from 'react-div-100vh'
 import { isWindows } from "react-device-detect";
@@ -80,7 +81,7 @@ export default function App({ Component, pageProps }) {
 
   const [introContext, setIntroContext] = useState(false);
   const [windows, setWindows] = useState(false)
-
+  const router = useRouter()
 
   useEffect(() => {
     setWindows(isWindows)
@@ -156,10 +157,17 @@ export default function App({ Component, pageProps }) {
       setImage5(false);
       setImage1(true);
     }, 3150);
-  },[setWindows]);
 
-  const router = useRouter()
-  
+    const handleRouteChange = (url) => {
+      gtag.pageview(url)
+    }
+
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+
+  },[setWindows, router.events]);  
 
   return (
     <>

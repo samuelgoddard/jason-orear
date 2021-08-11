@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
+import { GA_TRACKING_ID } from '@/helpers/gtag'
 
 export default class MyDocument extends Document {
   render() {
@@ -11,6 +12,22 @@ export default class MyDocument extends Document {
           <link rel="manifest" href="/favicons/site.webmanifest" />
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+            }}
+          />
         </Head>
         <body>
           <Main />
