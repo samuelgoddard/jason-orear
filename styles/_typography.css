@@ -54,7 +54,7 @@ body {
 }
 
 .home-image {
-  transition: all 1200ms cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  transition: all 1850ms cubic-bezier(0.215, 0.610, 0.355, 1.000);
 }
 
 /*

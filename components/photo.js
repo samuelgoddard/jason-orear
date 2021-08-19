@@ -8,6 +8,7 @@ const Photo = ({
   photo,
   width,
   height,
+  focalPoint,
   srcSizes = [400, 600, 800, 1000, 1200, 1600, 1920],
   sizes = '(min-width: 940px) 50vw, 100vw',
   layout = 'intrinsic',
@@ -67,6 +68,7 @@ const Photo = ({
         })}
         style={aspectCustom}
       >
+        {/* <div className="absolute top-0 left-0 ml-3 mt-3 z-[2000]">TEST: {JSON.stringify(focalPoint)}</div> */}
         <picture>
           <img
             ref={imageRef}
@@ -79,6 +81,7 @@ const Photo = ({
             onLoad={handleLoad}
             alt={photo.alt || photo.asset?.altText}
             className={cx(getSize(layout), { 'is-loaded': isLoaded })}
+            style={{ objectPosition: focalPoint ? `${focalPoint.x * 100}% ${focalPoint.y * 100}%` : `50% 50%` }}
           />
         </picture>
       </div>

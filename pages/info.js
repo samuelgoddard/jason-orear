@@ -187,7 +187,7 @@ export default function Info(initialData) {
                               <li>
                                 <span className="block overflow-hidden">
                                   <m.span variants={reveal} className="block">
-                                    <button className="block uppercase border-none outline-none focus:outline-none focus:border-none hover:text-burnt-yellow transition-colors ease-in-out duration-300" onClick={toggleClients}>+ {info.clients.length - 4} More</button>
+                                    <button className="block uppercase border-none outline-none focus:outline-none focus:border-none hover:text-burnt-yellow transition-colors ease-in-out duration-300" onClick={toggleClients}>{ clientsExpanded ? '- Collapse' : '+ Expand' }</button>
                                   </m.span>
                                 </span>
                               </li>
@@ -280,7 +280,7 @@ export default function Info(initialData) {
                               <li>
                                 <span className="block overflow-hidden">
                                   <m.span variants={reveal} className="block">
-                                    <button className="block uppercase border-none outline-none focus:outline-none focus:border-none hover:text-burnt-yellow transition-colors ease-in-out duration-300" onClick={togglePublications}>+ {info.publications.length - 4} More</button>
+                                    <button className="block uppercase border-none outline-none focus:outline-none focus:border-none hover:text-burnt-yellow transition-colors ease-in-out duration-300" onClick={togglePublications}>{ publicationsExpanded ? '- Collapse' : '+ Expand' }</button>
                                   </m.span>
                                 </span>
                               </li>

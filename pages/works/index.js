@@ -129,7 +129,7 @@ export default function WorksIndex(initialData) {
                             <span className="inline-block md:block md:ml-3">
                               <span className="inline-block md:block overflow-hidden">
                                 <m.span variants={fade} className="block">
-                                  “{e.client}”
+                                  {e.client}
                                 </m.span>
                               </span>
                             </span>
@@ -147,7 +147,7 @@ export default function WorksIndex(initialData) {
                             <span className="inline-block md:block md:ml-3">
                               <span className="inline-block md:block overflow-hidden">
                                 <m.span variants={fade} className="block">
-                                  “{e.location}”
+                                  {e.location}
                                 </m.span>
                               </span>
                             </span>
@@ -165,7 +165,7 @@ export default function WorksIndex(initialData) {
                             <span className="inline-block md:block md:ml-3">
                               <span className="inline-block md:block overflow-hidden">
                                 <m.span variants={fade} className="block">
-                                  “{e.gps}”
+                                  {e.gps}
                                 </m.span>
                               </span>
                             </span>
@@ -183,7 +183,7 @@ export default function WorksIndex(initialData) {
                             <span className="inline-block md:block md:ml-3">
                               <span className="inline-block md:block overflow-hidden">
                                 <m.span variants={fade} className="block">
-                                  “{e.year}”
+                                  {e.year}
                                 </m.span>
                               </span>
                             </span>

@@ -5,18 +5,18 @@ import sanity from '../services/sanity';
 const customImageBuilder = (imageUrlBuilder, options, baseWidth, baseHeight, fill, ignoreCropping, focalPoint) => {
   return ignoreCropping ? imageUrlBuilder.fit('clip') : imageUrlBuilder
     .size(baseWidth || options.originalImageDimensions.width, baseHeight || options.originalImageDimensions.height)
-    .focalPoint(focalPoint ? `${focalPoint.x}, ${focalPoint.y}` : 0,0)
     .fit(focalPoint ? 'crop' : 'clip')
     .crop(focalPoint ? `focalpoint` : `center`)
+    .focalPoint(focalPoint ? `${focalPoint.x}, ${focalPoint.y}` : 0,0)
     .quality(90);
 };
 
 function ImageWrapper({ image, sizes, className, alt, baseWidth, baseHeight, noPlaceholder, fill, objectFit, ignoreCropping, priority, next, lqip, focalPoint }) {
-  if (next && !(image?.asset?.metadata?.dimensions || image?.asset?._ref)) return <></>
+  // if (next && !(image?.asset?.metadata?.dimensions || image?.asset?._ref)) return <></>
   const imageProps =  useNextSanityImage(
     sanity.client,
     image,
-    { imageBuilder: (imageUrlBuilder, options) => customImageBuilder(imageUrlBuilder, options, baseWidth, baseHeight, fill, ignoreCropping, focalPoint)} 
+    { imageBuilder: (imageUrlBuilder, options, focalPoint) => customImageBuilder(imageUrlBuilder, options, baseWidth, baseHeight, fill, ignoreCropping, focalPoint)} 
   ) 
 
   // console.log(focalPoint)
@@ -45,6 +45,7 @@ function ImageWrapper({ image, sizes, className, alt, baseWidth, baseHeight, noP
 
   return (
     <div className={`${className} ${ noPlaceholder ? '' : ''}`}>
+    {/* <div className="absolute top-0 left-0 ml-12 mt-12 z-[10000]">{JSON.stringify(focalPoint)} efwff</div> */}
       <Img
         src={imageProps.src}
         { ...( !removeWidth && { width: setBaseWidth } ) }
@@ -53,7 +54,7 @@ function ImageWrapper({ image, sizes, className, alt, baseWidth, baseHeight, noP
         alt={alt}
         layout={fill ? 'fill' : 'responsive'}
         objectFit={fill ? 'cover' : null}
-        objectPosition={focalPoint ? `${focalPoint.x}, ${focalPoint.y}` : `50% 50%`}
+        objectPosition={focalPoint ? `${focalPoint.x * 100}% ${focalPoint.y * 100}%` : `50% 50%`}
         priority={priority ? priority : false}
         { ...( lqip && { placeholder: "blur" })}
         { ...( lqip && { blurDataURL: lqip })}

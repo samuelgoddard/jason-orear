@@ -73,16 +73,16 @@ export default function Home(initialData) {
   // Set translate properties dependant on currentProject state
   if (currentProject == 2) {
     coords = 'translate-y-[-13px] md:translate-y-[-16px]'
-    numberRoll = 'translate-y-[-90px] md:translate-y-[-160px] 2xl:translate-y-[-230px]'
+    numberRoll = 'translate-y-[-90px] md:translate-y-[-160px] 2xl:translate-y-[-200px]'
   } else if (currentProject == 3) {
     coords = 'translate-y-[-26px] md:translate-y-[-32px]'
-    numberRoll = 'translate-y-[-180px] md:translate-y-[-320px] 2xl:translate-y-[-460px]'
+    numberRoll = 'translate-y-[-180px] md:translate-y-[-320px] 2xl:translate-y-[-400px]'
   } else if (currentProject == 4) {
     coords = 'translate-y-[-39px] md:translate-y-[-48px]'
-    numberRoll = 'translate-y-[-270px] md:translate-y-[-480px] 2xl:translate-y-[-690px]'
+    numberRoll = 'translate-y-[-270px] md:translate-y-[-480px] 2xl:translate-y-[-600px]'
   } else if (currentProject == 5) {
     coords = 'translate-y-[-52px] md:translate-y-[-64px]'
-    numberRoll = 'translate-y-[-360px] md:translate-y-[-640px] 2xl:translate-y-[-920px]'
+    numberRoll = 'translate-y-[-360px] md:translate-y-[-640px] 2xl:translate-y-[-800px]'
   }
 
   useEffect(() => {
@@ -101,7 +101,7 @@ export default function Home(initialData) {
         setCurrentProject(currentProject => currentProject+1)
       }
       // If introContext is set delay the ticker by 4 seconds (defined above)
-    }, introContext ? 4000 : 4000);
+    }, introContext ? 4000 : 6000);
     return () => {
       clearInterval(i_id);
     }
@@ -169,6 +169,8 @@ export default function Home(initialData) {
               <div>TEST: {JSON.stringify(home.featuredWork[3].homeCarouselImage.hotspot)}</div>
               <div>TEST: {JSON.stringify(home.featuredWork[4].homeCarouselImage.hotspot)}</div> */}
             {/* </div> */}
+
+            {/* <div className="fixed top-0 left-0 ml-12 mt-12 z-[100000] text-2xl">ssss: {JSON.stringify(home.featuredWork[2].homeCarouselImage.hotspot)}</div> */}
             <m.div variants={fade} className="text-white my-auto">
               <div className="w-full h-[60vh] md:h-[63vh] relative mt-[-2vw]">
                 {/* <div className="absolute inset-0 flex-wrap z-[6] hidden md:flex">  
@@ -216,7 +218,6 @@ export default function Home(initialData) {
                     </Link>
                   )}
                 </div> */}
-
                 <div className="absolute inset-0 overflow-hidden">
                   <m.div className="absolute inset-0" variants={slightScale}>
                     
@@ -227,7 +228,7 @@ export default function Home(initialData) {
                       baseHeight={1080}
                       alt="Placeholder"
                       fill
-                      className={`w-full h-full object-cover [z-2] home-image ${currentProject === 1 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
+                      className={`w-full h-full [z-2] home-image ${currentProject === 1 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
                     />
 
                     <div className="block absolute inset-0">
@@ -238,7 +239,7 @@ export default function Home(initialData) {
                         baseHeight={1080}
                         alt="Placeholder"
                         fill
-                        className={`w-full h-full object-cover [z-1] home-image ${currentProject === 2 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
+                        className={`w-full h-full [z-1] home-image ${currentProject === 2 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
                       />
                     </div>
 
@@ -250,7 +251,7 @@ export default function Home(initialData) {
                         baseHeight={1080}
                         alt="Placeholder"
                         fill
-                        className={`w-full h-full object-cover [z-2] home-image ${currentProject === 3 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
+                        className={`w-full h-full [z-2] home-image ${currentProject === 3 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
                       />
                     </div>
                     
@@ -262,7 +263,7 @@ export default function Home(initialData) {
                         baseHeight={1080}
                         alt="Placeholder"
                         fill
-                        className={`w-full h-full object-cover [z-3] home-image ${currentProject === 4 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
+                        className={`w-full h-full [z-3] home-image ${currentProject === 4 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
                       />
                     </div>
                     
@@ -274,7 +275,7 @@ export default function Home(initialData) {
                         baseHeight={1080}
                         alt="Placeholder"
                         fill
-                        className={`w-full h-full object-cover object-center [z-4] home-image ${currentProject === 5 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
+                        className={`w-full h-full [z-4] home-image ${currentProject === 5 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
                       />
                     </div>
                   </m.div>
@@ -330,10 +331,10 @@ export default function Home(initialData) {
               </span>
               {/* mb-[9px] md:mb-[-7px] 2xl:mb-[-12px] */}
               <span className="overflow-hidden ml-auto fixed bottom-0 right-0 flex items-end mb-[9px] md:mb-[20px] 2xl:mb-[20px] mr-[14px] md:mr-[20px]">
-                <m.span variants={reveal} className="block md:mb-[-23px] 2xl:mb-[-32px]">
-                  <span className="text-[90px] md:text-[160px] 2xl:text-[230px] leading-none font-semibold tracking-tight flex items-end"><span className="text-[13px] md:text-[16px] tracking-tighter md:tracking-normal leading-none mb-[5px] md:mb-[20px] 2xl:mb-[30px] uppercase font-normal font-mono hidden md:block"><span className="transform hidden md:inline-block rotate-180">◄</span> p<span className="hidden md:inline">roject</span><span className="hidden md:inline-block">&nbsp;</span>/</span>
+                <m.span variants={reveal} className="block md:mb-[-23px] 2xl:mb-[-30px]">
+                  <span className="text-[90px] md:text-[160px] 2xl:text-[200px] leading-none font-semibold tracking-tight flex items-end"><span className="text-[13px] md:text-[16px] tracking-tighter md:tracking-normal leading-none mb-[5px] md:mb-[20px] 2xl:mb-[30px] uppercase font-normal font-mono hidden md:block"><span className="transform hidden md:inline-block rotate-180">◄</span> p<span className="hidden md:inline">roject</span><span className="hidden md:inline-block">&nbsp;</span>/</span>
                     <span className="block tracking-tighter">
-                      <span className="block overflow-hidden h-[80px] md:h-[160px] 2xl:h-[230px]">
+                      <span className="block overflow-hidden h-[80px] md:h-[160px] 2xl:h-[200px]">
                         <span className={`block index-number`}>
                           <span className="block leading-none">
                             {numberSplit.map((e, i) => {

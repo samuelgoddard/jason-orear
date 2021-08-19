@@ -35,6 +35,12 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
     images[] {
       asset-> {
         ...
+      },
+    },
+    "imagesHotSpots": images[] {
+      hotspot {
+        x,
+        y
       }
     }
   },
@@ -183,6 +189,7 @@ export default function WorksSlug(initialData) {
                                         photo={g}
                                         width={optimisedWidth}
                                         height={optimisedHeight}
+                                        focalPoint={f.imagesHotSpots[i].hotspot ?? null}
                                         sizes="(min-width: 1920px) 100vw, (min-width: 1600px) 100vw, (min-width: 1280px) 90vw, (min-width: 768px) 90vw, 200vw"
                                         layout="fill"
                                         className="w-full h-full object-cover object-center will-change"
@@ -202,19 +209,19 @@ export default function WorksSlug(initialData) {
                             <div className="font-mono text-[12px] md:text-[13px] uppercase absolute top-auto bottom-0 md:bottom-auto md:top-0 right-0 md:left-0 md:right-auto mb-[78vw] md:mb-0 md:mt-20 text-right md:text-left">
                               <div className="w-full mb-[2px] md:mb-2">
                                 <span className="hidden md:block mb-px md:mb-0">(Client)</span>
-                                <span className="block md:ml-3">“{next.client}”</span>
+                                <span className="block md:ml-3">{next.client}</span>
                               </div>
                               <div className="w-full mb-[2px] md:mb-2">
                                 <span className="hidden md:block mb-px md:mb-0">(Location)</span>
-                                <span className="block md:ml-3">“{next.location}”</span>
+                                <span className="block md:ml-3">{next.location}</span>
                               </div>
                               <div className="w-full mb-[2px] md:mb-2">
                                 <span className="hidden md:block mb-px md:mb-0">(GPS)</span>
-                                <span className="block md:ml-3">“{next.gps}”</span>
+                                <span className="block md:ml-3">{next.gps}</span>
                               </div>
                               <div className="w-full mb-[2px] md:mb-2">
                                 <span className="hidden md:block mb-px md:mb-0">(Year)</span>
-                                <span className="block md:ml-3">“{next.year}”</span>
+                                <span className="block md:ml-3">{next.year}</span>
                               </div>
                             </div>
                             
@@ -338,7 +345,7 @@ export default function WorksSlug(initialData) {
                           <span className="hidden md:block mb-px md:mb-0 transition-translate ease-in-out duration-500 translate-y-full group-hover:translate-y-0">(Client)</span>
                         </div>
                         <div className="overflow-hidden">
-                          <span className="block md:ml-3 transition-translate ease-in-out duration-500 translate-y-full group-hover:translate-y-0 group-hover:delay-[100ms]">“{client}”</span>
+                          <span className="block md:ml-3 transition-translate ease-in-out duration-500 translate-y-full group-hover:translate-y-0 group-hover:delay-[100ms]">{client}</span>
                         </div>
                       </div>
                       <div className="w-auto mx-3 text-left">
@@ -346,7 +353,7 @@ export default function WorksSlug(initialData) {
                           <span className="hidden md:block mb-px md:mb-0 transition-translate ease-in-out duration-500 translate-y-full group-hover:translate-y-0">(Location)</span>
                         </div>
                         <div className="overflow-hidden">
-                          <span className="block md:ml-3 transition-translate ease-in-out duration-500 translate-y-full group-hover:translate-y-0 group-hover:delay-[100ms]">“{location}”</span>
+                          <span className="block md:ml-3 transition-translate ease-in-out duration-500 translate-y-full group-hover:translate-y-0 group-hover:delay-[100ms]">{location}</span>
                         </div>
                       </div>
                       <div className="w-auto mx-3 text-left">
@@ -354,7 +361,7 @@ export default function WorksSlug(initialData) {
                           <span className="hidden md:block mb-px md:mb-0 transition-translate ease-in-out duration-500 translate-y-full group-hover:translate-y-0">(GPS)</span>
                         </div>
                         <div className="overflow-hidden">
-                          <span className="block md:ml-3 transition-translate ease-in-out duration-500 translate-y-full group-hover:translate-y-0 group-hover:delay-[100ms]">“{gps}”</span>
+                          <span className="block md:ml-3 transition-translate ease-in-out duration-500 translate-y-full group-hover:translate-y-0 group-hover:delay-[100ms]">{gps}</span>
                         </div>
                       </div>
                       <div className="w-auto mx-3 text-left">
@@ -362,7 +369,7 @@ export default function WorksSlug(initialData) {
                           <span className="hidden md:block mb-px md:mb-0 transition-translate ease-in-out duration-500 translate-y-full group-hover:translate-y-0">(Year)</span>
                         </div>
                         <div className="overflow-hidden">
-                          <span className="block md:ml-3 transition-translate ease-in-out duration-500 translate-y-full group-hover:translate-y-0 group-hover:delay-[100ms]">“{year}”</span>
+                          <span className="block md:ml-3 transition-translate ease-in-out duration-500 translate-y-full group-hover:translate-y-0 group-hover:delay-[100ms]">{year}</span>
                         </div>
                       </div>
                     </div>
