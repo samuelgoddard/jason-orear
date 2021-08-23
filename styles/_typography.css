@@ -1,5 +1,12 @@
 body {
   @apply font-sans antialiased text-off-black bg-white selection:bg-black selection:text-white;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
 }
 
 /* Content Stylings */
