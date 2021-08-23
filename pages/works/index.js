@@ -10,6 +10,8 @@ import { NextSeo } from 'next-seo'
 import ImageWrapper from '@/components/image-wrapper'
 import Photo from '@/components/photo'
 import { Context } from '../../context/state'
+import { ColorContext } from 'context/primary'
+import { SecondaryColorContext } from 'context/secondary'
 
 const query = `{
   "works": *[_type == "work"] | order(indexNumber)  {
@@ -36,23 +38,33 @@ const query = `{
         asset->
       }
     },
+  },
+  "contact": *[_type == "contact"][0]{
+    primaryColor,
+    secondaryColor
   }
 }`
 
 const pageService = new SanityPageService(query)
 
 export default function WorksIndex(initialData) {
-  const { data: { works }  } = pageService.getPreviewHook(initialData)()
+  const { data: { works, contact }  } = pageService.getPreviewHook(initialData)()
   const containerRef = useRef(null)
   const [introContext, setIntroContext] = useContext(Context);
+  const [primaryColor, setPrimaryColor] = useContext(ColorContext);
+  const [secondaryColor, setSecondaryColor] = useContext(SecondaryColorContext);
 
   useEffect(() => {
+    setPrimaryColor(contact.primaryColor)
+    setSecondaryColor(contact.secondaryColor)
+
     setIntroContext(true)
   },[]);
 
   return (
     <Layout>
       <NextSeo title="Works" />
+      
       <LocomotiveScrollProvider options={{ smooth: true, lerp: 0.075 }} watch={[]} containerRef={containerRef}>
         <main data-scroll-container ref={containerRef} id="scroll-container" className="z-[10]">
           <LazyMotion features={domAnimation}>

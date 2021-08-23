@@ -9,6 +9,8 @@ import { NextSeo } from 'next-seo'
 import { Context } from '../../context/state'
 import Photo from '@/components/photo';
 import Div100vh from 'react-div-100vh';
+import { ColorContext } from 'context/primary';
+import { SecondaryColorContext } from 'context/secondary';
 
 const pluginWrapper = () => {
   require('../../static/fullpage.scrollHorizontally.min.js');
@@ -62,6 +64,10 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
       }
     },
   },
+  "contact": *[_type == "contact"][0]{
+    primaryColor,
+    secondaryColor
+  },
   slug {
     current
   }
@@ -70,11 +76,14 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
 const pageService = new SanityPageService(query)
 
 export default function WorksSlug(initialData) {
-  const { data: { title, seo, slug, indexNumber, client, location, gps, year, imageSlides, next }  } = pageService.getPreviewHook(initialData)()
+  const { data: { title, seo, slug, indexNumber, client, location, gps, year, imageSlides, next, contact }  } = pageService.getPreviewHook(initialData)()
   const [introContext, setIntroContext] = useContext(Context);
   const [infoOpen, setInfoOpen] = useState(false);
   const [nextHovered, setNextHovered] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0)
+
+  const [primaryColor, setPrimaryColor] = useContext(ColorContext);
+  const [secondaryColor, setSecondaryColor] = useContext(SecondaryColorContext);
   // const currentSlide = fullpageApi.getActiveSlide();
 
   const toggleInfoOpen = () => setInfoOpen(!infoOpen);
@@ -82,6 +91,8 @@ export default function WorksSlug(initialData) {
   const toggleNextHoveredOff = () => setNextHovered(false);
 
   useEffect(() => {
+    setPrimaryColor(contact.primaryColor)
+    setSecondaryColor(contact.secondaryColor)
     setIntroContext(true)
   },[]);
 

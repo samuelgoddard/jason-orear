@@ -1,25 +1,35 @@
+import { style } from 'glamor';
 import Link from 'next/link'
 import Layout from '@/components/layout'
 import { fade, revealIn, revealHori, revealHoriMore, growHeight } from "@/helpers/transitions"
 import { LazyMotion, domAnimation, m } from "framer-motion"
 import { NextSeo } from 'next-seo'
 import SanityPageService from '@/services/sanityPageService'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Context } from '../context/state'
 import Div100vh from 'react-div-100vh'
+import { ColorContext } from 'context/primary'
+import { SecondaryColorContext } from 'context/secondary'
 
 const query = `*[_type == "contact"][0]{
-  email
+  email,
+  "primaryColorr": primaryColor,
+  "secondaryColorr": secondaryColor
 }`
 
 const pageService = new SanityPageService(query)
 
 export default function Wayfinder(initialData) {
-  const { data: { email }  } = pageService.getPreviewHook(initialData)()
+  const { data: { email, primaryColorr, secondaryColorr }  } = pageService.getPreviewHook(initialData)()
+  const [primaryColor, setPrimaryColor] = useContext(ColorContext);
+  const [secondaryColor, setSecondaryColor] = useContext(SecondaryColorContext);
 
   const [introContext, setIntroContext] = useContext(Context);
 
   useEffect(() => {
+    setPrimaryColor(primaryColorr)
+    setSecondaryColor(secondaryColorr)
+
     setIntroContext(true)
   },[]);
 
@@ -45,13 +55,24 @@ export default function Wayfinder(initialData) {
     //   text: "hover:text-burnt-blue"
     // },
     {
-      background: "bg-yellow",
-      text: ""
+      background: `bg-[${primaryColor}]`,
+      text: `hover:bg-[${secondaryColor}]`
     }
   ];
 
   let bodyColor = bodyColors[0];
 
+  const styles = {
+    navLink: style({
+      ":hover": {
+        color: `${secondaryColor}`
+      }
+    }),
+    navLinkInner: style({
+      color: `${secondaryColor}`
+    })
+  };
+  
   return (
     <Layout>
       <NextSeo title="Wayfinder" />
@@ -79,7 +100,7 @@ export default function Wayfinder(initialData) {
               <ul className={`flex flex-wrap mx-auto text-black relative z-10 h-full w-full ${bodyColor.text}`}>
                 <li className="w-1/3 flex justify-center relative overflow-hidden">
                   <Link href="/info">
-                    <a className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] group hover:text-burnt-yellow wayfinder-text p-[14px] md:p-[22px] pt-[22px] md:pt-[22px]">
+                    <a className={`w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] group wayfinder-text p-[14px] md:p-[22px] pt-[22px] md:pt-[22px]`} {...styles.navLink}>
                       <div>
                         <div className="overflow-hidden relative">
                           <m.div variants={revealHoriMore}>
@@ -94,7 +115,7 @@ export default function Wayfinder(initialData) {
                             </div>
                           </m.div>
                         </div>
-                        <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0 text-burnt-yellow">
+                        <m.span variants={fade} className={`hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0`} {...styles.navLink}>
                           <span className="opacity-0 group-hover:opacity-100 group-hover:mt-[2.5%]">Biography</span>
                         </m.span>
                       </div>
@@ -102,9 +123,9 @@ export default function Wayfinder(initialData) {
                   </Link>
                   <m.div variants={revealIn} className="border-r border-white border-opacity-40 w-[1px] my-[14px] md:my-[22px] h-[[100%-14px]] md:h-[[100%-22px]] origin-bottom"></m.div>
                 </li>
-                <li className="w-1/3 flex justify-center relative overflow-hidden">
+                <li className={`w-1/3 flex justify-center relative overflow-hidden`}>
                   <Link href="/works">
-                    <a className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] group hover:text-burnt-yellow mb-1 md:mb-2 wayfinder-text p-[14px] md:p-[22px] pt-[22px] md:pt-[22px]">
+                    <a className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] group mb-1 md:mb-2 wayfinder-text p-[14px] md:p-[22px] pt-[22px] md:pt-[22px]" {...styles.navLink}>
                       <div>
                         <div className="overflow-hidden relative">
                           <m.div variants={revealHoriMore}>
@@ -119,7 +140,7 @@ export default function Wayfinder(initialData) {
                             </div>
                           </m.div>
                         </div>
-                        <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0 text-burnt-yellow">
+                        <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0" {...styles.navLink}>
                           <span className="opacity-0 group-hover:opacity-100 group-hover:mt-[2.5%]">Selected projects</span>
                         </m.span>
                       </div>
@@ -128,7 +149,7 @@ export default function Wayfinder(initialData) {
                   <m.div variants={revealIn} className="border-r border-white border-opacity-40 w-[1px] my-[14px] md:my-[22px] h-[[100%-14px]] md:h-[[100%-22px]] origin-bottom"></m.div>
                 </li>
                 <li className="w-1/3 flex justify-center">
-                  <a href={`mailto:${email}`} className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] group hover:text-burnt-yellow wayfinder-text p-[14px] md:p-[22px] pt-[22px] md:pt-[22px]">
+                  <a href={`mailto:${email}`} className="w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] group wayfinder-text p-[14px] md:p-[22px] pt-[22px] md:pt-[22px]" {...styles.navLink}>
                     <div>
                       <div className="overflow-hidden relative">
                         <m.div variants={revealHoriMore}>
@@ -143,7 +164,7 @@ export default function Wayfinder(initialData) {
                           </div>
                         </m.div>
                       </div>
-                      <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0 text-burnt-yellow">
+                      <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0" {...styles.navLink}>
                         <span className="opacity-0 group-hover:opacity-100 group-hover:mt-[2.5%]">Reach Out</span>
                       </m.span>
                     </div>

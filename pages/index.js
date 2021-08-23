@@ -6,6 +6,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import SanityPageService from '@/services/sanityPageService'
 import { Context } from '../context/state'
+import { ColorContext } from '../context/primary'
+import { SecondaryColorContext } from '../context/secondary'
 import Div100vh from 'react-div-100vh'
 import { useWindowSize } from '@/helpers/window-size'
 import ImageWrapper from '@/components/image-wrapper'
@@ -46,18 +48,26 @@ const query = `{
       }
     }
   },
+  "contact": *[_type == "contact"][0]{
+    primaryColor,
+    secondaryColor
+  }
 }`
 
 
 const pageService = new SanityPageService(query)
 
 export default function Home(initialData) {
-  const { data: { home }  } = pageService.getPreviewHook(initialData)()
+  
+  const { data: { home, contact }  } = pageService.getPreviewHook(initialData)()
 
   // Set the current project to non zero'd 1
   const [currentProject, setCurrentProject] = useState(1);
   // Check whether the intro has played from global state storage
   const [introContext, setIntroContext] = useContext(Context);
+  const [primaryColor, setPrimaryColor] = useContext(ColorContext);
+  const [secondaryColor, setSecondaryColor] = useContext(SecondaryColorContext);
+  
   // Get current window size
   const windowSize = useWindowSize();
   
@@ -87,10 +97,12 @@ export default function Home(initialData) {
 
   useEffect(() => {
     // Set the intro global context to true after 4 seconds
+    setPrimaryColor(contact.primaryColor)
+    setSecondaryColor(contact.secondaryColor)
     setTimeout(() => {
       setIntroContext(true)
     }, 3500);
-    
+
     // Set an interval that updates the currentProject every 3 seconds on mobile to rotate the projects
     const i_id = setInterval(() => {
       if (currentProject == 5) {
@@ -105,7 +117,7 @@ export default function Home(initialData) {
     return () => {
       clearInterval(i_id);
     }
-  },[currentProject]);
+  },[currentProject, setPrimaryColor]);
   
 
   const reveal = {
@@ -289,9 +301,9 @@ export default function Home(initialData) {
                 <span className="block relative overflow-hidden mb-[5px]">
                   <m.span variants={revealMore} className="block uppercase leading-none">(Info)</m.span>
                 </span>
-                <span className="block overflow-hidden h-[12px] md:h-[13px]">
+                <span className="block overflow-hidden h-[12px] md:h-[15px]">
                   <m.span variants={reveal} className="block">
-                    <span className={`block ${coords} transition-transform ease-in-out duration-500`}>
+                    <span className={`block ${coords} transition-transform ease-in-out duration-500 pt-[2px]`}>
                       <span className="block leading-none">{home.featuredWork[0].gps}</span>
                       <span className="block leading-none">{home.featuredWork[1].gps}</span>
                       <span className="block leading-none">{home.featuredWork[2].gps}</span>
@@ -303,9 +315,9 @@ export default function Home(initialData) {
               </span>
 
               <span className={`w-full md:w-auto text-[13px] md:text-[16px] tracking-tighter md:tracking-normal leading-none md:fixed bottom-0 left-0 mb-1 md:m-[20px] md:ml-[25vw] font-mono hidden xl:block uppercase`}>
-                <span className="block overflow-hidden h-[12px] md:h-[13px]">
+                <span className="block overflow-hidden h-[12px] md:h-[15px]">
                   <m.span variants={reveal} className="block">
-                    <span className={`block ${coords} transition-transform ease-in-out duration-500`}>
+                    <span className={`block ${coords} transition-transform ease-in-out duration-500 pt-[2px]`}>
                       <span className="block leading-none">{home.featuredWork[0].referenceCode}</span>
                       <span className="block leading-none">{home.featuredWork[1].referenceCode}</span>
                       <span className="block leading-none">{home.featuredWork[2].referenceCode}</span>
@@ -317,9 +329,9 @@ export default function Home(initialData) {
               </span>
 
               <span className="w-full text-[13px] md:text-[16px] tracking-tighter md:tracking-normal ml-auto leading-none uppercase md:fixed md:text-center block font-mono">
-                <span className="block overflow-hidden h-[12px] md:h-[13px]">
+                <span className="block overflow-hidden h-[12px] md:h-[15px]">
                   <m.span variants={reveal} className="block">
-                    <span className={`block ${coords} transition-transform ease-in-out duration-500`}>
+                    <span className={`block ${coords} transition-transform ease-in-out duration-500 pt-[2px]`}>
                       <span className="block leading-none">{home.featuredWork[0].title}</span>
                       <span className="block leading-none">{home.featuredWork[1].title}</span>
                       <span className="block leading-none">{home.featuredWork[2].title}</span>

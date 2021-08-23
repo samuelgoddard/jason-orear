@@ -9,6 +9,8 @@ import { useContext, useEffect, useState } from 'react'
 import Image from 'next/image'
 import * as gtag from '@/helpers/gtag'
 import { Context } from '../context/state';
+import { ColorContext } from '../context/primary';
+import { SecondaryColorContext } from '../context/secondary';
 import Div100vh from 'react-div-100vh'
 import { isWindows } from "react-device-detect";
 
@@ -80,6 +82,8 @@ export default function App({ Component, pageProps }) {
   const [image5, setImage5] = useState(true);
 
   const [introContext, setIntroContext] = useState(false);
+  const [primaryColor, setPrimaryColor] = useState('#FFB31F');
+  const [secondaryColor, setSecondaryColor] = useState('#FF7D1F');
   const [windows, setWindows] = useState(false)
   const router = useRouter()
 
@@ -174,8 +178,16 @@ export default function App({ Component, pageProps }) {
       { pageProps.preview && <><div className={'fixed bottom-0 w-full p-2 bg-red opacity-75 text-white justify-center flex z-50 uppercase font-medium'}>! Preview Mode Enabled - <a className={'px-1 underline'} href={`/api/exit-preview?currentRoute=${router.route}`}>Click Here To Exit</a> !</
       div></> }
       <DefaultSeo {...SEO} />
-
-      <div className={`scroll-conainer transition-colors ease-in-out duration-700 delay-[400ms] ${windows ? 'windows' : 'mac'} ${router.asPath === '/wayfinder' ? 'bg-yellow' : 'bg-#FFFFFF' }`}>
+      <SecondaryColorContext.Provider value={
+        [secondaryColor, setSecondaryColor]
+      }>
+      <ColorContext.Provider value={
+        [primaryColor, setPrimaryColor]
+      }>
+        <div 
+          className={`scroll-conainer transition-colors ease-in-out duration-700 delay-[400ms] ${windows ? 'windows' : 'mac'}`}
+          style={{ backgroundColor: router.asPath === '/wayfinder' ? primaryColor : '#FFFFFF' }}
+        >
         <Context.Provider value={[introContext, setIntroContext]}>
 
           <Header route={router.asPath} />
@@ -347,6 +359,8 @@ export default function App({ Component, pageProps }) {
           </AnimatePresence>
         </Context.Provider>
       </div>
+      </ColorContext.Provider>
+      </SecondaryColorContext.Provider>
     </>
   )
 }

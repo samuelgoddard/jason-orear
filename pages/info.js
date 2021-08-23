@@ -1,3 +1,4 @@
+import { style } from 'glamor';
 import { useContext, useEffect, useRef, useState } from 'react'
 import Layout from '@/components/layout'
 import { fade, reveal, revealHori, slightScale } from "@/helpers/transitions"
@@ -9,6 +10,8 @@ import SanityPageService from '@/services/sanityPageService'
 import BlockContent from '@sanity/block-content-to-react'
 import { Context } from '../context/state'
 import ConditionalWrap from 'conditional-wrap';
+import { ColorContext } from 'context/primary'
+import { SecondaryColorContext } from 'context/secondary'
 
 const query = `{
   "info": *[_type == "info"][0]{
@@ -38,7 +41,9 @@ const query = `{
     email,
     instagramUrl,
     phone,
-    address
+    address,
+    "primarColorr": primaryColor,
+    "secondaryColorr": secondaryColor
   }
 }`
 
@@ -46,6 +51,8 @@ const pageService = new SanityPageService(query)
 
 export default function Info(initialData) {
   const { data: { info, contact }  } = pageService.getPreviewHook(initialData)()
+  const [primaryColor, setPrimaryColor] = useContext(ColorContext);
+  const [secondaryColor, setSecondaryColor] = useContext(SecondaryColorContext);
   const containerRef = useRef(null)
   const [introContext, setIntroContext] = useContext(Context);
   const [clientsExpanded, setClientsExpanded] = useState(false)
@@ -55,8 +62,19 @@ export default function Info(initialData) {
   const togglePublications = () => setPublicationsExpanded(!publicationsExpanded);
 
   useEffect(() => {
+    setPrimaryColor(contact.primaryColorr)
+    setSecondaryColor(contact.secondaryColorr)
+
     setIntroContext(true)
   },[]);
+
+  const styles = {
+    inPageLink: style({
+      ":hover": {
+        color: `${secondaryColor}`
+      }
+    })
+  };
   
   // let bodyColors = [
   //   "bg-red",
@@ -123,7 +141,7 @@ export default function Info(initialData) {
                                       <ConditionalWrap
                                         condition={!!e.url}
                                         wrap={children => (
-                                          <a href={e.url} target="_blank" rel="noopener noreferrer" className="underline block hover:text-burnt-yellow focus:text-burnt-yellow transition-colors ease-in-out duration-300">
+                                          <a href={e.url} target="_blank" rel="noopener noreferrer" className="underline block transition-colors ease-in-out duration-300" {...styles.inPageLink}>
                                             {children}
                                           </a>
                                         )}
@@ -155,7 +173,7 @@ export default function Info(initialData) {
                                       <ConditionalWrap
                                         condition={!!e.url}
                                         wrap={children => (
-                                          <a href={e.url} target="_blank" rel="noopener noreferrer" className="underline block hover:text-burnt-yellow focus:text-burnt-yellow transition-colors ease-in-out duration-300">
+                                          <a href={e.url} target="_blank" rel="noopener noreferrer" className="underline block transition-colors ease-in-out duration-300" {...styles.inPageLink}>
                                             {children}
                                           </a>
                                         )}
@@ -173,7 +191,7 @@ export default function Info(initialData) {
                                       <ConditionalWrap
                                         condition={!!e.url}
                                         wrap={children => (
-                                          <a href={e.url} target="_blank" rel="noopener noreferrer" className="underline block hover:text-burnt-yellow focus:text-burnt-yellow transition-colors ease-in-out duration-300">
+                                          <a href={e.url} target="_blank" rel="noopener noreferrer" className="underline block transition-colors ease-in-out duration-300" {...styles.inPageLink}>
                                             {children}
                                           </a>
                                         )}
@@ -187,7 +205,7 @@ export default function Info(initialData) {
                               <li>
                                 <span className="block overflow-hidden">
                                   <m.span variants={reveal} className="block">
-                                    <button className="block uppercase border-none outline-none focus:outline-none focus:border-none hover:text-burnt-yellow transition-colors ease-in-out duration-300" onClick={toggleClients}>{ clientsExpanded ? '- Collapse' : '+ Expand' }</button>
+                                    <button className="block uppercase border-none outline-none focus:outline-none focus:border-none transition-colors ease-in-out duration-300" {...styles.inPageLink} onClick={toggleClients}>{ clientsExpanded ? '- Collapse' : '+ Expand' }</button>
                                   </m.span>
                                 </span>
                               </li>
@@ -216,7 +234,7 @@ export default function Info(initialData) {
                                       <ConditionalWrap
                                         condition={!!e.url}
                                         wrap={children => (
-                                          <a href={e.url} target="_blank" rel="noopener noreferrer" className="underline block hover:text-burnt-yellow focus:text-burnt-yellow transition-colors ease-in-out duration-300">
+                                          <a href={e.url} target="_blank" rel="noopener noreferrer" className="underline block  transition-colors ease-in-out duration-300" {...styles.inPageLink}>
                                             {children}
                                           </a>
                                         )}
@@ -248,7 +266,7 @@ export default function Info(initialData) {
                                       <ConditionalWrap
                                         condition={!!e.url}
                                         wrap={children => (
-                                          <a href={e.url} target="_blank" rel="noopener noreferrer" className="underline block hover:text-burnt-yellow focus:text-burnt-yellow transition-colors ease-in-out duration-300">
+                                          <a href={e.url} target="_blank" rel="noopener noreferrer" className="underline block transition-colors ease-in-out duration-300" {...styles.inPageLink}>
                                             {children}
                                           </a>
                                         )}
@@ -266,7 +284,7 @@ export default function Info(initialData) {
                                       <ConditionalWrap
                                         condition={!!e.url}
                                         wrap={children => (
-                                          <a href={e.url} target="_blank" rel="noopener noreferrer" className="underline block hover:text-burnt-yellow focus:text-burnt-yellow transition-colors ease-in-out duration-300">
+                                          <a href={e.url} target="_blank" rel="noopener noreferrer" className="underline block transition-colors ease-in-out duration-300" {...styles.inPageLink}>
                                             {children}
                                           </a>
                                         )}
@@ -280,7 +298,7 @@ export default function Info(initialData) {
                               <li>
                                 <span className="block overflow-hidden">
                                   <m.span variants={reveal} className="block">
-                                    <button className="block uppercase border-none outline-none focus:outline-none focus:border-none hover:text-burnt-yellow transition-colors ease-in-out duration-300" onClick={togglePublications}>{ publicationsExpanded ? '- Collapse' : '+ Expand' }</button>
+                                    <button className="block uppercase border-none outline-none focus:outline-none focus:border-none transition-colors ease-in-out duration-300" {...styles.inPageLink} onClick={togglePublications}>{ publicationsExpanded ? '- Collapse' : '+ Expand' }</button>
                                   </m.span>
                                 </span>
                               </li>
@@ -335,7 +353,7 @@ export default function Info(initialData) {
                             </div>
                           </div>
                           <m.div variants={fade} className="w-full mb-6">
-                            <a href={`tel:${contact.phone}`} className="block uppercase text-[13px] md:text-[15px] 2xl:text-[16px] lg:text-[14px] ml-[10px] md:ml-[20px] underline transition-colors ease-in-out duration-300 hover:text-burnt-yellow focus:text-burnt-yellow">{contact.phone}</a>
+                            <a href={`tel:${contact.phone}`} className="block uppercase text-[13px] md:text-[15px] 2xl:text-[16px] lg:text-[14px] ml-[10px] md:ml-[20px] underline transition-colors ease-in-out duration-300 " {...styles.inPageLink}>{contact.phone}</a>
                           </m.div>
                         </>
                       )}
@@ -347,7 +365,7 @@ export default function Info(initialData) {
                         </div>
                       </div>
                       <m.div variants={fade} className="w-full mb-6">
-                        <a href={`mailto:${contact.email}`} className="block uppercase text-[13px] md:text-[15px] 2xl:text-[16px] lg:text-[14px] ml-[10px] md:ml-[20px] underline transition-colors ease-in-out duration-300 hover:text-burnt-yellow focus:text-burnt-yellow">{contact.email}</a>
+                        <a href={`mailto:${contact.email}`} className="block uppercase text-[13px] md:text-[15px] 2xl:text-[16px] lg:text-[14px] ml-[10px] md:ml-[20px] underline transition-colors ease-in-out duration-300 " {...styles.inPageLink}>{contact.email}</a>
                       </m.div>
 
                       {/* Address */}
@@ -373,7 +391,7 @@ export default function Info(initialData) {
                             </div>
                           </div>
                           <m.div variants={fade} className="w-full mb-6">
-                            <a href={contact.instagramUrl} target="_blank" rel="noopener noreferrer" className="block uppercase text-[13px] md:text-[15px] 2xl:text-[15px] lg:text-[14px] ml-[10px] md:ml-[20px] underline transition-colors ease-in-out duration-300 hover:text-burnt-yellow focus:text-burnt-yellow">Instagram</a>
+                            <a href={contact.instagramUrl} target="_blank" rel="noopener noreferrer" className="block uppercase text-[13px] md:text-[15px] 2xl:text-[15px] lg:text-[14px] ml-[10px] md:ml-[20px] underline transition-colors ease-in-out duration-300 " {...styles.inPageLink}>Instagram</a>
                           </m.div>
                         </>
                       )}
@@ -384,7 +402,7 @@ export default function Info(initialData) {
                         </div>
                       </div>
                       <m.div variants={fade} className="w-full">
-                        <a href="https://shiftwalk.studio" target="_blank" rel="noopener noreferrer" className="block uppercase text-[13px] md:text-[15px] 2xl:text-[15px] lg:text-[14px] ml-[10px] md:ml-[20px] underline transition-colors ease-in-out duration-300 hover:text-burnt-yellow focus:text-burnt-yellow">ShiftWalk&trade;</a>
+                        <a href="https://shiftwalk.studio" target="_blank" rel="noopener noreferrer" className="block uppercase text-[13px] md:text-[15px] 2xl:text-[15px] lg:text-[14px] ml-[10px] md:ml-[20px] underline transition-colors ease-in-out duration-300 " {...styles.inPageLink}>ShiftWalk&trade;</a>
                       </m.div>
 
                     </div>
