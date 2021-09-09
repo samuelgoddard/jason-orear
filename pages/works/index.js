@@ -122,7 +122,7 @@ export default function WorksIndex(initialData) {
                         <a className="block">
                           <span className="block overflow-hidden">
                             <m.span variants={reveal} className="block will-change">
-                              <h2 className="text-[12vw] md:text-[12vw] 3xl:text-[200px] ml-[-2px] 2xl:ml-[-9px] 3xl:ml-[-8px] leading-[0.85] uppercase font-semibold tracking-tighter mb-0 pb-0 project-index-text">{e.title}</h2>
+                              <h2 className="text-[12vw] md:text-[12vw] 3xl:text-[200px] ml-[0px] 2xl:ml-[000px] 3xl:ml-[0px] leading-[0.85] uppercase font-semibold tracking-tighter mb-0 pb-0 project-index-text">{e.title}</h2>
                             </m.span>
                           </span>
                         </a>
