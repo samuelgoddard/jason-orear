@@ -11,7 +11,7 @@ import { Context } from '../../context/state'
 import Image from 'next/image'
 
 const query = `{
-  "works": *[_type == "work"] | order(indexNumber)  {
+  "works": *[_type == "work"] | order(indexNumber) [0..13] {
     title,
     indexNumber,
     client,
