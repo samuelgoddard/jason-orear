@@ -22,7 +22,7 @@ const query = `*[_type == "contact"][0]{
 const pageService = new SanityPageService(query)
 
 export default function Wayfinder(initialData) {
-  const { data: { email, primaryColorr, secondaryColorr }  } = pageService.getPreviewHook(initialData)()
+  const { data: { email, primaryColorr, secondaryColorr, textColorr }  } = pageService.getPreviewHook(initialData)()
   const [primaryColor, setPrimaryColor] = useContext(ColorContext);
   const [secondaryColor, setSecondaryColor] = useContext(SecondaryColorContext);
   const [textColor, setTextColor] = useContext(TextColorContext);
@@ -32,6 +32,7 @@ export default function Wayfinder(initialData) {
   useEffect(() => {
     setPrimaryColor(primaryColorr)
     setSecondaryColor(secondaryColorr)
+    setTextColor(textColorr)
 
     setIntroContext(true)
   },[]);
@@ -118,7 +119,7 @@ export default function Wayfinder(initialData) {
                             </div>
                           </m.div>
                         </div>
-                        <m.span variants={fade} className={`hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0`} {...styles.navLink}>
+                        <m.span variants={fade} className={`hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0`} {...styles.navLinkInner}>
                           <span className="opacity-0 group-hover:opacity-100 group-hover:mt-[2.5%]">Biography</span>
                         </m.span>
                       </div>
@@ -143,7 +144,7 @@ export default function Wayfinder(initialData) {
                             </div>
                           </m.div>
                         </div>
-                        <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0" {...styles.navLink}>
+                        <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0" {...styles.navLinkInner}>
                           <span className="opacity-0 group-hover:opacity-100 group-hover:mt-[2.5%]">Selected projects</span>
                         </m.span>
                       </div>
@@ -167,7 +168,7 @@ export default function Wayfinder(initialData) {
                           </div>
                         </m.div>
                       </div>
-                      <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0" {...styles.navLink}>
+                      <m.span variants={fade} className="hidden md:block text-base xl:text-xl leading-none font-mono font-normal md:mr-[-0.5%] mt-0" {...styles.navLinkInner}>
                         <span className="opacity-0 group-hover:opacity-100 group-hover:mt-[2.5%]">Reach Out</span>
                       </m.span>
                     </div>
