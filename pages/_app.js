@@ -11,6 +11,7 @@ import * as gtag from '@/helpers/gtag'
 import { Context } from '../context/state';
 import { ColorContext } from '../context/primary';
 import { SecondaryColorContext } from '../context/secondary';
+import { TextColorContext } from '../context/text';
 import Div100vh from 'react-div-100vh'
 import { isWindows } from "react-device-detect";
 
@@ -84,6 +85,7 @@ export default function App({ Component, pageProps }) {
   const [introContext, setIntroContext] = useState(false);
   const [primaryColor, setPrimaryColor] = useState('#FFB31F');
   const [secondaryColor, setSecondaryColor] = useState('#FF7D1F');
+  const [textColor, setTextColor] = useState('#1F1F1F');
   const [windows, setWindows] = useState(false)
   const router = useRouter()
 
@@ -184,6 +186,9 @@ export default function App({ Component, pageProps }) {
       <ColorContext.Provider value={
         [primaryColor, setPrimaryColor]
       }>
+        <TextColorContext.Provider value={
+          [textColor, setTextColor]
+        }>
         <div 
           className={`scroll-conainer transition-colors ease-in-out duration-700 delay-[400ms] ${windows ? 'windows' : 'mac'}`}
           style={{ backgroundColor: router.asPath === '/wayfinder' ? primaryColor : '#FFFFFF' }}
@@ -359,6 +364,7 @@ export default function App({ Component, pageProps }) {
           </AnimatePresence>
         </Context.Provider>
       </div>
+      </TextColorContext.Provider>
       </ColorContext.Provider>
       </SecondaryColorContext.Provider>
     </>

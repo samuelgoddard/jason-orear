@@ -10,11 +10,13 @@ import { Context } from '../context/state'
 import Div100vh from 'react-div-100vh'
 import { ColorContext } from 'context/primary'
 import { SecondaryColorContext } from 'context/secondary'
+import { TextColorContext } from 'context/text'
 
 const query = `*[_type == "contact"][0]{
   email,
   "primaryColorr": primaryColor,
-  "secondaryColorr": secondaryColor
+  "secondaryColorr": secondaryColor,
+  "textColorr": textColor
 }`
 
 const pageService = new SanityPageService(query)
@@ -23,6 +25,7 @@ export default function Wayfinder(initialData) {
   const { data: { email, primaryColorr, secondaryColorr }  } = pageService.getPreviewHook(initialData)()
   const [primaryColor, setPrimaryColor] = useContext(ColorContext);
   const [secondaryColor, setSecondaryColor] = useContext(SecondaryColorContext);
+  const [textColor, setTextColor] = useContext(TextColorContext);
 
   const [introContext, setIntroContext] = useContext(Context);
 
@@ -56,7 +59,7 @@ export default function Wayfinder(initialData) {
     // },
     {
       background: `bg-[${primaryColor}]`,
-      text: `hover:bg-[${secondaryColor}]`
+      text: `text-[${textColor}] hover:bg-[${secondaryColor}]`
     }
   ];
 
@@ -66,7 +69,8 @@ export default function Wayfinder(initialData) {
     navLink: style({
       ":hover": {
         color: `${secondaryColor}`
-      }
+      },
+      color: `${textColor}`
     }),
     navLinkInner: style({
       color: `${secondaryColor}`
@@ -91,13 +95,12 @@ export default function Wayfinder(initialData) {
               initial="initial"
               animate="enter"
               exit="exit"
-              className=""
               variants={{
                 enter: { transition: { staggerChildren: 0.015 } }
               }}
              className="w-full"
             >
-              <ul className={`flex flex-wrap mx-auto text-black relative z-10 h-full w-full ${bodyColor.text}`}>
+              <ul className={`flex flex-wrap mx-auto relative z-10 h-full w-full ${bodyColor.text}`}>
                 <li className="w-1/3 flex justify-center relative overflow-hidden">
                   <Link href="/info">
                     <a className={`w-full flex justify-start items-center text-upright uppercase font-semibold text-[22vw] md:text-[20vh] leading-[0.835] group wayfinder-text p-[14px] md:p-[22px] pt-[22px] md:pt-[22px]`} {...styles.navLink}>
