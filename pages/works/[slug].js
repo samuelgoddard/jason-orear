@@ -39,6 +39,11 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
         ...
       },
     },
+    video {
+      asset -> {
+        ...
+      }
+    },
     "imagesHotSpots": images[] {
       hotspot {
         x,
@@ -184,31 +189,43 @@ export default function WorksSlug(initialData) {
                           layoutOuterWrapper = 'my-auto flex w-10/12 md:w-[40%] xl:md:w-[55%] mx-auto space-x-[5vw] max-w-screen-xl';
                         }
                         
-                        return (
+                        return f.images ? (
                           <div className="slide will-change flex items-center" id={i} data-anchor={`slide${i}`} key={i}>
-                            <div className={layoutOuterWrapper}>
-                              { f.images.map((g, i) => {
-                                let width = g.asset.metadata.dimensions.width / 2
-                                let optimisedWidth = Math.round(width);
-                                let height = g.asset.metadata.dimensions.height / 2
-                                let optimisedHeight = Math.round(height);
+                            { f.images && (
+                              <div className={layoutOuterWrapper}>
+                                { f.images.map((g, i) => {
+                                  let width = g.asset.metadata.dimensions.width / 2
+                                  let optimisedWidth = Math.round(width);
+                                  let height = g.asset.metadata.dimensions.height / 2
+                                  let optimisedHeight = Math.round(height);
 
-                                return (
-                                  <div className={layoutWrapper} key={i}>
-                                    <m.div variants={slightScale} className="absolute inset-0">
-                                      <Photo
-                                        photo={g}
-                                        width={optimisedWidth}
-                                        height={optimisedHeight}
-                                        focalPoint={f.imagesHotSpots[i].hotspot ?? null}
-                                        sizes="(min-width: 1920px) 100vw, (min-width: 1600px) 100vw, (min-width: 1280px) 90vw, (min-width: 768px) 90vw, 200vw"
-                                        layout="fill"
-                                        className="w-full h-full object-cover object-center will-change"
-                                      />
-                                    </m.div>
-                                  </div>
-                                )
-                              })}
+                                  return (
+                                    <div className={layoutWrapper} key={i}>
+                                      <m.div variants={slightScale} className="absolute inset-0">
+                                        <Photo
+                                          photo={g}
+                                          width={optimisedWidth}
+                                          height={optimisedHeight}
+                                          focalPoint={f.imagesHotSpots[i].hotspot ?? null}
+                                          sizes="(min-width: 1920px) 100vw, (min-width: 1600px) 100vw, (min-width: 1280px) 90vw, (min-width: 768px) 90vw, 200vw"
+                                          layout="fill"
+                                          className="w-full h-full object-cover object-center will-change"
+                                        />
+                                      </m.div>
+                                    </div>
+                                  )
+                                })}
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <div className="slide will-change flex items-center" id={i} data-anchor={`slide${i}`} key={i}>
+                            <div className="overflow-hidden w-9/12 md:w-7/12 2xl:w-8/12 h-[52vh] md:h-[61vh] xl:h-[66vh] 2xl:h-[68vh] relative mx-auto will-change mt-[-6vh]">
+                              <video data-autoplay loop={true} autoPlay="autoplay" playsInline={true} muted className={`object-cover object-top [z-4] w-full h-full absolute inset-0`}>
+                                <source data-src={ f.video.asset.url } type="video/mp4" />
+              
+                                Sorry. Your browser does not support the video tag.
+                              </video>
                             </div>
                           </div>
                         )

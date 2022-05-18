@@ -38,6 +38,11 @@ const query = `{
           ...
         }
       },
+      homeCarouselVideo {
+        asset-> {
+          ...
+        }
+      },
       imageSlides[]{
         layout,
         images[] {
@@ -232,63 +237,105 @@ export default function Home(initialData) {
                 </div> */}
                 <div className="absolute inset-0 overflow-hidden">
                   <m.div className="absolute inset-0" variants={slightScale}>
-                    
-                    <ImageWrapper
-                      image={home.featuredWork[0].homeCarouselImage.asset}
-                      focalPoint={home.featuredWork[0].homeCarouselImage.hotspot ?? null}
-                      baseWidth={1920}
-                      baseHeight={1080}
-                      alt="Placeholder"
-                      fill
-                      className={`w-full h-full [z-2] home-image ${currentProject === 1 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
-                    />
-
-                    <div className="block absolute inset-0">
-                      <ImageWrapper
-                        image={home.featuredWork[1].homeCarouselImage.asset}
-                        focalPoint={home.featuredWork[1].homeCarouselImage.hotspot ?? null}
-                        baseWidth={1920}
-                        baseHeight={1080}
-                        alt="Placeholder"
-                        fill
-                        className={`w-full h-full [z-1] home-image ${currentProject === 2 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
-                      />
+                    <div className="absolute inset-0">
+                      {home.featuredWork[0].homeCarouselVideo ? (
+                        <video loop={true} autoPlay="autoplay" playsInline={true} muted className={`object-cover object-top [z-0] w-full h-full absolute inset-0 home-image ${currentProject === 1 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}>
+                        <source src={ home.featuredWork[0].homeCarouselVideo.asset.url } type="video/mp4" />
+      
+                          Sorry. Your browser does not support the video tag.
+                        </video>
+                      ) : (
+                        <ImageWrapper
+                          image={home.featuredWork[0].homeCarouselImage.asset}
+                          focalPoint={home.featuredWork[0].homeCarouselImage.hotspot ?? null}
+                          baseWidth={1920}
+                          baseHeight={1080}
+                          alt="Placeholder"
+                          fill
+                          className={`w-full h-full [z-0] home-image ${currentProject === 1 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
+                        />
+                      )}
                     </div>
 
                     <div className="block absolute inset-0">
-                      <ImageWrapper
-                        image={home.featuredWork[2].homeCarouselImage.asset}
-                        focalPoint={home.featuredWork[2].homeCarouselImage.hotspot ?? null}
-                        baseWidth={1920}
-                        baseHeight={1080}
-                        alt="Placeholder"
-                        fill
-                        className={`w-full h-full [z-2] home-image ${currentProject === 3 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
-                      />
+                      {home.featuredWork[1].homeCarouselVideo ? (
+                        <video loop={true} autoPlay="autoplay" playsInline={true} muted className={`object-cover object-top [z-1] w-full h-full absolute inset-0 home-image ${currentProject === 2 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}>
+                        <source src={ home.featuredWork[1].homeCarouselVideo.asset.url } type="video/mp4" />
+      
+                          Sorry. Your browser does not support the video tag.
+                        </video>
+                      ) : (
+                        <ImageWrapper
+                          image={home.featuredWork[1].homeCarouselImage.asset}
+                          focalPoint={home.featuredWork[1].homeCarouselImage.hotspot ?? null}
+                          baseWidth={1920}
+                          baseHeight={1080}
+                          alt="Placeholder"
+                          fill
+                          className={`w-full h-full [z-1] home-image ${currentProject === 2 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
+                        />
+                      )}
+                    </div>
+
+                    <div className="block absolute inset-0">
+                      {home.featuredWork[2].homeCarouselVideo ? (
+                        <video loop={true} autoPlay="autoplay" playsInline={true} muted className={`object-cover object-top [z-2] w-full h-full absolute inset-0 home-image ${currentProject === 3 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}>
+                        <source src={ home.featuredWork[2].homeCarouselVideo.asset.url } type="video/mp4" />
+      
+                          Sorry. Your browser does not support the video tag.
+                        </video>
+                      ) : (
+                        <ImageWrapper
+                          image={home.featuredWork[2].homeCarouselImage.asset}
+                          focalPoint={home.featuredWork[2].homeCarouselImage.hotspot ?? null}
+                          baseWidth={1920}
+                          baseHeight={1080}
+                          alt="Placeholder"
+                          fill
+                          className={`w-full h-full [z-2] home-image ${currentProject === 3 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
+                        />
+                      )}
                     </div>
                     
                     <div className="block absolute inset-0">
-                      <ImageWrapper
-                        image={home.featuredWork[3].homeCarouselImage.asset}
-                        focalPoint={home.featuredWork[3].homeCarouselImage.hotspot ?? null}
-                        baseWidth={1920}
-                        baseHeight={1080}
-                        alt="Placeholder"
-                        fill
-                        className={`w-full h-full [z-3] home-image ${currentProject === 4 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
-                      />
+
+                      {home.featuredWork[3].homeCarouselVideo ? (
+                        <video loop={true} autoPlay="autoplay" playsInline={true} muted className={`object-cover object-top [z-3] w-full h-full absolute inset-0 home-image ${currentProject === 4 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}>
+                        <source src={ home.featuredWork[3].homeCarouselVideo.asset.url } type="video/mp4" />
+      
+                          Sorry. Your browser does not support the video tag.
+                        </video>
+                      ) : (
+                        <ImageWrapper
+                          image={home.featuredWork[3].homeCarouselImage.asset}
+                          focalPoint={home.featuredWork[3].homeCarouselImage.hotspot ?? null}
+                          baseWidth={1920}
+                          baseHeight={1080}
+                          alt="Placeholder"
+                          fill
+                          className={`w-full h-full [z-3] home-image ${currentProject === 4 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
+                        />
+                      )}
                     </div>
                     
                     <div className="block absolute inset-0">
-                      <ImageWrapper
-                        image={home.featuredWork[4].homeCarouselImage.asset}
-                        focalPoint={home.featuredWork[4].homeCarouselImage.hotspot ?? null}
-                        baseWidth={1920}
-                        baseHeight={1080}
-                        alt="Placeholder"
-                        fill
-                        className={`w-full h-full [z-4] home-image ${currentProject === 5 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
-                      />
+                      {home.featuredWork[4].homeCarouselVideo ? (
+                        <video loop={true} autoPlay="autoplay" playsInline={true} muted className={`object-cover object-center [z-4] w-full h-full absolute inset-0 home-image ${currentProject === 5 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}>
+                        <source src={ home.featuredWork[4].homeCarouselVideo.asset.url } type="video/mp4" />
+      
+                          Sorry. Your browser does not support the video tag.
+                        </video>
+                      ) : (
+                        <ImageWrapper
+                          image={home.featuredWork[4].homeCarouselImage.asset}
+                          focalPoint={home.featuredWork[4].homeCarouselImage.hotspot ?? null}
+                          baseWidth={1920}
+                          baseHeight={1080}
+                          alt="Placeholder"
+                          fill
+                          className={`w-full h-full [z-4] home-image ${currentProject === 5 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}
+                        />
+                      )}
                     </div>
                   </m.div>
                 </div>

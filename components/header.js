@@ -6,10 +6,12 @@ import { useContext, useState } from 'react';
 import { Context } from '../context/state'
 import { ColorContext } from '../context/primary'
 import { SecondaryColorContext } from '../context/secondary'
+import { HeaderLightContext } from '../context/header';
 
 export default function Header({route}) {
   const [introContext, setIntroContext] = useContext(Context);
   const [primaryColor, setPrimaryColor] = useContext(ColorContext);
+  const [headerLight, setHeaderLight] = useContext(HeaderLightContext);
   const [secondaryColor, setSecondaryColor] = useContext(SecondaryColorContext);
 
   const reveal = {
@@ -50,6 +52,7 @@ export default function Header({route}) {
 
   const styles = {
     navHover: style({
+      color: `${(route == '/wayfinder' && headerLight) ? '#fff' : '#1F1F1F'}`,
       ":hover": {
         color: `${secondaryColor}`
       }
@@ -62,7 +65,7 @@ export default function Header({route}) {
           initial="initial"
           animate="enter"
           exit="exit"
-          className=""
+          className={`${(route == '/wayfinder' && headerLight) ? 'text-white' : 'text-black' }`}
         >
           <Link href="/">
             <a className={`fixed top-0 left-0 m-[20px] md:m-[20px] block w-[65px] md:w-[90px] transition-colors ease-in-out duration-300 z-40 overflow-hidden group ${route == '/wayfinder' ? '' : ''}`} {...styles.navHover}>
@@ -86,9 +89,9 @@ export default function Header({route}) {
 
           <Link href="/wayfinder">
             <a className="fixed top-0 right-0 mx-[15px] my-[12px] md:mx-[25px] md:my-[15px] ml-auto hover:outline-none focus:outline-none block w-[40px] md:w-[64px] group py-3 z-40 group" {...styles.navHover}>
-              <m.span variants={navFull} className={`origin-top-left transition ease-in-out duration-300 block w-full h-[3px] md:h-1 bg-black mb-2 md:mb-3 group-hover:scale-x-75 group-hover:bg-current ${route == '/wayfinder' ? '' : ''}`}></m.span>
+              <m.span variants={navFull} className={`origin-top-left transition ease-in-out duration-300 block w-full h-[3px] md:h-1 bg-current mb-2 md:mb-3 group-hover:scale-x-75 group-hover:bg-current ${route == '/wayfinder' ? '' : ''}`}></m.span>
 
-              <m.span variants={nav} className={`origin-top-left transition ease-in-out duration-300 block h-[3px] md:h-1 bg-black group-hover:scale-x-50 group-hover:bg-current ${route == '/wayfinder' ? '' : ''}`}></m.span>
+              <m.span variants={nav} className={`origin-top-left transition ease-in-out duration-300 block h-[3px] md:h-1 bg-current group-hover:scale-x-50 group-hover:bg-current ${route == '/wayfinder' ? '' : ''}`}></m.span>
             </a>
           </Link>
         </m.header>

@@ -11,21 +11,24 @@ import Div100vh from 'react-div-100vh'
 import { ColorContext } from 'context/primary'
 import { SecondaryColorContext } from 'context/secondary'
 import { TextColorContext } from 'context/text'
+import { HeaderLightContext } from 'context/header';
 
 const query = `*[_type == "contact"][0]{
   email,
   "primaryColorr": primaryColor,
   "secondaryColorr": secondaryColor,
-  "textColorr": textColor
+  "textColorr": textColor,
+  headerLightMode
 }`
 
 const pageService = new SanityPageService(query)
 
 export default function Wayfinder(initialData) {
-  const { data: { email, primaryColorr, secondaryColorr, textColorr }  } = pageService.getPreviewHook(initialData)()
+  const { data: { email, primaryColorr, secondaryColorr, textColorr, headerLightMode }  } = pageService.getPreviewHook(initialData)()
   const [primaryColor, setPrimaryColor] = useContext(ColorContext);
   const [secondaryColor, setSecondaryColor] = useContext(SecondaryColorContext);
   const [textColor, setTextColor] = useContext(TextColorContext);
+  const [headerLight, setHeaderLight] = useContext(HeaderLightContext);
 
   const [introContext, setIntroContext] = useContext(Context);
 
@@ -33,6 +36,7 @@ export default function Wayfinder(initialData) {
     setPrimaryColor(primaryColorr)
     setSecondaryColor(secondaryColorr)
     setTextColor(textColorr)
+    setHeaderLight(headerLightMode)
 
     setIntroContext(true)
   },[]);

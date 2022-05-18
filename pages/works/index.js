@@ -12,6 +12,7 @@ import Photo from '@/components/photo'
 import { Context } from '../../context/state'
 import { ColorContext } from 'context/primary'
 import { SecondaryColorContext } from 'context/secondary'
+import ConditionalWrap from 'conditional-wrap';
 
 const query = `{
   "works": *[_type == "work"] | order(indexNumber)  {
@@ -24,9 +25,18 @@ const query = `{
     slug {
       current
     },
+    publications[] {
+      title,
+      url
+    },
     imageSlides[] {
       layout,
       images[] {
+        asset-> {
+          ...
+        }
+      },
+      video {
         asset-> {
           ...
         }
@@ -114,7 +124,7 @@ export default function WorksIndex(initialData) {
                       <span className="block text-[13px] md:text-[16px] mb-2 md:mb-3 leading-none tracking-tighter font-mono variant-numeric md:ml-[4px] uppercase">
                         <span className="block overflow-hidden">
                           <m.span variants={reveal} className="block">
-                            Project / {e.indexNumber}
+                            Project / {i < 9 ? '0' : ''}{i + 1}
                           </m.span>
                         </span>
                       </span>
@@ -201,11 +211,42 @@ export default function WorksIndex(initialData) {
                             </span>
                           </div>
                         )}
+                        {e.publications && (
+                          <div className="w-full md:w-auto">
+                            <span className="hidden md:block mb-px md:mb-0">
+                              <span className="inline-block md:block overflow-hidden">
+                                <m.span variants={fade} className="block">
+                                  (Publications)
+                                </m.span>
+                              </span>
+                            </span>
+                            <span className="inline-block md:block md:ml-3">
+                              <span className="inline-block md:block overflow-hidden">
+                                <m.span variants={fade} className="block">
+                                  {e.publications.map((j, i) => {
+                                    return (
+                                      <ConditionalWrap
+                                        condition={!!j.url}
+                                        wrap={children => (
+                                          <a href={j.url} target="_blank" rel="noopener noreferrer" className="underline block  transition-colors ease-in-out duration-300">
+                                            {children}
+                                          </a>
+                                        )}
+                                      >
+                                        <span key={i} className="inline-block">{j.title}{(i == 0 || i == e.publications.length) ? ` ` : `` }</span>
+                                      </ConditionalWrap>
+                                    )
+                                  })}
+                                </m.span>
+                              </span>
+                            </span>
+                          </div>
+                        )}
                       </div>
                       
                       <div className="whitespace-nowrap space-x-[2.5vw] md:space-x-[2vw] xl:space-x-[1.5vw] overflow-scroll md:overflow-visible" data-scroll-direction="horizontal" data-scroll data-scroll-speed="1">
                         {e.imageSlides.map((f, index) => {
-                          return (
+                          return f.images ? (
                             f.images.map((g, i) => {
                               let width = g.asset.metadata.dimensions.width / 3
                               let optimisedWidth = Math.round(width);
@@ -240,6 +281,20 @@ export default function WorksIndex(initialData) {
                                 </Link>
                               )
                             })
+                          ) : (
+                            <Link href={`/works/${e.slug.current}#slider/slide${index}`} key={i}>
+                              <a className={`w-[38vw] md:w-[14vw] max-w-[260px] h-[28vw] md:h-[10vw] max-h-[175px] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-700 will-change inline-block group`}>
+                                <div className="w-full h-full relative overflow-hidden">
+                                  <div className="w-full h-full absolute inset-0">
+                                    <video loop={true} autoPlay="autoplay" playsInline={true} muted className={`object-cover object-top [z-4] w-full h-full absolute inset-0`}>
+                                      <source src={ f.video.asset.url } type="video/mp4" />
+            
+                                      Sorry. Your browser does not support the video tag.
+                                    </video>
+                                  </div>
+                                </div>
+                              </a>
+                            </Link>
                           )
                         })}
 

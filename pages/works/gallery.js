@@ -139,13 +139,14 @@ export default function WorksGallery(initialData) {
                     } else if (i === 14) {
                       classList = ''
                     }
+                                       
 
-                    let width = e.imageSlides[0].images[0].asset.metadata.dimensions.width / 4
+                    let width = e.imageSlides[1].images[0].asset.metadata.dimensions.width / 4
                     let optimisedWidth = Math.round(width);
-                    let height = e.imageSlides[0].images[0].asset.metadata.dimensions.height / 4
+                    let height = e.imageSlides[1].images[0].asset.metadata.dimensions.height / 4
                     let optimisedHeight = Math.round(height);
 
-                    return (
+                    return e.imageSlides[1] && (
                       <Link href={`/works/${e.slug.current}`} key={i}>
                         <a className={`grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition ease-in-out duration-700 relative group ${classList}`}>
                           {/* <span className="absolute top-0 left-0 m-2 md:m-3 xl:m-4 z-10 text-white text-sm font-mono bg-black bg-opacity-20 w-8 h-8 flex items-center justify-center">{i}</span> */}
@@ -153,7 +154,7 @@ export default function WorksGallery(initialData) {
                           <div className="w-full h-full relative overflow-hidden">
                             <m.div className="w-full h-full absolute inset-0" variants={slightScale}>
                               <Photo
-                                photo={e.imageSlides[0].images[0]}
+                                photo={e.imageSlides[1].images[0]}
                                 width={optimisedWidth}
                                 height={optimisedHeight}
                                 srcSizes={[900]}
