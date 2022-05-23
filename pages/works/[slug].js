@@ -271,9 +271,9 @@ export default function WorksSlug(initialData) {
                               <div className={`w-full h-[30vh] md:w-full md:h-[13vw] xl:h-[16vw] bg-white md:mt-[-7.5vh] overflow-hidden relative`}>
                                 <m.div className="absolute inset-0">
                                   <Photo
-                                    photo={next.imageSlides[0].images[0]}
-                                    width={next.imageSlides[0].images[0].asset.metadata.dimensions.width / 3}
-                                    height={next.imageSlides[0].images[0].asset.metadata.dimensions.height / 3}
+                                    photo={next.imageSlides[1].images[0]}
+                                    width={next.imageSlides[1].images[0].asset.metadata.dimensions.width / 3}
+                                    height={next.imageSlides[1].images[0].asset.metadata.dimensions.height / 3}
                                     srcSizes={[900]}
                                     sizes="(min-width: 900px) 100vw, 100vw"
                                     layout="fill"
