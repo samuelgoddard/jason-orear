@@ -109,20 +109,40 @@ export default function Home(initialData) {
     }, 3500);
 
     // Set an interval that updates the currentProject every 3 seconds on mobile to rotate the projects
-    const i_id = setInterval(() => {
-      if (currentProject == 5) {
-        // If we hit the cap (5)... Reset...
-        setCurrentProject(1)
-      } else {
-        // Else... Tick along...
-        setCurrentProject(currentProject => currentProject+1)
-      }
-      // If introContext is set delay the ticker by 4 seconds (defined above)
-    }, introContext ? 4000 : 6000);
-    return () => {
-      clearInterval(i_id);
-    }
+    // const i_id = setInterval(() => {
+    //   if (currentProject == 5) {
+    //     // If we hit the cap (5)... Reset...
+    //     setCurrentProject(1)
+    //   } else {
+    //     // Else... Tick along...
+    //     setCurrentProject(currentProject => currentProject+1)
+    //   }
+    //   // If introContext is set delay the ticker by 4 seconds (defined above)
+    // }, introContext ? 4000 : 6000);
+    // return () => {
+    //   clearInterval(i_id);
+    // }
   },[currentProject, setPrimaryColor]);
+
+  const next = () => {
+    if (currentProject == 5) {
+      // If we hit the cap (5)... Reset...
+      setCurrentProject(1)
+    } else {
+      // Else... Tick along...
+      setCurrentProject(currentProject => currentProject+1)
+    }
+  }
+
+  const prev = () => {
+    if (currentProject == 1) {
+      // If we hit the cap (5)... Reset...
+      setCurrentProject(5)
+    } else {
+      // Else... Tick along...
+      setCurrentProject(currentProject => currentProject-1)
+    }
+  }
   
 
   const reveal = {
@@ -236,10 +256,25 @@ export default function Home(initialData) {
                   )}
                 </div> */}
                 <div className="absolute inset-0 overflow-hidden">
+                  <button onClick={next} className="absolute top-0 right-0 bottom-0 z-10 w-1/2 h-full flex items-start justify-end outline-none border-none group">
+                    <span className={`${currentProject == 1 ? 'text-white' : 'text-off-black'} block px-3 pt-3 pb-1 font-mono text-sm uppercase transition-all ease-in-out duration-[400ms] opacity-0 group-hover:opacity-100`}>
+                      <span className="block relative overflow-hidden">
+                        <span className="block translate-y-full group-hover:translate-y-0 transition-transform ease-in-out duration-[400ms] delay-75">Next</span>
+                      </span>
+                    </span>
+                  </button>
+                  
+                  <button onClick={prev} className="absolute top-0 left-0 bottom-0 z-10 w-1/2 h-full flex items-start justify-start outline-none border-none group">
+                    <span className={`${currentProject == 1 ? 'text-white' : 'text-off-black'} block px-3 pt-3 pb-1 font-mono text-sm uppercase transition-all ease-in-out duration-[400ms] opacity-0 group-hover:opacity-100`}>
+                      <span className="block relative overflow-hidden">
+                        <span className="block translate-y-full group-hover:translate-y-0 transition-transform ease-in-out duration-[400ms] delay-75">Prev</span>
+                      </span>
+                    </span>
+                  </button>
                   <m.div className="absolute inset-0" variants={slightScale}>
                     <div className="absolute inset-0">
                       {home.featuredWork[0].homeCarouselVideo ? (
-                        <video loop={true} autoPlay="autoplay" playsInline={true} muted className={`object-cover object-top [z-0] w-full h-full absolute inset-0 home-image ${currentProject === 1 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}>
+                        <video loop={true} autoPlay="autoplay" playsInline={true} muted className={`object-cover object-center [z-0] w-full h-full absolute inset-0 home-image ${currentProject === 1 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}>
                         <source src={ home.featuredWork[0].homeCarouselVideo.asset.url } type="video/mp4" />
       
                           Sorry. Your browser does not support the video tag.
