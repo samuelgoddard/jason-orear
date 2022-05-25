@@ -233,7 +233,7 @@ export default function WorksIndex(initialData) {
                                           </a>
                                         )}
                                       >
-                                        <span key={i} className="inline-block">{j.title} {(i == 0 || i == e.publications.length) ? ' ' : ' ' }</span>
+                                        <span key={i} className="inline-block">{j.title}&nbsp;{(i == 0 || i == e.publications.length) ? ' ' : ' ' }</span>
                                       </ConditionalWrap>
                                     )
                                   })}
