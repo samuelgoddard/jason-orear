@@ -11,6 +11,7 @@ import Photo from '@/components/photo';
 import Div100vh from 'react-div-100vh';
 import { ColorContext } from 'context/primary';
 import { SecondaryColorContext } from 'context/secondary';
+import ConditionalWrap from 'conditional-wrap';
 
 const pluginWrapper = () => {
   require('../../static/fullpage.scrollHorizontally.min.js');
@@ -27,6 +28,10 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
   indexNumber,
   client,
   location,
+  publications[] {
+    title,
+    url
+  },
   gps,
   year,
   slug {
@@ -81,7 +86,7 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
 const pageService = new SanityPageService(query)
 
 export default function WorksSlug(initialData) {
-  const { data: { title, seo, slug, indexNumber, client, location, gps, year, imageSlides, next, contact }  } = pageService.getPreviewHook(initialData)()
+  const { data: { title, seo, slug, indexNumber, client, location, gps, year, imageSlides, next, contact, publications }  } = pageService.getPreviewHook(initialData)()
   const [introContext, setIntroContext] = useContext(Context);
   const [infoOpen, setInfoOpen] = useState(false);
   const [nextHovered, setNextHovered] = useState(false);
@@ -400,6 +405,37 @@ export default function WorksSlug(initialData) {
                           <span className="block md:ml-3 transition-translate ease-in-out duration-500 translate-y-full group-hover:translate-y-0 group-hover:delay-[100ms]">{year}</span>
                         </div>
                       </div>
+                      {publications && (
+                          <div className="w-auto mx-3 text-left">
+                            <div className="overflow-hidden">
+                              <span className="hidden md:block mb-px md:mb-0 transition-translate ease-in-out duration-500 translate-y-full group-hover:translate-y-0">(Publications)</span>
+                            </div>
+                            <div className="overflow-hidden">
+                              <span className="block md:ml-3 transition-translate ease-in-out duration-500 translate-y-full group-hover:translate-y-0 group-hover:delay-[100ms]">
+                              <span className="inline-block md:block md:ml-3">
+                              <span className="inline-block md:block overflow-hidden">
+                                <m.span variants={fade} className="block">
+                                  {publications.map((j, i) => {
+                                    return (
+                                      <ConditionalWrap
+                                        condition={!!j.url}
+                                        wrap={children => (
+                                          <a href={j.url} target="_blank" rel="noopener noreferrer" className="underline block  transition-colors ease-in-out duration-300">
+                                            {children}
+                                          </a>
+                                        )}
+                                      >
+                                        <span key={i} className="inline-block">{j.title}{(i == 0 || i == publications.length) ? ` ` : `` }</span>
+                                      </ConditionalWrap>
+                                    )
+                                  })}
+                                </m.span>
+                              </span>
+                            </span>
+                              </span>
+                            </div>
+                          </div>
+                        )}
                     </div>
                   </m.span>
                 </span>
