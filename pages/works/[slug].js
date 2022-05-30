@@ -443,7 +443,7 @@ export default function WorksSlug(initialData) {
               
               {/* Mobile Info */}
               <div data-scroll data-scroll-sticky data-scroll-target="#scroll-container" className="block md:hidden fixed bottom-0 left-0 right-0 z-40 m-[18px] md:m-[20px] w-[70%] mx-[15%] text-center font-mono">
-                <button onClick={toggleInfoOpen} className={`overflow-hidden ${publications ? 'h-[15vh]' : 'h-[12vh]' } w-full group relative flex items-end justify-center border-none outline-none focus:outline-none hover:outline-none hover:border-none focus:border-none`}>
+                <button onClick={toggleInfoOpen} className={`overflow-hidden h-[12vh] w-full group relative flex items-end justify-center border-none outline-none focus:outline-none hover:outline-none hover:border-none focus:border-none`}>
                   <div className="relative overflow-hidden">
                     <span className="block info-button transition ease-in-out duration-500 delay-[150ms]">
                       <m.span variants={reveal} className="text-center uppercase text-[14px] md:text-[16px] xl:text-[16px] w-auto relative block transition-opacity ease-in-out duration-500 leading-none">
@@ -478,7 +478,7 @@ export default function WorksSlug(initialData) {
                           <span className={`block md:ml-3 transition-translate ease-in-out duration-500 ${ infoOpen ? 'delay-[100ms] translate-y-0' : 'translate-y-full' }`}>“{year}”</span>
                         </div>
                       </div>
-                      {publications && (
+                      {/* {publications && (
                         <div className="w-full mx-2 text-center">
                           <div className={`overflow-hidden`}>
                             <span className={`block md:ml-3 transition-translate ease-in-out duration-500 ${ infoOpen ? 'delay-[100ms] translate-y-0' : 'translate-y-full' }`}>
@@ -510,7 +510,7 @@ export default function WorksSlug(initialData) {
                             </span>
                           </div>
                         </div>
-                      )}
+                      )} */}
                     </div>
                   </m.span>
                 </button>
