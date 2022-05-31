@@ -68,6 +68,8 @@ export default function Home(initialData) {
 
   // Set the current project to non zero'd 1
   const [currentProject, setCurrentProject] = useState(1);
+  const [hoveringNext, setHoveringNext] = useState(false);
+  const [hoveringPrev, setHoveringPrev] = useState(false);
   // Check whether the intro has played from global state storage
   const [introContext, setIntroContext] = useContext(Context);
   const [primaryColor, setPrimaryColor] = useContext(ColorContext);
@@ -109,20 +111,40 @@ export default function Home(initialData) {
     }, 3500);
 
     // Set an interval that updates the currentProject every 3 seconds on mobile to rotate the projects
-    const i_id = setInterval(() => {
-      if (currentProject == 5) {
-        // If we hit the cap (5)... Reset...
-        setCurrentProject(1)
-      } else {
-        // Else... Tick along...
-        setCurrentProject(currentProject => currentProject+1)
-      }
-      // If introContext is set delay the ticker by 4 seconds (defined above)
-    }, introContext ? 4000 : 6000);
-    return () => {
-      clearInterval(i_id);
-    }
+    // const i_id = setInterval(() => {
+    //   if (currentProject == 5) {
+    //     // If we hit the cap (5)... Reset...
+    //     setCurrentProject(1)
+    //   } else {
+    //     // Else... Tick along...
+    //     setCurrentProject(currentProject => currentProject+1)
+    //   }
+    //   // If introContext is set delay the ticker by 4 seconds (defined above)
+    // }, introContext ? 4000 : 6000);
+    // return () => {
+    //   clearInterval(i_id);
+    // }
   },[currentProject, setPrimaryColor]);
+
+  const next = () => {
+    if (currentProject == 5) {
+      // If we hit the cap (5)... Reset...
+      setCurrentProject(1)
+    } else {
+      // Else... Tick along...
+      setCurrentProject(currentProject => currentProject+1)
+    }
+  }
+
+  const prev = () => {
+    if (currentProject == 1) {
+      // If we hit the cap (5)... Reset...
+      setCurrentProject(5)
+    } else {
+      // Else... Tick along...
+      setCurrentProject(currentProject => currentProject-1)
+    }
+  }
   
 
   const reveal = {
@@ -171,6 +193,30 @@ export default function Home(initialData) {
           className=""
         >
           <Div100vh className="flex flex-col p-[14px] md:p-[20px]">
+
+          <button onClick={next} className="absolute bottom-[81.75vh] right-0 z-10 w-1/2 h-12 flex items-start justify-end outline-none border-none group" onMouseEnter={() => setHoveringNext(true)} onMouseLeave={() => setHoveringNext(false)}>
+            <span className={`text-off-black block px-4 md:px-5 py-2 font-mono text-sm uppercase transition-all ease-in-out duration-[400ms]  group-hover:opacity-100`}>
+              <span className="block relative overflow-hidden">
+                <span className={`block text-gray-400 leading-none ${hoveringNext ? 'opacity-0' : 'opacity-100 delay-75' } transition-opacity ease-in-out duration-500`}>Next</span>
+
+                <span className="block overflow-hidden absolute inset-0">
+                  <span className={`block ${hoveringNext ? 'translate-y-0' : 'translate-y-full' } leading-none transition-transform ease-in-out duration-[400ms] delay-75`}>Next</span>
+                </span>
+              </span>
+            </span>
+          </button>
+          
+          <button onClick={prev} className="absolute bottom-[81.75vh] left-0 z-10 w-1/2 h-12 flex items-start justify-start outline-none border-none group" onMouseEnter={() => setHoveringPrev(true)} onMouseLeave={() => setHoveringPrev(false)}>
+            <span className={`text-off-black block px-4 md:px-5 py-2 font-mono text-sm uppercase transition-all ease-in-out duration-[400ms]  group-hover:opacity-100`}>
+            <span className="block relative overflow-hidden">
+            <span className={`block text-gray-400 leading-none ${hoveringPrev ? 'opacity-0' : 'opacity-100 delay-75' } transition-opacity ease-in-out duration-500`}>Previous</span>
+
+                <span className="block overflow-hidden absolute inset-0">
+                  <span className={`block ${hoveringPrev ? 'translate-y-0' : 'translate-y-full' } leading-none transition-transform ease-in-out duration-[400ms] delay-75`}>Previous</span>
+                </span>
+              </span>
+            </span>
+          </button>
           {/* <div className="fixed top-0 left-0 ml-[50%] mt-[10%] bg-red text-white">current: {currentProject}</div> */}
           {/* {home.featuredWork.map((e, i) => {
             e.imageSlides.map(e, i) => {
@@ -236,10 +282,15 @@ export default function Home(initialData) {
                   )}
                 </div> */}
                 <div className="absolute inset-0 overflow-hidden">
+                  <button onClick={next} className="absolute top-0 right-0 bottom-0 z-10 w-1/2 h-full flex items-start justify-end outline-none border-none group" onMouseEnter={() => setHoveringNext(true)} onMouseLeave={() => setHoveringNext(false)}>
+                  </button>
+                  
+                  <button onClick={prev} className="absolute top-0 left-0 bottom-0 z-10 w-1/2 h-full flex items-start justify-start outline-none border-none group" onMouseEnter={() => setHoveringPrev(true)} onMouseLeave={() => setHoveringPrev(false)}>
+                  </button>
                   <m.div className="absolute inset-0" variants={slightScale}>
                     <div className="absolute inset-0">
                       {home.featuredWork[0].homeCarouselVideo ? (
-                        <video loop={true} autoPlay="autoplay" playsInline={true} muted className={`object-cover object-top [z-0] w-full h-full absolute inset-0 home-image ${currentProject === 1 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}>
+                        <video loop={true} autoPlay="autoplay" playsInline={true} muted className={`object-cover object-center [z-0] w-full h-full absolute inset-0 home-image ${currentProject === 1 ? 'opacity-100 scale-[1.005]' : 'opacity-0 scale-[1.0275]'}`}>
                         <source src={ home.featuredWork[0].homeCarouselVideo.asset.url } type="video/mp4" />
       
                           Sorry. Your browser does not support the video tag.
