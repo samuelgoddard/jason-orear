@@ -29,6 +29,10 @@ const query = `{
       title,
       url
     },
+    awards[] {
+      title,
+      url
+    },
     imageSlides[] {
       layout,
       images[] {
@@ -234,6 +238,37 @@ export default function WorksIndex(initialData) {
                                         )}
                                       >
                                         <span key={i} className="inline-block">{j.title}&nbsp;{(i == 0 || i == e.publications.length) ? ' ' : ' ' }</span>
+                                      </ConditionalWrap>
+                                    )
+                                  })}
+                                </m.span>
+                              </span>
+                            </span>
+                          </div>
+                        )}
+                        {e.awards && (
+                          <div className="w-full md:w-auto">
+                            <span className="hidden md:block mb-px md:mb-0">
+                              <span className="inline-block md:block overflow-hidden">
+                                <m.span variants={fade} className="block">
+                                  (Awards)
+                                </m.span>
+                              </span>
+                            </span>
+                            <span className="inline-block md:block md:ml-3">
+                              <span className="inline-block md:block overflow-hidden">
+                                <m.span variants={fade} className="block">
+                                  {e.awards.map((j, i) => {
+                                    return (
+                                      <ConditionalWrap
+                                        condition={!!j.url}
+                                        wrap={children => (
+                                          <a href={j.url} target="_blank" rel="noopener noreferrer" className="underline block  transition-colors ease-in-out duration-300">
+                                            {children}
+                                          </a>
+                                        )}
+                                      >
+                                        <span key={i} className="inline-block">{j.title}&nbsp;{(i == 0 || i == e.awards.length) ? ' ' : ' ' }</span>
                                       </ConditionalWrap>
                                     )
                                   })}
