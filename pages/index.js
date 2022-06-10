@@ -194,7 +194,7 @@ export default function Home(initialData) {
         >
           <Div100vh className="flex flex-col p-[14px] md:p-[20px]">
 
-          <button onClick={next} className="absolute bottom-[100px] md:bottom-[81.75vh] right-0 z-10 w-1/2 h-12 flex items-start justify-end outline-none border-none group" onMouseEnter={() => setHoveringNext(true)} onMouseLeave={() => setHoveringNext(false)}>
+          <button onClick={next} className="absolute bottom-[85px] md:bottom-[81.75vh] right-0 z-10 w-1/2 h-12 flex items-start justify-end outline-none border-none group" onMouseEnter={() => setHoveringNext(true)} onMouseLeave={() => setHoveringNext(false)}>
             <span className={`text-off-black block px-4 md:px-5 py-2 font-mono text-sm uppercase transition-all ease-in-out duration-[400ms]  group-hover:opacity-100`}>
               <span className="block relative overflow-hidden">
                 <span className={`block text-gray-400 leading-none ${hoveringNext ? 'opacity-0' : 'opacity-100 delay-75' } transition-opacity ease-in-out duration-500`}>Next</span>
@@ -206,7 +206,7 @@ export default function Home(initialData) {
             </span>
           </button>
           
-          <button onClick={prev} className="absolute bottom-[100px] md:bottom-[81.75vh] left-0 z-10 w-1/2 h-12 flex items-start justify-start outline-none border-none group" onMouseEnter={() => setHoveringPrev(true)} onMouseLeave={() => setHoveringPrev(false)}>
+          <button onClick={prev} className="absolute bottom-[85px] md:bottom-[81.75vh] left-0 z-10 w-1/2 h-12 flex items-start justify-start outline-none border-none group" onMouseEnter={() => setHoveringPrev(true)} onMouseLeave={() => setHoveringPrev(false)}>
             <span className={`text-off-black block px-4 md:px-5 py-2 font-mono text-sm uppercase transition-all ease-in-out duration-[400ms]  group-hover:opacity-100`}>
             <span className="block relative overflow-hidden">
             <span className={`block text-gray-400 leading-none ${hoveringPrev ? 'opacity-0' : 'opacity-100 delay-75' } transition-opacity ease-in-out duration-500`}>Previous</span>
