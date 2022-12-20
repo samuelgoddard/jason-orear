@@ -232,7 +232,7 @@ export default function WorksIndex(initialData) {
                                       <ConditionalWrap
                                         condition={!!j.url}
                                         wrap={children => (
-                                          <a href={j.url} target="_blank" rel="noopener noreferrer" className="underline block  transition-colors ease-in-out duration-300">
+                                          <a href={j.url} target="_blank" rel="noopener noreferrer" className="underline inline-block  transition-colors ease-in-out duration-300">
                                             {children}
                                           </a>
                                         )}
