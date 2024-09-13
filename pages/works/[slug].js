@@ -11,6 +11,7 @@ import Photo from '@/components/photo';
 import Div100vh from 'react-div-100vh';
 import { ColorContext } from 'context/primary';
 import { SecondaryColorContext } from 'context/secondary';
+import ReactPlayer from 'react-player'
 import ConditionalWrap from 'conditional-wrap';
 
 const pluginWrapper = () => {
@@ -49,6 +50,7 @@ const query = `*[_type == "work" && slug.current == $slug][0]{
         ...
       }
     },
+    videoUrl,
     "imagesHotSpots": images[] {
       hotspot {
         x,
@@ -224,15 +226,30 @@ export default function WorksSlug(initialData) {
                             )}
                           </div>
                         ) : (
-                          <div className="slide will-change flex items-center" id={i} data-anchor={`slide${i}`} key={i}>
-                            <div className="overflow-hidden w-9/12 md:w-7/12 2xl:w-8/12 h-[52vh] md:h-[61vh] xl:h-[66vh] 2xl:h-[68vh] relative mx-auto will-change mt-[-6vh]">
-                              <video data-autoplay loop={true} autoPlay="autoplay" playsInline={true} muted className={`object-cover object-top [z-4] w-full h-full absolute inset-0`}>
-                                <source data-src={ f.video.asset.url } type="video/mp4" />
-              
-                                Sorry. Your browser does not support the video tag.
-                              </video>
+                          <>
+                          { f.video?.asset ? (
+                            <div className="slide will-change flex items-center" id={i} data-anchor={`slide${i}`} key={i}>
+                              <div className="overflow-hidden w-9/12 md:w-7/12 2xl:w-8/12 h-[52vh] md:h-[61vh] xl:h-[66vh] 2xl:h-[68vh] relative mx-auto will-change mt-[-6vh]">
+                                <video data-autoplay loop={true} autoPlay="autoplay" playsInline={true} muted className={`object-cover object-top [z-4] w-full h-full absolute inset-0`}>
+                                  <source data-src={ f.video.asset.url } type="video/mp4" />
+                
+                                  Sorry. Your browser does not support the video tag.
+                                </video>
+                              </div>
                             </div>
-                          </div>
+                          ) : (
+                            <div className="slide will-change flex flex-wrap items-center" id={i} data-anchor={`slide${i}`} key={i}>
+                              <div className="overflow-hidden relative mx-auto will-change w-[50vw] h-[50dvh] flex items-center justify-center animate-fade-in">
+                                <ReactPlayer
+                                  url={f.videoUrl}
+                                  controls={true}
+                                  width="100%"
+                                  height="100%"
+                                />
+                              </div>
+                            </div>
+                          )}
+                          </>
                         )
                       })}
 

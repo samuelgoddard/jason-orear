@@ -44,7 +44,13 @@ const query = `{
         asset-> {
           ...
         }
-      }
+      },
+      videoUrl,
+      videoShort {
+        asset -> {
+        ...
+        }
+      },
     },
     seo {
       ...,
@@ -317,19 +323,37 @@ export default function WorksIndex(initialData) {
                               )
                             })
                           ) : (
-                            <Link href={`/works/${e.slug.current}#slider/slide${index}`} key={i}>
-                              <a className={`w-[38vw] md:w-[14vw] max-w-[260px] h-[28vw] md:h-[10vw] max-h-[175px] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-700 will-change inline-block group`}>
-                                <div className="w-full h-full relative overflow-hidden">
-                                  <div className="w-full h-full absolute inset-0">
-                                    <video loop={true} autoPlay="autoplay" playsInline={true} muted className={`object-cover object-top [z-4] w-full h-full absolute inset-0`}>
-                                      <source src={ f.video.asset.url } type="video/mp4" />
-            
-                                      Sorry. Your browser does not support the video tag.
-                                    </video>
+                            <>
+                            { f.video?.asset ? (
+                              <Link href={`/works/${e.slug.current}#slider/slide${index}`} key={i}>
+                                <a className={`w-[38vw] md:w-[14vw] max-w-[260px] h-[28vw] md:h-[10vw] max-h-[175px] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-700 will-change inline-block group`}>
+                                  <div className="w-full h-full relative overflow-hidden">
+                                    <div className="w-full h-full absolute inset-0">
+                                      <video loop={true} autoPlay="autoplay" playsInline={true} muted className={`object-cover object-top [z-4] w-full h-full absolute inset-0`}>
+                                        <source src={ f.video.asset.url } type="video/mp4" />
+              
+                                        Sorry. Your browser does not support the video tag.
+                                      </video>
+                                    </div>
                                   </div>
-                                </div>
-                              </a>
-                            </Link>
+                                </a>
+                              </Link>
+                            ) : (
+                              <Link href={`/works/${e.slug.current}#slider/slide${index}`} key={i}>
+                                <a className={`w-[38vw] md:w-[18vw] max-w-[320px] h-[28vw] md:h-[10vw] max-h-[175px] bg-gray-100 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition ease-in-out duration-700 will-change inline-block group`}>
+                                  <div className="w-full h-full relative overflow-hidden">
+                                    <div className="w-full h-full absolute inset-0">
+                                      <video loop={true} autoPlay="autoplay" playsInline={true} muted className={`object-cover object-top [z-4] w-full h-full absolute inset-0`}>
+                                        <source src={ f.videoShort.asset.url } type="video/mp4" />
+              
+                                        Sorry. Your browser does not support the video tag.
+                                      </video>
+                                    </div>
+                                  </div>
+                                </a>
+                              </Link>
+                            )}
+                            </>
                           )
                         })}
 

@@ -18,11 +18,17 @@ module.exports = {
     extend: {
       animation: {
         'caret': 'caret 1s ease-in-out infinite',
+        'fade-in': 'fadeIn 2s ease-in-out',
       },
       keyframes: {
         caret: {
           '0%, 100%': { opacity: 0 },
           '50%': { opacity: 1 },
+        },
+        fadeIn: {
+          '0%': { opacity: 0 },
+          '50%': { opacity: 0 },
+          '100%': { opacity: 1 },
         }
       },
       colors: {
