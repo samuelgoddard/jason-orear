@@ -239,11 +239,18 @@ export default function WorksSlug(initialData) {
                             </div>
                           ) : (
                             <div className="slide will-change flex flex-wrap items-center" id={i} data-anchor={`slide${i}`} key={i}>
-                              <div className="overflow-hidden relative mx-auto will-change w-[50vw] h-[50dvh] flex items-center justify-center animate-fade-in">
+                              <div className="overflow-hidden relative mx-auto will-change w-[80vw] h-[45vw] md:w-[50vw]  md:h-[50dvh] flex items-center justify-center animate-fade-in">
                                 <ReactPlayer
                                   playsinline
                                   playerOptions={{ 
                                     playsinline: true
+                                  }}
+                                  config={{
+                                    vimeo: {
+                                      playerOptions: {
+                                        playsInline: false,
+                                      },
+                                    },
                                   }}
                                   url={f.videoUrl}
                                   controls={true}
