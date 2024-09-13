@@ -127,7 +127,7 @@ export default function WorksSlug(initialData) {
               anchors={['slider']}
               controlArrows={false}
               pluginWrapper={pluginWrapper}
-              licenseKey={'E35C20B2-4B1C4CAA-AEB26F61-7D51579F'}
+              licenseKey={'3E8E8C87-B0B24A84-8C40386A-A5CE366D'}
               // onLeave={this.onLeave.bind(this)}
               scrollingSpeed = {1100}
               loopHorizontal={false}
