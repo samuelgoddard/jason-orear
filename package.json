@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@cyriacbr/react-split-text": "^1.0.0",
-    "@fullpage/react-fullpage": "^0.1.19",
+    "@fullpage/react-fullpage": "0.1.23",
     "@moxy/react-split-text": "^1.0.1",
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^2.11.0",
