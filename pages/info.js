@@ -369,18 +369,16 @@ export default function Info(initialData) {
                       </m.div>
 
                       {/* Address */}
-                      {contact.address && (
-                        <>
-                          <div className="w-full">
-                            <div className="relative block overflow-hidden mb-2">
-                              <m.span variants={reveal} className="font-mono block uppercase text-[11px] md:text-[13px]">(Address)</m.span>
-                            </div>
+                      <>
+                        <div className="w-full">
+                          <div className="relative block overflow-hidden mb-2">
+                            <m.span variants={reveal} className="font-mono block uppercase text-[11px] md:text-[13px]">(Licensing Information)</m.span>
                           </div>
-                          <m.div variants={fade} className="w-full mb-6">
-                            <span className="block uppercase text-[13px] md:text-[15px] 2xl:text-[15px] lg:text-[14px] ml-[10px] md:ml-[20px] max-w-[200px]">{contact.address}</span>
-                          </m.div>
-                        </>
-                      )}
+                        </div>
+                        <m.div variants={fade} className="w-full mb-6">
+                          <span className="block uppercase text-[13px] md:text-[15px] 2xl:text-[15px] lg:text-[14px] ml-[10px] md:ml-[20px] max-w-[200px]">COPYRIGHT&copy; JASON O'REAR PHOTOGRAPHY. ALL RIGHTS RESERVED. FOR LICENSING INQUIRES, PLEASE EMAIL. </span>
+                        </m.div>
+                      </>
 
                       {/* Social */}
                       {contact.instagramUrl && (
